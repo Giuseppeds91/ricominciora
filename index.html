@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ricominciora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #f5f0e8;
+      --bg-soft: #fbf8f3;
+      --card: #fffaf4;
+      --text: #2c241f;
+      --muted: #6f645b;
+      --line: rgba(44,36,31,.12);
+      --orange: #d97825;
+      --orange-dark: #c56818;
+      --blue: #537d96;
+      --blue-dark: #466c82;
+      --dark-btn: #59514e;
+      --dark-btn-hover: #4a433f;
+      --green: #5e7c52;
+      --shadow: 0 10px 30px rgba(60,40,20,.08);
+      --radius: 24px;
+      --radius-sm: 18px;
+      --max: 1180px;
+    }
+
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html{
+      scroll-behavior: smooth;
+    }
+
+    body{
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.7), transparent 28%),
+        linear-gradient(180deg, #f7f2ea 0%, #f3eee6 100%);
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    a{
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img{
+      max-width: 100%;
+      display: block;
+    }
+
+    .container{
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .serif{
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: -.02em;
+    }
+
+    /* NAV */
+    .nav-wrap{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(247,242,234,.88);
+      border-bottom: 1px solid rgba(44,36,31,.06);
+    }
+
+    .nav{
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-left{
+      display: flex;
+      align-items: center;
+      gap: 46px;
+      flex-wrap: wrap;
+    }
+
+    .brand{
+      font-weight: 700;
+      display: none;
+    }
+
+    .nav-link{
+      font-size: 1.1rem;
+      color: #3b312b;
+      transition: opacity .2s ease;
+    }
+
+    .nav-link:hover{
+      opacity: .7;
+    }
+
+    .pill-btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: .22s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      white-space: nowrap;
+    }
+
+    .pill-btn-dark{
+      background: #5c5552;
+      color: #fff;
+    }
+
+    .pill-btn-dark:hover{
+      background: #4f4946;
+      transform: translateY(-1px);
+    }
+
+    .pill-btn-orange{
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .pill-btn-orange:hover{
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+    .hero{
+      padding: 48px 0 34px;
+    }
+
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1.1fr .95fr;
+      align-items: stretch;
+      gap: 32px;
+    }
+
+    .hero-copy{
+      padding: 34px 0 16px;
+    }
+
+    .hero h1{
+      font-size: clamp(3rem, 5.7vw, 5.3rem);
+      line-height: .95;
+      font-weight: 700;
+      max-width: 680px;
+      color: #302721;
+    }
+
+    .hero h1 .accent{
+      color: var(--orange);
+      font-style: italic;
+    }
+
+    .hero p.sub{
+      margin-top: 18px;
+      font-size: clamp(1.18rem, 2vw, 1.7rem);
+      color: #453a34;
+      max-width: 520px;
+      line-height: 1.2;
+    }
+
+    .hero-cta{
+      margin-top: 34px;
+    }
+
+    .hero-visual{
+      position: relative;
+      min-height: 500px;
+      border-radius: 0 0 0 0;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(to left, rgba(245,240,232,0) 55%, rgba(245,240,232,1) 100%),
+        url("https://images.unsplash.com/photo-1516589091380-5d8e87df6999?auto=format&fit=crop&w=1200&q=80") center center / cover no-repeat;
+      border-radius: 0 0 0 80px;
+    }
+
+    .fade-left{
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(245,240,232,.95) 0%, rgba(245,240,232,.72) 18%, rgba(245,240,232,0) 50%);
+    }
+
+    /* CHAT PREVIEW */
+    .chat-section{
+      padding: 18px 0 26px;
+    }
+
+    .chat-box{
+      background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.08));
+      border-radius: 28px;
+      padding: 14px 10px 8px;
+    }
+
+    .chat-row{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .bubble{
+      position: relative;
+      max-width: 420px;
+      padding: 20px 28px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      font-size: clamp(1rem, 1.6vw, 1.28rem);
+    }
+
+    .bubble.left{
+      background: #fffaf5;
+      color: #453a34;
+    }
+
+    .bubble.left::after{
+      content: "";
+      position: absolute;
+      left: 22px;
+      bottom: -10px;
+      border: 10px solid transparent;
+      border-top-color: #fffaf5;
+      border-left: 0;
+      transform: skewX(-8deg);
+    }
+
+    .bubble.right{
+      background: var(--blue);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .bubble.right::after{
+      content: "";
+      position: absolute;
+      right: 24px;
+      bottom: -10px;
+      border: 10px solid transparent;
+      border-top-color: var(--blue);
+      border-right: 0;
+      transform: skewX(8deg);
+    }
+
+    .divider-title{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0 8px;
+      color: #3e342e;
+    }
+
+    .divider-title::before,
+    .divider-title::after{
+      content: "";
+      height: 1px;
+      width: 110px;
+      background: var(--line);
+    }
+
+    .divider-title h2{
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    /* PRICING */
+    .pricing{
+      padding: 26px 0 26px;
+    }
+
+    .cards{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card{
+      background: rgba(255,250,244,.92);
+      border: 1px solid rgba(93,74,52,.08);
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+      padding: 26px 28px 24px;
+      min-height: 370px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3{
+      text-align: center;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: #4a3e36;
+      margin-bottom: 18px;
+    }
+
+    .card.free h3{
+      color: var(--orange);
+    }
+
+    .card .hr{
+      height: 1px;
+      background: rgba(44,36,31,.14);
+      margin: 0 auto 22px;
+      width: 100%;
+    }
+
+    .features{
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .features li{
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #433832;
+      font-size: 1.1rem;
+    }
+
+    .check{
+      color: #5d9557;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-top: 1px;
+    }
+
+    .card .btn{
+      margin-top: auto;
+      width: 100%;
+      min-height: 54px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: var(--shadow);
+      transition: .22s ease;
+    }
+
+    .card .btn:hover{
+      transform: translateY(-1px);
+    }
+
+    .btn-orange{
+      background: var(--orange);
+    }
+
+    .btn-orange:hover{
+      background: var(--orange-dark);
+    }
+
+    .btn-dark{
+      background: var(--dark-btn);
+    }
+
+    .btn-dark:hover{
+      background: var(--dark-btn-hover);
+    }
+
+    .btn-green{
+      background: #d96b2b;
+    }
+
+    .btn-green:hover{
+      background: #c95f21;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials{
+      padding: 18px 0 38px;
+    }
+
+    .section-title{
+      text-align: center;
+      font-size: clamp(3rem, 4.8vw, 4.8rem);
+      line-height: 1;
+      margin-bottom: 28px;
+      color: #352c26;
+      font-weight: 700;
+    }
+
+    .testimonials-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .testimonial{
+      background: rgba(255,250,244,.84);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid rgba(93,74,52,.06);
+    }
+
+    .testimonial p{
+      font-size: 1.15rem;
+      color: #413631;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .testimonial span{
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      color: #574b44;
+    }
+
+    /* BOTTOM VISUAL */
+    .bottom-visual{
+      margin-top: 14px;
+      min-height: 290px;
+      border-top: 1px solid rgba(44,36,31,.06);
+      background:
+        linear-gradient(90deg, rgba(245,240,232,.08) 0%, rgba(245,240,232,.92) 58%, rgba(245,240,232,1) 100%),
+        url("https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=80") left center / cover no-repeat;
+    }
+
+    /* FOOTER */
+    footer{
+      padding: 26px 0 50px;
+      background: transparent;
+    }
+
+    .footer-top{
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+      color: #5c524b;
+      font-size: .98rem;
+    }
+
+    .footer-disclaimer{
+      max-width: 950px;
+      margin: 0 auto;
+      text-align: center;
+      color: #6a5f57;
+      font-size: .98rem;
+      line-height: 1.65;
+      border-top: 1px solid rgba(44,36,31,.08);
+      padding-top: 22px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1080px){
+      .hero-grid{
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual{
+        min-height: 420px;
+        border-radius: 28px;
+      }
+
+      .cards,
+      .testimonials-grid{
+        grid-template-columns: 1fr;
+      }
+
+      .card{
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px){
+      .nav{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 0;
+      }
+
+      .nav-left{
+        gap: 18px;
+      }
+
+      .nav-right{
+        width: 100%;
+      }
+
+      .nav-right a{
+        width: 100%;
+      }
+
+      .pill-btn{
+        width: 100%;
+      }
+
+      .hero{
+        padding-top: 26px;
+      }
+
+      .hero-copy{
+        padding-top: 10px;
+      }
+
+      .hero h1{
+        max-width: none;
+      }
+
+      .chat-row{
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .bubble{
+        max-width: 100%;
+      }
+
+      .divider-title::before,
+      .divider-title::after{
+        width: 48px;
+      }
+
+      .container{
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .bottom-visual{
+        min-height: 220px;
+        background-position: 28% center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-wrap">
+    <div class="container nav">
+      <div class="nav-left">
+        <a class="nav-link serif" href="#come-funziona">Come funziona</a>
+        <a class="nav-link serif" href="#percorsi">Percorsi</a>
+        <a class="nav-link serif" href="#testimonianze">Testimonianze</a>
+      </div>
+
+      <div class="nav-right">
+        <a href="#percorsi" class="pill-btn pill-btn-dark">Il tuo spazio</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1 class="serif">
+            Non sempre hai qualcuno<br>
+            con cui parlare.
+            <span class="accent">Qui sì.</span>
+          </h1>
+
+          <p class="sub serif">Scrivi. Ti leggiamo. Ti rispondiamo.</p>
+
+          <div class="hero-cta">
+            <a href="#come-funziona" class="pill-btn pill-btn-orange">Inizia a scrivere quello che senti</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="fade-left"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chat-section" id="come-funziona">
+      <div class="container">
+        <div class="chat-box">
+          <div class="chat-row">
+            <div class="bubble left serif">Non riesco a smettere di pensarci.</div>
+            <div class="bubble right serif">È normale. Da quanto tempo è finita?</div>
+          </div>
+
+          <div class="divider-title">
+            <h2 class="serif">Qualcuno ti ascolta davvero.</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="percorsi">
+      <div class="container">
+        <div class="cards">
+
+          <article class="card free">
+            <div>
+              <h3 class="serif">GRATIS</h3>
+              <div class="hr"></div>
+              <ul class="features">
+                <li><span class="check">✔</span><span>20 messaggi</span></li>
+                <li><span class="check">✔</span><span>1 risposta umana</span></li>
+                <li><span class="check">✔</span><span>Accesso immediato</span></li>
+              </ul>
+            </div>
+            <button class="btn btn-orange">Inizia gratis</button>
+          </article>
+
+          <article class="card">
+            <div>
+              <h3 class="serif">STANDARD</h3>
+              <div class="hr"></div>
+              <ul class="features">
+                <li><span class="check">✔</span><span>Chat illimitata</span></li>
+                <li><span class="check">✔</span><span>Risposta quotidiana</span></li>
+                <li><span class="check">✔</span><span>Supporto continuo</span></li>
+              </ul>
+            </div>
+            <button class="btn btn-dark">Continua con noi</button>
+          </article>
+
+          <article class="card">
+            <div>
+              <h3 class="serif">PREMIUM</h3>
+              <div class="hr"></div>
+              <ul class="features">
+                <li><span class="check">✔</span><span>Umano + Chat</span></li>
+                <li><span class="check">✔</span><span>Call settimanali</span></li>
+                <li><span class="check">✔</span><span>Percorso guidato</span></li>
+              </ul>
+            </div>
+            <button class="btn btn-green">Voglio ripartire</button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials" id="testimonianze">
+      <div class="container">
+        <h2 class="section-title serif">Non sei solo.</h2>
+
+        <div class="testimonials-grid">
+          <div class="testimonial">
+            <p>“Mi hanno risposto quando ne avevo davvero bisogno.”</p>
+            <span>— Luca</span>
+          </div>
+
+          <div class="testimonial">
+            <p>“Non mi sono sentita giudicata.”</p>
+            <span>— Sara</span>
+          </div>
+
+          <div class="testimonial">
+            <p>“Qualcuno finalmente ha capito cosa stavo provando.”</p>
+            <span>— Andrea</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom-visual" aria-hidden="true"></section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <a href="#">FAQ</a>
+        <a href="#">Termini e condizioni</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+
+      <div class="footer-disclaimer">
+        Questo servizio offre uno spazio di ascolto e supporto emotivo. Non è un servizio medico o psicologico e non sostituisce un percorso terapeutico o il supporto di professionisti qualificati. In caso di necessità, ti invitiamo a rivolgerti a un professionista.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
