@@ -101,6 +101,13 @@
       transform:translateY(-1px);
     }
 
+    .pill-btn:disabled{
+      opacity:.45;
+      pointer-events:none;
+      transform:none;
+      cursor:not-allowed;
+    }
+
     .pill-btn-orange{
       background:var(--orange);
       color:#fff;
@@ -916,7 +923,7 @@
       </div>
 
       <div class="nav-right">
-        <a href="#percorsi" class="pill-btn pill-btn-dark">Il tuo spazio</a>
+        <a href="#percorsi" class="pill-btn pill-btn-dark">Scegli il tuo percorso</a>
       </div>
     </div>
   </div>
@@ -975,9 +982,9 @@
             </div>
 
             <ul class="features">
-              <li><span class="check">✔</span><span>Accesso immediato</span></li>
-              <li><span class="check">✔</span><span>Scrivi liberamente quello che senti</span></li>
-              <li><span class="check">✔</span><span>Una persona reale, dedicata alla tua storia</span></li>
+              <li><span class="check">✔</span><span>Accesso iniziale gratuito</span></li>
+              <li><span class="check">✔</span><span>Scrivi quello che senti e racconta la tua situazione</span></li>
+              <li><span class="check">✔</span><span>Un primo riscontro umano per iniziare</span></li>
             </ul>
 
             <button class="card-btn btn-orange open-modal">Inizia gratis</button>
@@ -1013,7 +1020,7 @@
             <ul class="features">
               <li><span class="check">✔</span><span>Supporto umano in chat senza limiti</span></li>
               <li><span class="check">✔</span><span>Una call a settimana con un esperto</span></li>
-              <li><span class="check">✔</span><span>Un percorso completo, dedicato a te</span></li>
+              <li><span class="check">✔</span><span>Un percorso completo dedicato a te</span></li>
             </ul>
 
             <button class="card-btn btn-premium open-modal">Voglio ripartire</button>
@@ -1100,9 +1107,9 @@
     </div>
   </footer>
 
-  <div class="modal-overlay" id="legalModal">
-    <div class="modal">
-      <h3 class="serif">Prima di iniziare</h3>
+  <div class="modal-overlay" id="legalModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h3 class="serif" id="modalTitle">Prima di iniziare</h3>
       <p>
         Questo è uno spazio di ascolto e supporto emotivo basato sull’esperienza umana.
         Non è un servizio medico o psicologico e non sostituisce un percorso con professionisti qualificati.
@@ -1115,8 +1122,8 @@
       </label>
 
       <div class="modal-actions">
-        <button class="ghost-btn" id="closeModal">Torna indietro</button>
-        <button class="pill-btn pill-btn-orange" id="continueBtn" disabled style="opacity:.45; pointer-events:none;">Continua</button>
+        <button class="ghost-btn" id="closeModal" type="button">Torna indietro</button>
+        <button class="pill-btn pill-btn-orange" id="continueBtn" type="button" disabled>Continua</button>
       </div>
     </div>
   </div>
@@ -1124,42 +1131,46 @@
   <script>
     const modal = document.getElementById('legalModal');
     const openButtons = document.querySelectorAll('.open-modal');
-    const closeModal = document.getElementById('closeModal');
+    const closeModalBtn = document.getElementById('closeModal');
     const acceptCheck = document.getElementById('acceptCheck');
     const continueBtn = document.getElementById('continueBtn');
 
-    openButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        modal.classList.add('active');
-      });
-    });
+    function openModal() {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+    }
 
     function resetModal() {
       modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
       acceptCheck.checked = false;
-      continueBtn.style.opacity = '.45';
-      continueBtn.style.pointerEvents = 'none';
+      continueBtn.disabled = true;
     }
 
-    closeModal.addEventListener('click', resetModal);
+    openButtons.forEach(btn => {
+      btn.addEventListener('click', openModal);
+    });
+
+    closeModalBtn.addEventListener('click', resetModal);
 
     acceptCheck.addEventListener('change', () => {
-      if (acceptCheck.checked) {
-        continueBtn.style.opacity = '1';
-        continueBtn.style.pointerEvents = 'auto';
-      } else {
-        continueBtn.style.opacity = '.45';
-        continueBtn.style.pointerEvents = 'none';
-      }
+      continueBtn.disabled = !acceptCheck.checked;
     });
 
     continueBtn.addEventListener('click', () => {
       modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
       window.location.href = "#percorsi";
     });
 
     modal.addEventListener('click', (e) => {
       if (e.target === modal) resetModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        resetModal();
+      }
     });
   </script>
 </body>
