@@ -27,6 +27,7 @@
       --white:#ffffff;
       --shadow:0 16px 40px rgba(75,46,20,.08);
       --shadow-soft:0 10px 26px rgba(75,46,20,.06);
+      --shadow-strong:0 18px 44px rgba(97,57,23,.14);
       --radius:22px;
       --radius-lg:28px;
       --max:1160px;
@@ -378,6 +379,12 @@
       min-height:100%;
     }
 
+    .card.featured{
+      border:2px solid rgba(217,120,37,.42);
+      box-shadow:var(--shadow-strong);
+      transform:scale(1.01);
+    }
+
     .card-head{
       display:flex;
       align-items:flex-end;
@@ -394,6 +401,10 @@
     }
 
     .card.inizia .card-title{
+      color:var(--orange);
+    }
+
+    .card.featured .card-title{
       color:var(--orange);
     }
 
@@ -479,101 +490,9 @@
       background:#bf5b22;
     }
 
-    /* PRIORITY */
-    .priority-section{
-      padding:10px 0 28px;
-    }
-
-    .priority-card{
-      background:linear-gradient(180deg, rgba(255,250,244,.98), rgba(251,246,239,.94));
-      border:1px solid rgba(47,39,34,.08);
-      border-radius:18px;
-      box-shadow:var(--shadow);
-      padding:24px 20px;
-      display:grid;
-      grid-template-columns:1fr;
-      gap:18px;
-    }
-
-    .priority-top{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:12px;
-      border-bottom:1px solid rgba(47,39,34,.10);
-      padding-bottom:14px;
-    }
-
-    .priority-title{
-      font-size:2.15rem;
-      line-height:.92;
-      color:#312823;
-    }
-
-    .priority-title .ora{
-      display:block;
-      font-size:3rem;
-      color:var(--orange);
-      font-weight:700;
-      line-height:.84;
-      margin-top:2px;
-    }
-
-    .priority-price{
-      text-align:right;
-      line-height:1;
-    }
-
-    .priority-price .amount{
-      font-size:1.55rem;
-      font-weight:800;
-      color:#2f2722;
-    }
-
-    .priority-price .period{
-      margin-top:4px;
-      font-size:.86rem;
-      color:var(--muted);
-    }
-
-    .priority-copy p{
-      color:#5a4f47;
-      font-size:1rem;
-      line-height:1.65;
-    }
-
-    .priority-list{
-      list-style:none;
-      display:grid;
-      gap:10px;
-      margin-top:14px;
-    }
-
-    .priority-list li{
-      display:flex;
-      gap:10px;
-      color:#433832;
-      font-size:1rem;
-    }
-
-    .priority-cta{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
-
-    .priority-badge{
-      color:#786d64;
-      font-size:.93rem;
-    }
-
-    .priority-cta .pill-btn{
-      width:100%;
-    }
-
     /* TRUST */
     .trust-section{
-      padding:10px 0 28px;
+      padding:14px 0 28px;
     }
 
     .trust-head{
@@ -815,26 +734,12 @@
 
       .cards{
         grid-template-columns:repeat(3, 1fr);
+        align-items:stretch;
       }
 
       .card{
-        min-height:380px;
+        min-height:390px;
         padding:28px 26px 24px;
-      }
-
-      .priority-card{
-        grid-template-columns:1.15fr .85fr;
-        align-items:center;
-        gap:24px;
-        padding:28px 28px;
-      }
-
-      .priority-cta{
-        align-items:flex-end;
-      }
-
-      .priority-cta .pill-btn{
-        width:auto;
       }
 
       .trust-head{
@@ -900,14 +805,6 @@
 
       .chat-tagline h2{
         font-size:3rem;
-      }
-
-      .priority-title{
-        font-size:2.6rem;
-      }
-
-      .priority-title .ora{
-        font-size:3.6rem;
       }
     }
   </style>
@@ -992,24 +889,6 @@
 
           <article class="card">
             <div class="card-head">
-              <h3 class="card-title serif">Continua</h3>
-              <div class="price">
-                <div class="amount">12,99€</div>
-                <div class="period">a settimana</div>
-              </div>
-            </div>
-
-            <ul class="features">
-              <li><span class="check">✔</span><span>Chat senza limiti</span></li>
-              <li><span class="check">✔</span><span>Una risposta ogni giorno da un esperto</span></li>
-              <li><span class="check">✔</span><span>Un percorso settimanale dedicato a te</span></li>
-            </ul>
-
-            <button class="card-btn btn-dark open-modal">Continua con noi</button>
-          </article>
-
-          <article class="card">
-            <div class="card-head">
               <h3 class="card-title serif">Riparti</h3>
               <div class="price">
                 <div class="amount">59,99€</div>
@@ -1023,41 +902,27 @@
               <li><span class="check">✔</span><span>Un percorso completo dedicato a te</span></li>
             </ul>
 
-            <button class="card-btn btn-premium open-modal">Voglio ripartire</button>
+            <button class="card-btn btn-dark open-modal">Voglio ripartire</button>
           </article>
 
-        </div>
-      </div>
-    </section>
-
-    <section class="priority-section">
-      <div class="container">
-        <div class="priority-card">
-          <div class="priority-copy">
-            <div class="priority-top">
-              <h3 class="priority-title serif">Parlane <span class="ora">ORA</span></h3>
-              <div class="priority-price">
+          <article class="card featured">
+            <div class="card-head">
+              <h3 class="card-title serif">Parlane ora</h3>
+              <div class="price">
                 <div class="amount">14,99€</div>
                 <div class="period">richiesta extra</div>
               </div>
             </div>
 
-            <p>
-              Se senti il bisogno di essere richiamato in una fascia oraria precisa, puoi richiedere un contatto prioritario.
-              Ti faremo prima 2 o 3 domande rapide per capire la situazione e passare tutto all’esperto.
-            </p>
-
-            <ul class="priority-list">
+            <ul class="features">
               <li><span class="check">✔</span><span>Richiesta prioritaria</span></li>
               <li><span class="check">✔</span><span>Breve triage iniziale</span></li>
-              <li><span class="check">✔</span><span>Richiamata dedicata in fascia oraria concordata</span></li>
+              <li><span class="check">✔</span><span>Chiamata dedicata in fascia oraria concordata, anche in tempi rapidi se disponibile</span></li>
             </ul>
-          </div>
 
-          <div class="priority-cta">
-            <div class="priority-badge">Disponibile come richiesta extra</div>
-            <button class="pill-btn pill-btn-dark open-modal">Richiedi ora</button>
-          </div>
+            <button class="card-btn btn-premium open-modal">Richiedi ora</button>
+          </article>
+
         </div>
       </div>
     </section>
