@@ -3,30 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Giornate della Prevenzione | Cuccaro Vetere</title>
-  <meta name="description" content="Pagina informativa per le giornate di prevenzione sanitaria organizzate a Cuccaro Vetere." />
-
+  <title>Prevenzione Cuccaro Vetere</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f6f8f7;
-      --white: #ffffff;
-      --text: #16231f;
-      --muted: #60716b;
-      --green: #28745a;
-      --green-dark: #174d3c;
-      --green-light: #e7f3ee;
-      --blue: #25506d;
-      --blue-light: #e8f1f6;
-      --red: #b94747;
-      --border: #dce5e1;
-      --shadow: 0 18px 50px rgba(22, 35, 31, 0.08);
-      --radius: 22px;
+      --bg: #f7f5ef;
+      --paper: #ffffff;
+      --text: #151515;
+      --muted: #6d6a63;
+      --line: #ded8ca;
+      --accent: #78966f;
+      --accent-dark: #4e6f47;
+      --soft: #ebe6dc;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -34,10 +30,10 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Inter", sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     a {
@@ -45,853 +41,601 @@
       text-decoration: none;
     }
 
-    .container {
-      width: min(1100px, calc(100% - 32px));
-      margin: 0 auto;
+    .page {
+      overflow: hidden;
     }
 
     header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 20;
-    }
-
-    .topbar {
-      background: var(--green-dark);
-      color: #fff;
-      font-size: 13px;
-      padding: 8px 0;
-    }
-
-    .topbar-inner {
+      left: 0;
+      width: 100%;
+      z-index: 30;
+      padding: 22px 34px;
       display: flex;
       justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .nav {
-      height: 76px;
-      display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+      backdrop-filter: blur(18px);
+      background: rgba(247, 245, 239, 0.78);
+      border-bottom: 1px solid rgba(222, 216, 202, 0.7);
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .brand-symbol {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: var(--green-light);
-      color: var(--green-dark);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      border: 1px solid var(--border);
-    }
-
-    .brand-title strong {
-      display: block;
-      font-size: 18px;
-      color: var(--green-dark);
-    }
-
-    .brand-title span {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
       font-size: 14px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
       color: var(--muted);
       font-weight: 600;
     }
 
-    .nav-button {
-      background: var(--green);
-      color: #fff;
-      padding: 11px 16px;
+    .nav-cta {
+      background: var(--text);
+      color: white;
+      padding: 10px 16px;
       border-radius: 999px;
+      color: #fff;
     }
 
     .hero {
-      padding: 58px 0 42px;
-      background: linear-gradient(180deg, #ffffff 0%, #f6f8f7 100%);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-grid {
+      min-height: 100vh;
+      padding: 136px 34px 72px;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 34px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
       align-items: center;
+      max-width: 1240px;
+      margin: 0 auto;
     }
 
-    .label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--green-light);
-      color: var(--green-dark);
-      border: 1px solid #cfe4da;
-      padding: 7px 12px;
-      border-radius: 999px;
+    .eyebrow {
+      color: var(--accent-dark);
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       margin-bottom: 18px;
     }
 
-    .label-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-    }
-
     h1 {
-      font-size: clamp(38px, 5vw, 64px);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-      color: var(--green-dark);
-      margin-bottom: 20px;
+      font-size: clamp(54px, 8vw, 116px);
+      line-height: 0.88;
+      letter-spacing: -0.085em;
+      max-width: 760px;
+      margin-bottom: 26px;
     }
 
     .hero p {
-      font-size: 18px;
+      max-width: 560px;
+      font-size: clamp(19px, 2vw, 26px);
       color: var(--muted);
-      max-width: 660px;
-      margin-bottom: 28px;
+      letter-spacing: -0.045em;
+      margin-bottom: 34px;
     }
 
-    .hero-actions {
+    .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      align-items: center;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 0;
-      cursor: pointer;
       border-radius: 999px;
-      padding: 14px 19px;
-      font-weight: 700;
-      font-size: 15px;
+      padding: 15px 22px;
+      font-weight: 800;
+      font-size: 14px;
+      transition: 0.25s ease;
     }
 
     .btn-primary {
-      background: var(--green);
-      color: #fff;
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 18px 45px rgba(78, 111, 71, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: var(--accent-dark);
     }
 
     .btn-secondary {
-      background: var(--white);
-      color: var(--green-dark);
-      border: 1px solid var(--border);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.45);
+      color: var(--text);
     }
 
-    .notice-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+    .hero-card {
+      position: relative;
+      min-height: 620px;
+      border-radius: 42px;
+      overflow: hidden;
+      background: var(--soft);
+      box-shadow: 0 30px 90px rgba(30, 28, 24, 0.12);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.02), rgba(0,0,0,0.38)),
+        url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1400&q=85") center/cover;
+    }
+
+    .hero-badge {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      background: rgba(255,255,255,0.84);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.58);
+      border-radius: 28px;
       padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .notice-card h2 {
-      font-size: 22px;
-      color: var(--green-dark);
-      margin-bottom: 14px;
-    }
-
-    .notice-list {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .notice-list li {
       display: flex;
-      gap: 10px;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
     }
 
-    .check {
-      width: 22px;
-      height: 22px;
-      min-width: 22px;
-      border-radius: 50%;
-      background: var(--green-light);
-      color: var(--green-dark);
-      display: grid;
-      place-items: center;
-      font-size: 13px;
-      font-weight: 800;
+    .hero-badge strong {
+      display: block;
+      font-size: 32px;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      margin-bottom: 8px;
     }
 
-    section {
-      padding: 58px 0;
-    }
-
-    .section-heading {
-      max-width: 760px;
-      margin-bottom: 30px;
-    }
-
-    .section-heading span {
-      color: var(--green);
-      font-size: 13px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      color: var(--green-dark);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin: 8px 0 12px;
-    }
-
-    .section-heading p {
+    .hero-badge span {
       color: var(--muted);
-      font-size: 17px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .section {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 110px 34px;
+    }
+
+    .section-title {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 42px;
+      align-items: end;
+      margin-bottom: 54px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(40px, 5.8vw, 78px);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 20px;
+      max-width: 560px;
+      letter-spacing: -0.035em;
     }
 
     .timeline {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .timeline-row {
-      display: grid;
-      grid-template-columns: 180px 1fr 180px;
-      gap: 24px;
-      padding: 24px;
-      border-bottom: 1px solid var(--border);
-      align-items: center;
-    }
-
-    .timeline-row:last-child {
-      border-bottom: 0;
-    }
-
-    .date-box {
-      background: var(--green-light);
-      border: 1px solid #cfe4da;
-      border-radius: 18px;
-      padding: 16px;
-      text-align: center;
-      color: var(--green-dark);
-    }
-
-    .date-box strong {
-      display: block;
-      font-size: 25px;
-      line-height: 1;
-    }
-
-    .date-box span {
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .timeline-content h3 {
-      font-size: 23px;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    .timeline-content p {
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      background: #f1f5f3;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-      padding: 6px 9px;
-      border-radius: 999px;
-    }
-
-    .status {
-      text-align: right;
-    }
-
-    .status-badge {
-      display: inline-block;
-      padding: 8px 11px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-
-    .status-open {
-      background: #e7f3ee;
-      color: var(--green-dark);
-    }
-
-    .status-soon {
-      background: var(--blue-light);
-      color: var(--blue);
-    }
-
-    .status-wait {
-      background: #fff3d8;
-      color: #8a5d12;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .info-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 26px;
-      box-shadow: var(--shadow);
-    }
-
-    .info-card h3 {
-      color: var(--green-dark);
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
-
-    .info-card p {
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .simple-list {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-      color: var(--text);
-    }
-
-    .simple-list li {
-      display: flex;
-      gap: 10px;
-    }
-
-    .form-section {
-      background: var(--green-dark);
-      color: #fff;
-    }
-
-    .form-section .section-heading h2,
-    .form-section .section-heading span,
-    .form-section .section-heading p {
-      color: #fff;
-    }
-
-    .form-layout {
-      display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 28px;
-      align-items: start;
-    }
-
-    .form-side {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: var(--radius);
-      padding: 26px;
-    }
-
-    .form-side h3 {
-      font-size: 24px;
-      margin-bottom: 14px;
-    }
-
-    .form-side p,
-    .form-side li {
-      color: rgba(255, 255, 255, 0.82);
-    }
-
-    .form-box {
-      background: var(--white);
-      color: var(--text);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
-    }
-
-    form {
-      display: grid;
-      gap: 15px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    label {
-      display: grid;
-      gap: 7px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      border: 1px solid var(--border);
-      background: #fbfcfb;
-      color: var(--text);
-      border-radius: 12px;
-      padding: 13px;
-      outline: none;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 4px rgba(40, 116, 90, 0.12);
-    }
-
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .privacy {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.4;
-    }
-
-    .privacy input {
-      width: auto;
-      margin-top: 3px;
-    }
-
-    .toast {
-      display: none;
-      background: var(--green-light);
-      color: var(--green-dark);
-      border: 1px solid #cfe4da;
-      padding: 13px;
-      border-radius: 12px;
-      font-weight: 700;
-    }
-
-    .toast.show {
-      display: block;
-    }
-
-    .faq-grid {
+      position: relative;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
-    .faq-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 37px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: var(--line);
+      z-index: 0;
     }
 
-    .faq-card h3 {
-      font-size: 18px;
-      color: var(--green-dark);
-      margin-bottom: 8px;
+    .event-card {
+      position: relative;
+      z-index: 1;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 26px;
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: 0.25s ease;
     }
 
-    .faq-card p {
+    .event-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 70px rgba(30, 28, 24, 0.10);
+    }
+
+    .dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--accent);
+      border: 6px solid var(--paper);
+      box-shadow: 0 0 0 1px var(--line);
+      margin-bottom: 46px;
+    }
+
+    .event-date {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--accent-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 12px;
+    }
+
+    .event-card h3 {
+      font-size: 34px;
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 16px;
+    }
+
+    .event-card p {
       color: var(--muted);
       font-size: 15px;
+      font-weight: 500;
+    }
+
+    .event-meta {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .story-image {
+      min-height: 520px;
+      border-radius: 42px;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.02), rgba(0,0,0,0.24)),
+        url("https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=85") center/cover;
+      box-shadow: 0 30px 90px rgba(30, 28, 24, 0.10);
+    }
+
+    .story-copy {
+      background: var(--paper);
+      border-radius: 42px;
+      border: 1px solid var(--line);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .story-copy h2 {
+      font-size: clamp(42px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.08em;
+      margin-bottom: 26px;
+    }
+
+    .story-copy p {
+      font-size: 20px;
+      color: var(--muted);
+      letter-spacing: -0.035em;
+      max-width: 620px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 44px;
+    }
+
+    .feature {
+      background: var(--bg);
+      border-radius: 24px;
+      padding: 22px;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .booking {
+      background: var(--text);
+      color: white;
+      border-radius: 46px;
+      padding: 58px;
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: 0 34px 90px rgba(30, 28, 24, 0.18);
+    }
+
+    .booking h2 {
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+      margin-bottom: 22px;
+    }
+
+    .booking p {
+      color: rgba(255,255,255,0.68);
+      font-size: 18px;
+      max-width: 580px;
+    }
+
+    .booking-panel {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 32px;
+      padding: 28px;
+    }
+
+    .booking-row {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .booking-row:last-child {
+      border-bottom: 0;
+    }
+
+    .booking-row small {
+      display: block;
+      color: rgba(255,255,255,0.48);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .booking-row strong {
+      font-size: 18px;
     }
 
     footer {
-      background: #102f25;
-      color: rgba(255, 255, 255, 0.75);
-      padding: 34px 0;
-      font-size: 14px;
-    }
-
-    .footer-inner {
+      padding: 40px 34px 54px;
+      max-width: 1240px;
+      margin: 0 auto;
+      color: var(--muted);
       display: flex;
       justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border-top: 1px solid var(--line);
     }
 
     @media (max-width: 900px) {
-      .nav-links {
+      header {
+        padding: 18px 20px;
+      }
+
+      nav a:not(.nav-cta) {
         display: none;
       }
 
-      .hero-grid,
-      .info-grid,
-      .form-layout {
+      .hero,
+      .section-title,
+      .story,
+      .booking {
         grid-template-columns: 1fr;
-      }
-
-      .timeline-row {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .status {
-        text-align: left;
-      }
-
-      .faq-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .container {
-        width: min(100% - 22px, 1100px);
       }
 
       .hero {
-        padding: 42px 0 34px;
+        padding: 118px 20px 54px;
+        gap: 32px;
       }
 
-      h1 {
-        font-size: 38px;
+      .hero-card {
+        min-height: 510px;
+        border-radius: 32px;
       }
 
-      .form-row {
+      .hero-badge {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section {
+        padding: 80px 20px;
+      }
+
+      .timeline {
         grid-template-columns: 1fr;
       }
 
-      .topbar-inner {
-        font-size: 12px;
+      .timeline::before {
+        top: 0;
+        bottom: 0;
+        left: 36px;
+        right: auto;
+        width: 1px;
+        height: auto;
+      }
+
+      .event-card {
+        min-height: 280px;
+      }
+
+      .story-image {
+        min-height: 420px;
+      }
+
+      .story-copy,
+      .booking {
+        padding: 32px;
+        border-radius: 32px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        padding: 34px 20px 44px;
       }
     }
   </style>
 </head>
-
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <span>Comune di Cuccaro Vetere · Giornate della Prevenzione</span>
-      <span>Informazioni e iscrizioni agli screening</span>
-    </div>
-  </div>
-
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#top">
-        <div class="brand-symbol">CV</div>
-        <div class="brand-title">
-          <strong>Cuccaro Vetere Prevenzione</strong>
-          <span>Salute, territorio e comunità</span>
-        </div>
-      </a>
-
-      <nav class="nav-links">
-        <a href="#calendario">Calendario</a>
+  <div class="page">
+    <header>
+      <a href="#" class="brand">Prevenzione Cuccaro Vetere</a>
+      <nav>
+        <a href="#giornate">Giornate</a>
         <a href="#progetto">Il progetto</a>
-        <a href="#iscrizione" class="nav-button">Iscriviti</a>
+        <a href="#prenota" class="nav-cta">Prenota</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container">
-        <div class="label"><span class="label-dot"></span> Screening e giornate della salute</div>
-
-        <h1>Calendario delle giornate di prevenzione a Cuccaro Vetere.</h1>
-
-        <p>
-          Una linea temporale semplice per seguire le prossime iniziative sanitarie, consultare le date e richiedere la partecipazione agli screening.
-        </p>
-
-        <div class="hero-actions" style="margin-bottom: 38px;">
-          <a class="btn btn-primary" href="#calendario">Consulta il calendario</a>
-          <a class="btn btn-secondary" href="#iscrizione">Richiedi iscrizione</a>
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Giornate della prevenzione</div>
+          <h1>La salute vicino alle persone.</h1>
+          <p>Un progetto semplice e concreto per portare visite, screening e informazione sanitaria nel territorio di Cuccaro Vetere.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#giornate">Scopri le giornate</a>
+            <a class="btn btn-secondary" href="#prenota">Come prenotare</a>
+          </div>
         </div>
 
-        <div style="position: relative; padding: 70px 0 20px; overflow-x: auto;">
-          <div style="position: absolute; left: 0; right: 0; top: 145px; height: 14px; background: linear-gradient(90deg, #2f6f57 0%, #3f8a6e 35%, #f0a53a 70%, #d96b3b 100%); border-radius: 999px;"></div>
+        <div class="hero-card" aria-label="Medico con paziente">
+          <div class="hero-badge">
+            <div>
+              <strong>2026</strong>
+              <span>Primo ciclo di incontri dedicati alla prevenzione.</span>
+            </div>
+            <span>Cuccaro Vetere · Cilento</span>
+          </div>
+        </div>
+      </section>
 
-          <div style="display: flex; justify-content: space-between; gap: 26px; min-width: 1100px; position: relative; z-index: 2;">
-
-            <div style="flex: 1; position: relative; text-align: center;">
-              <div style="width: 78px; height: 78px; border-radius: 50%; background: #2f6f57; margin: 0 auto 18px; display: grid; place-items: center; color: white; font-size: 34px; box-shadow: 0 14px 35px rgba(47,111,87,.28);">❤</div>
-
-              <div sty
-
-    <section id="calendario">
-      <div class="container">
-        <div class="section-heading">
-          <span>Calendario</span>
-          <h2>Le prossime giornate di prevenzione</h2>
-          <p>
-            La linea temporale raccoglie le iniziative previste. Ogni giornata può essere aperta alle iscrizioni, in fase di definizione o disponibile per lasciare una manifestazione di interesse.
-          </p>
+      <section class="section" id="giornate">
+        <div class="section-title">
+          <h2>Tre giornate. Un obiettivo.</h2>
+          <p>Una timeline semplice per raccontare gli appuntamenti, le visite disponibili e le modalità di partecipazione.</p>
         </div>
 
         <div class="timeline">
-          <article class="timeline-row">
-            <div class="date-box">
-              <strong>15</strong>
-              <span>Giugno 2026</span>
+          <article class="event-card">
+            <div>
+              <div class="dot"></div>
+              <div class="event-date">12 Aprile 2026</div>
+              <h3>Cuore e pressione</h3>
+              <p>Controllo della pressione arteriosa, valutazione del rischio cardiovascolare e colloqui informativi.</p>
             </div>
-            <div class="timeline-content">
-              <h3>Prevenzione cardiovascolare</h3>
-              <p>Controllo pressione arteriosa, ECG e breve colloquio informativo sui fattori di rischio cardiovascolare.</p>
-              <div class="tags">
-                <span class="tag">Pressione</span>
-                <span class="tag">ECG</span>
-                <span class="tag">Consulenza</span>
-              </div>
-            </div>
-            <div class="status">
-              <span class="status-badge status-open">Iscrizioni aperte</span><br>
-              <a class="btn btn-primary event-btn" href="#iscrizione" data-event="Prevenzione cardiovascolare">Iscriviti</a>
+            <div class="event-meta">
+              <span>Mattina</span>
+              <span>Su prenotazione</span>
             </div>
           </article>
 
-          <article class="timeline-row">
-            <div class="date-box">
-              <strong>20</strong>
-              <span>Luglio 2026</span>
+          <article class="event-card">
+            <div>
+              <div class="dot"></div>
+              <div class="event-date">10 Maggio 2026</div>
+              <h3>Prevenzione donna</h3>
+              <p>Una giornata dedicata all'ascolto, all'informazione e agli screening di prevenzione femminile.</p>
             </div>
-            <div class="timeline-content">
-              <h3>Prevenzione dermatologica</h3>
-              <p>Controllo dei nei e sensibilizzazione sull’importanza della prevenzione cutanea.</p>
-              <div class="tags">
-                <span class="tag">Controllo nei</span>
-                <span class="tag">Pelle</span>
-                <span class="tag">Screening</span>
-              </div>
-            </div>
-            <div class="status">
-              <span class="status-badge status-soon">In definizione</span><br>
-              <a class="btn btn-secondary event-btn" href="#iscrizione" data-event="Prevenzione dermatologica">Lascia interesse</a>
+            <div class="event-meta">
+              <span>Pomeriggio</span>
+              <span>Posti limitati</span>
             </div>
           </article>
 
-          <article class="timeline-row">
-            <div class="date-box">
-              <strong>10</strong>
-              <span>Settembre 2026</span>
+          <article class="event-card">
+            <div>
+              <div class="dot"></div>
+              <div class="event-date">7 Giugno 2026</div>
+              <h3>Nutrizione e diabete</h3>
+              <p>Controlli di base, educazione alimentare e consigli pratici per uno stile di vita più sano.</p>
             </div>
-            <div class="timeline-content">
-              <h3>Prevenzione diabetologica</h3>
-              <p>Misurazione glicemia, informazioni sui corretti stili di vita e orientamento alla prevenzione metabolica.</p>
-              <div class="tags">
-                <span class="tag">Glicemia</span>
-                <span class="tag">Alimentazione</span>
-                <span class="tag">Stili di vita</span>
-              </div>
-            </div>
-            <div class="status">
-              <span class="status-badge status-wait">Manifestazione interesse</span><br>
-              <a class="btn btn-secondary event-btn" href="#iscrizione" data-event="Prevenzione diabetologica">Lascia interesse</a>
+            <div class="event-meta">
+              <span>Intera giornata</span>
+              <span>Gratuito</span>
             </div>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="progetto">
-      <div class="container">
-        <div class="section-heading">
-          <span>Il progetto</span>
-          <h2>Un punto unico per organizzare le giornate sanitarie</h2>
-          <p>
-            L’obiettivo è raccogliere le adesioni in modo ordinato, dare priorità alla comunità locale e costruire nel tempo uno storico delle iniziative di prevenzione.
-          </p>
-        </div>
-
-        <div class="info-grid">
-          <div class="info-card">
-            <h3>Come funziona</h3>
-            <p>Il cittadino sceglie la giornata, compila il modulo e viene ricontattato per la conferma della partecipazione.</p>
-            <ul class="simple-list">
-              <li><span class="check">1</span> Scelta della giornata</li>
-              <li><span class="check">2</span> Invio dei dati di iscrizione</li>
-              <li><span class="check">3</span> Conferma da parte degli organizzatori</li>
-            </ul>
-          </div>
-
-          <div class="info-card">
-            <h3>Dati raccolti</h3>
-            <p>I dati servono esclusivamente per gestire le richieste di partecipazione e organizzare correttamente gli appuntamenti.</p>
-            <ul class="simple-list">
-              <li><span class="check">✓</span> Nome e cognome</li>
-              <li><span class="check">✓</span> Data di nascita</li>
-              <li><span class="check">✓</span> Telefono e comune di residenza</li>
-            </ul>
+      <section class="section" id="progetto">
+        <div class="story">
+          <div class="story-image" aria-label="Medico e paziente in studio"></div>
+          <div class="story-copy">
+            <div>
+              <div class="eyebrow">Il progetto</div>
+              <h2>Prevenire significa esserci prima.</h2>
+              <p>Le giornate nascono per rendere la prevenzione più accessibile, soprattutto nei piccoli territori, creando occasioni di incontro tra cittadini, professionisti e realtà locali.</p>
+            </div>
+            <div class="features">
+              <div class="feature">Visite gratuite</div>
+              <div class="feature">Priorità ai residenti</div>
+              <div class="feature">Partner sanitari</div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="form-section" id="iscrizione">
-      <div class="container">
-        <div class="section-heading">
-          <span>Iscrizione</span>
-          <h2>Richiedi la partecipazione</h2>
-          <p>
-            Compila il modulo per essere inserito nell’elenco delle richieste. L’iscrizione sarà confermata successivamente in base ai posti disponibili.
-          </p>
-        </div>
-
-        <div class="form-layout">
-          <div class="form-side">
-            <h3>Prima di compilare</h3>
-            <ul class="notice-list">
-              <li><span class="check">✓</span><span>La richiesta non garantisce automaticamente il posto.</span></li>
-              <li><span class="check">✓</span><span>Gli organizzatori potranno ricontattarti telefonicamente.</span></li>
-              <li><span class="check">✓</span><span>Le giornate potranno subire variazioni di data, luogo o orario.</span></li>
-            </ul>
+      <section class="section" id="prenota">
+        <div class="booking">
+          <div>
+            <div class="eyebrow">Prenotazioni</div>
+            <h2>Partecipa alla prossima giornata.</h2>
+            <p>Le prenotazioni saranno aperte prima di ogni appuntamento. I posti saranno limitati per garantire ordine, qualità e attenzione a ogni cittadino.</p>
           </div>
-
-          <div class="form-box">
-            <form id="signupForm">
-              <label>
-                Giornata di interesse
-                <select id="giornata" name="giornata" required>
-                  <option value="Prevenzione cardiovascolare">Prevenzione cardiovascolare</option>
-                  <option value="Prevenzione dermatologica">Prevenzione dermatologica</option>
-                  <option value="Prevenzione diabetologica">Prevenzione diabetologica</option>
-                </select>
-              </label>
-
-              <div class="form-row">
-                <label>Nome <input type="text" name="nome" required placeholder="Inserisci il nome" /></label>
-                <label>Cognome <input type="text" name="cognome" required placeholder="Inserisci il cognome" /></label>
-              </div>
-
-              <div class="form-row">
-                <label>Data di nascita <input type="date" name="data_nascita" required /></label>
-                <label>Comune di residenza <input type="text" name="comune" required placeholder="Es. Cuccaro Vetere" /></label>
-              </div>
-
-              <div class="form-row">
-                <label>Telefono <input type="tel" name="telefono" required placeholder="Numero di telefono" /></label>
-                <label>Email <input type="email" name="email" placeholder="Email facoltativa" /></label>
-              </div>
-
-              <label>
-                Note eventuali
-                <textarea name="note" placeholder="Esigenze particolari, preferenze orarie o informazioni utili"></textarea>
-              </label>
-
-              <label class="privacy">
-                <input type="checkbox" required />
-                <span>Acconsento al trattamento dei dati inseriti per la gestione della richiesta di partecipazione alle giornate di prevenzione.</span>
-              </label>
-
-              <button type="submit" class="btn btn-primary">Invia richiesta</button>
-              <div class="toast" id="toast">Richiesta ricevuta. Sarai ricontattato per la conferma.</div>
-            </form>
+          <div class="booking-panel">
+            <div class="booking-row">
+              <small>Modalità</small>
+              <strong>Modulo online o contatto diretto</strong>
+            </div>
+            <div class="booking-row">
+              <small>Priorità</small>
+              <strong>Residenti a Cuccaro Vetere</strong>
+            </div>
+            <div class="booking-row">
+              <small>Contatti</small>
+              <strong>info@prevenzionecuccaro.it</strong>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <section>
-      <div class="container">
-        <div class="section-heading">
-          <span>Domande frequenti</span>
-          <h2>Informazioni utili</h2>
-        </div>
-
-        <div class="faq-grid">
-          <div class="faq-card">
-            <h3>La partecipazione è gratuita?</h3>
-            <p>Sì, salvo diversa comunicazione per specifiche iniziative. I posti possono essere limitati.</p>
-          </div>
-          <div class="faq-card">
-            <h3>Serve l’impegnativa?</h3>
-            <p>Per le giornate informative e di screening di base normalmente non è richiesta, salvo indicazioni diverse.</p>
-          </div>
-          <div class="faq-card">
-            <h3>Chi può iscriversi?</h3>
-            <p>La priorità può essere data ai residenti di Cuccaro Vetere. Eventuali posti liberi potranno essere aperti anche ad altri comuni.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>© 2026 Giornate della Prevenzione · Cuccaro Vetere</span>
-      <span>Contatti: info@cuccaroprevenzione.it · WhatsApp: +39 000 000 0000</span>
-    </div>
-  </footer>
-
-  <script>
-    const buttons = document.querySelectorAll('.event-btn');
-    const select = document.getElementById('giornata');
-    const form = document.getElementById('signupForm');
-    const toast = document.getElementById('toast');
-
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        select.value = button.dataset.event;
-      });
-    });
-
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-      data.data_richiesta = new Date().toLocaleString('it-IT');
-      data.stato = 'Da confermare';
-
-      console.log('Richiesta iscrizione:', data);
-
-      toast.classList.add('show');
-      form.reset();
-
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 5000);
-    });
-  </script>
+    <footer>
+      <span>© 2026 Prevenzione Cuccaro Vetere</span>
+      <span>Un progetto per la salute del territorio</span>
+    </footer>
+  </div>
 </body>
 </html>
