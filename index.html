@@ -2286,7 +2286,7 @@ footer .foot-date,.foot-date{display:block!important;color:rgba(43,33,22,.68)!im
 <section class="cuccaro-section">
 <div class="cuccaro-inner reveal">
 <div class="cuccaro-header">
-<div class="cuccaro-badge">✨ Concessione speciale dello sposo</div>
+<div class="cuccaro-badge">Concessione speciale dello sposo</div>
 <h2>Cuccaro Vetere</h2>
 <p class="cuccaro-sub">Cilento (SA) · Casa</p>
 </div>
@@ -2794,6 +2794,978 @@ document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click
     }
 }
 </style>
+
+
+<style>
+/* FIX v27 */
+
+/* LA NOSTRA STORIA — sfondo più delicato e trasparente */
+.film-section{
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(120,110,98,.82) 0%,
+            rgba(78,71,64,.72) 12%,
+            rgba(30,26,22,.78) 34%,
+            rgba(12,10,8,.88) 62%,
+            rgba(9,8,6,.96) 100%
+        ) !important;
+}
+
+.film-section::before{
+    background:linear-gradient(
+        to bottom,
+        rgba(120,110,98,.86) 0%,
+        rgba(78,71,64,.48) 48%,
+        rgba(9,8,6,0) 100%
+    ) !important;
+}
+
+/* I NOSTRI LUOGHI — meno spazio tra sottotitolo e titolo */
+.places-subtitle,
+.section-subtitle{
+    margin-bottom: .65rem !important;
+}
+
+.place-title,
+.location-title{
+    margin-top: 0 !important;
+}
+
+/* CONCESSIONE DELLO SPOSO — stessa trasparenza/foto elegante */
+.groom-section,
+.concessione-sposo{
+    position:relative !important;
+    overflow:hidden !important;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(245,234,216,.88),
+            rgba(239,224,198,.92)
+        ) !important;
+}
+
+.groom-section::before,
+.concessione-sposo::before{
+    content:'' !important;
+    position:absolute !important;
+    inset:0 !important;
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(245,234,216,.78),
+            rgba(245,234,216,.90)
+        ),
+        url("hero.jpg") !important;
+    background-size:cover !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+    opacity:.18 !important;
+    filter:saturate(.82) brightness(1.05) blur(.3px) !important;
+    pointer-events:none !important;
+    z-index:0 !important;
+}
+
+.groom-section > *,
+.concessione-sposo > *{
+    position:relative !important;
+    z-index:2 !important;
+}
+</style>
+
+
+<style>
+/* FIX v28 — Programma desktop alternato + Come raggiungerci premium senza box */
+
+/* PROGRAMMA — mobile resta com'è. Desktop diventa timeline centrale elegante */
+@media (min-width: 769px){
+
+    #programma .timeline,
+    .info .timeline{
+        position: relative !important;
+        max-width: 1040px !important;
+        margin: 0 auto !important;
+        padding: 1.5rem 0 !important;
+        display: block !important;
+    }
+
+    #programma .timeline::before,
+    .info .timeline::before{
+        content: '' !important;
+        display: block !important;
+        position: absolute !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 50% !important;
+        width: 1px !important;
+        transform: translateX(-50%) !important;
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(232,205,138,.28) 10%,
+            rgba(232,205,138,.72) 48%,
+            rgba(232,205,138,.28) 90%,
+            transparent 100%
+        ) !important;
+        z-index: 0 !important;
+    }
+
+    #programma .tl-item,
+    .info .tl-item{
+        position: relative !important;
+        display: grid !important;
+        grid-template-columns: 1fr 74px 1fr !important;
+        align-items: center !important;
+        gap: 0 !important;
+        padding: 0 !important;
+        margin: 0 0 2.2rem 0 !important;
+        border: 0 !important;
+    }
+
+    #programma .tl-item::before,
+    .info .tl-item::before{
+        content: '' !important;
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        width: 9px !important;
+        height: 9px !important;
+        border-radius: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        background: #e8cd8a !important;
+        box-shadow:
+            0 0 0 8px rgba(232,205,138,.08),
+            0 0 28px rgba(232,205,138,.25) !important;
+        z-index: 2 !important;
+    }
+
+    #programma .tl-content,
+    .info .tl-content{
+        max-width: 390px !important;
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        position: relative !important;
+        z-index: 2 !important;
+    }
+
+    #programma .tl-item:nth-child(odd) .tl-content,
+    .info .tl-item:nth-child(odd) .tl-content{
+        grid-column: 1 !important;
+        justify-self: end !important;
+        text-align: right !important;
+        padding-right: 2.1rem !important;
+    }
+
+    #programma .tl-item:nth-child(even) .tl-content,
+    .info .tl-item:nth-child(even) .tl-content{
+        grid-column: 3 !important;
+        justify-self: start !important;
+        text-align: left !important;
+        padding-left: 2.1rem !important;
+    }
+
+    #programma .tl-item:nth-child(odd) .tl-content::after,
+    .info .tl-item:nth-child(odd) .tl-content::after{
+        content: '' !important;
+        position: absolute !important;
+        top: 50% !important;
+        right: .25rem !important;
+        width: 1.25rem !important;
+        height: 1px !important;
+        background: linear-gradient(to right, rgba(232,205,138,.08), rgba(232,205,138,.55)) !important;
+    }
+
+    #programma .tl-item:nth-child(even) .tl-content::before,
+    .info .tl-item:nth-child(even) .tl-content::before{
+        content: '' !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: .25rem !important;
+        width: 1.25rem !important;
+        height: 1px !important;
+        background: linear-gradient(to left, rgba(232,205,138,.08), rgba(232,205,138,.55)) !important;
+    }
+
+    #programma .tl-content .time,
+    .info .tl-content .time{
+        color: #e8cd8a !important;
+        font-size: .72rem !important;
+        letter-spacing: .24em !important;
+        text-transform: uppercase !important;
+        margin-bottom: .45rem !important;
+    }
+
+    #programma .tl-content h4,
+    .info .tl-content h4{
+        font-size: clamp(1.55rem, 2.4vw, 2.25rem) !important;
+        line-height: 1.04 !important;
+        color: #fff !important;
+    }
+
+    #programma .tl-content p,
+    .info .tl-content p{
+        color: rgba(255,255,255,.66) !important;
+        line-height: 1.7 !important;
+        max-width: 100% !important;
+    }
+}
+
+
+/* COME RAGGIUNGERCI — no box, impaginazione premium/editoriale */
+.navetta{
+    background:
+        linear-gradient(
+            to bottom,
+            #f5ead8 0%,
+            #efe0c6 100%
+        ) !important;
+    color: #21180f !important;
+}
+
+.navetta .section-h{
+    color: #21180f !important;
+}
+
+.navetta .tag-line{
+    color: #b8965a !important;
+}
+
+.navetta .nav-grid{
+    max-width: 980px !important;
+    margin: clamp(2rem, 5vw, 3.6rem) auto 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    border-top: 1px solid rgba(184,150,90,.28) !important;
+    border-bottom: 1px solid rgba(184,150,90,.28) !important;
+}
+
+.navetta .nav-card{
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: clamp(1.45rem, 3.5vw, 2.2rem) 0 !important;
+    display: grid !important;
+    grid-template-columns: minmax(110px, 170px) 1fr !important;
+    gap: clamp(1.1rem, 4vw, 3rem) !important;
+    align-items: start !important;
+    text-align: left !important;
+    border-bottom: 1px solid rgba(184,150,90,.18) !important;
+}
+
+.navetta .nav-card:last-child{
+    border-bottom: 0 !important;
+}
+
+.navetta .nc-time{
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 300 !important;
+    font-size: clamp(2rem, 4vw, 3rem) !important;
+    line-height: .95 !important;
+    color: #8f672b !important;
+}
+
+.navetta .nc-label{
+    font-size: .66rem !important;
+    letter-spacing: .22em !important;
+    text-transform: uppercase !important;
+    color: rgba(95,70,35,.72) !important;
+    margin: .4rem 0 0 !important;
+}
+
+.navetta .nc-route{
+    font-size: clamp(.92rem, 1.5vw, 1.02rem) !important;
+    line-height: 1.75 !important;
+    color: #5f4d38 !important;
+    max-width: 620px !important;
+}
+
+.navetta .nc-route strong{
+    display: block !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: clamp(1.35rem, 2.5vw, 1.85rem) !important;
+    font-weight: 400 !important;
+    color: #21180f !important;
+    margin-bottom: .35rem !important;
+}
+
+.navetta .nav-note{
+    max-width: 760px !important;
+    margin: 2rem auto 0 !important;
+    color: #6a573e !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: italic !important;
+    font-size: clamp(1.05rem, 2.2vw, 1.24rem) !important;
+    line-height: 1.65 !important;
+}
+
+/* Mobile: resta pulito ma senza box */
+@media(max-width:768px){
+
+    .navetta .nav-card{
+        grid-template-columns: 1fr !important;
+        gap: .65rem !important;
+        text-align: center !important;
+        padding: 1.55rem 0 !important;
+    }
+
+    .navetta .nc-route{
+        margin: 0 auto !important;
+    }
+}
+</style>
+
+
+<style>
+/* FIX v30 — Programma leggibile + Come raggiungerci orizzontale desktop */
+
+/* PROGRAMMA — migliora leggibilità desktop */
+@media (min-width:769px){
+
+    #programma .section-h,
+    .info .section-h{
+        color:#fff !important;
+        text-shadow:0 2px 18px rgba(0,0,0,.18) !important;
+    }
+
+    #programma .tag-line,
+    .info .tag-line{
+        color:#e8cd8a !important;
+        opacity:1 !important;
+    }
+
+    #programma .tl-content h4,
+    .info .tl-content h4{
+        color:#fff !important;
+        text-shadow:0 2px 18px rgba(0,0,0,.16) !important;
+    }
+
+    #programma .tl-content p,
+    .info .tl-content p{
+        color:rgba(255,255,255,.78) !important;
+    }
+
+    #programma .tl-content .time,
+    .info .tl-content .time{
+        color:#e8cd8a !important;
+    }
+}
+
+/* COME RAGGIUNGERCI — desktop orizzontale */
+@media (min-width:769px){
+
+    .navetta .nav-grid{
+        display:grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 3.5rem !important;
+        border:0 !important;
+        align-items:start !important;
+        max-width:1180px !important;
+    }
+
+    .navetta .nav-card{
+        display:flex !important;
+        flex-direction:column !important;
+        gap:1rem !important;
+        padding:0 !important;
+        border:0 !important;
+        text-align:left !important;
+        background:transparent !important;
+        min-height:100% !important;
+    }
+
+    .navetta .nc-time{
+        font-size:clamp(2.2rem,3vw,3rem) !important;
+        line-height:.9 !important;
+        margin-bottom:.35rem !important;
+    }
+
+    .navetta .nc-label{
+        margin:0 0 .6rem 0 !important;
+    }
+
+    .navetta .nc-route{
+        max-width:100% !important;
+        line-height:1.8 !important;
+    }
+
+    .navetta .nc-route strong{
+        margin-bottom:.45rem !important;
+        display:block !important;
+    }
+
+    .navetta .nav-note{
+        margin-top:3rem !important;
+        text-align:center !important;
+    }
+}
+</style>
+
+
+<style>
+/* FIX v31 — Programma della giornata leggibile */
+
+.info{
+    background:
+        linear-gradient(
+            to bottom,
+            #efe0c6 0%,
+            #d9c4a0 12%,
+            #6d6256 100%
+        ) !important;
+}
+
+.info .section-h{
+    color:#2f2417 !important;
+    text-shadow:none !important;
+}
+
+.info .tag-line{
+    color:#8f672b !important;
+}
+
+@media (min-width:769px){
+
+    .info .tl-content h4{
+        color:#2f2417 !important;
+        text-shadow:none !important;
+    }
+
+    .info .tl-content p{
+        color:rgba(47,36,23,.78) !important;
+    }
+
+    .info .tl-content .time{
+        color:#8f672b !important;
+    }
+
+    .info .timeline::before{
+        background:linear-gradient(
+            to bottom,
+            transparent,
+            rgba(143,103,43,.34),
+            rgba(143,103,43,.72),
+            rgba(143,103,43,.34),
+            transparent
+        ) !important;
+    }
+
+    .info .tl-item::before{
+        background:#8f672b !important;
+        box-shadow:
+            0 0 0 8px rgba(143,103,43,.08),
+            0 0 28px rgba(143,103,43,.16) !important;
+    }
+}
+
+/* Mobile resta elegante ma leggibile */
+@media(max-width:768px){
+
+    .info .section-h{
+        color:#2f2417 !important;
+    }
+
+    .info .tl-content h4{
+        color:#2f2417 !important;
+    }
+
+    .info .tl-content p{
+        color:rgba(47,36,23,.76) !important;
+    }
+
+    .info .tl-content .time{
+        color:#8f672b !important;
+    }
+}
+</style>
+
+
+<style>
+/* FIX v32 — titolo Programma della giornata leggibile */
+
+.info .section-h,
+#programma .section-h{
+    color:#2b2116 !important;
+    font-weight:500 !important;
+    opacity:1 !important;
+    text-shadow:none !important;
+    position:relative !important;
+    z-index:10 !important;
+}
+
+.info .section-head,
+#programma .section-head{
+    position:relative !important;
+    z-index:10 !important;
+}
+
+.info .tag-line,
+#programma .tag-line{
+    color:#8f672b !important;
+    opacity:1 !important;
+    position:relative !important;
+    z-index:10 !important;
+}
+
+@media(max-width:768px){
+
+    .info .section-h,
+    #programma .section-h{
+        font-size:clamp(2.1rem,8vw,3rem) !important;
+        line-height:1.02 !important;
+    }
+}
+</style>
+
+
+<style>
+/* FIX v33 — testi leggibili sezione Cuccaro + rimozione emoji */
+
+.cuccaro-header h2,
+.cuccaro-section h2{
+    color:#fff8ee !important;
+    opacity:1 !important;
+    text-shadow:
+        0 2px 14px rgba(0,0,0,.24),
+        0 0 28px rgba(0,0,0,.18) !important;
+    position:relative !important;
+    z-index:5 !important;
+}
+
+.cuccaro-text,
+.cuccaro-section p{
+    color:rgba(255,248,238,.84) !important;
+    text-shadow:0 2px 10px rgba(0,0,0,.18) !important;
+    position:relative !important;
+    z-index:5 !important;
+}
+
+.cuccaro-sub{
+    color:rgba(255,248,238,.58) !important;
+    position:relative !important;
+    z-index:5 !important;
+}
+
+.cuccaro-header,
+.cuccaro-copy{
+    position:relative !important;
+    z-index:5 !important;
+}
+</style>
+
+
+<style>
+/* FIX v34 — Concessione speciale leggibile + foto cliccabili */
+
+/* Concessione speciale dello sposo: testo scuro leggibile */
+.cuccaro-section,
+.groom-section,
+.concessione-sposo{
+    color:#2f2417 !important;
+}
+
+.cuccaro-header h2,
+.cuccaro-section h2,
+.groom-section h2,
+.concessione-sposo h2{
+    color:#2f2417 !important;
+    opacity:1 !important;
+    text-shadow:none !important;
+}
+
+.cuccaro-badge,
+.groom-section .tag-line,
+.concessione-sposo .tag-line{
+    color:#8f672b !important;
+}
+
+.cuccaro-sub,
+.cuccaro-section .cuccaro-sub,
+.groom-section .cuccaro-sub,
+.concessione-sposo .cuccaro-sub{
+    color:rgba(47,36,23,.64) !important;
+    text-shadow:none !important;
+}
+
+.cuccaro-text,
+.cuccaro-section p,
+.groom-section p,
+.concessione-sposo p{
+    color:rgba(47,36,23,.82) !important;
+    text-shadow:none !important;
+}
+
+.cuccaro-text .cuccaro-finale,
+.cuccaro-finale,
+.groom-section .cuccaro-finale,
+.concessione-sposo .cuccaro-finale{
+    color:#2f2417 !important;
+    font-weight:600 !important;
+}
+
+/* Foto cliccabili sempre */
+.film-frame,
+.vp,
+.cp,
+.cuccaro-photos .cp,
+.cuccaro-photos img{
+    cursor:pointer !important;
+    pointer-events:auto !important;
+}
+
+.film-frame img,
+.vp img,
+.cp img,
+.cuccaro-photos img{
+    pointer-events:auto !important;
+    -webkit-user-drag:none !important;
+    user-select:none !important;
+}
+</style>
+
+
+<script>
+/* FIX v34 — lightbox click desktop + autoplay sempre */
+(function(){
+    function getImgFromTarget(el){
+        if(!el) return null;
+        if(el.tagName && el.tagName.toLowerCase() === 'img') return el;
+        return el.querySelector ? el.querySelector('img') : null;
+    }
+
+    function openImgLightbox(img){
+        if(!img) return;
+
+        if(typeof window.openLightbox === 'function'){
+            const wrapper = img.closest('.film-frame, .vp, .cp') || img;
+            try{
+                window.openLightbox(wrapper);
+            }catch(e){
+                window.openLightbox(img);
+            }
+            restartFilmAutoplay();
+            return;
+        }
+
+        let lb = document.querySelector('.lightbox');
+        if(!lb){
+            lb = document.createElement('div');
+            lb.className = 'lightbox';
+            lb.innerHTML = '<span class="lightbox-close">×</span><img alt=""><div class="lightbox-caption"></div>';
+            document.body.appendChild(lb);
+            lb.querySelector('.lightbox-close').addEventListener('click', closeLightboxForced);
+            lb.addEventListener('click', function(e){
+                if(e.target === lb) closeLightboxForced();
+            });
+        }
+
+        const lbImg = lb.querySelector('img');
+        if(lbImg) lbImg.src = img.src;
+        lb.classList.add('open');
+        restartFilmAutoplay();
+    }
+
+    function closeLightboxForced(){
+        document.querySelectorAll('.lightbox.open').forEach(function(lb){
+            lb.classList.remove('open');
+        });
+        restartFilmAutoplay();
+    }
+
+    function restartFilmAutoplay(){
+        const track = document.getElementById('filmTrack') || document.querySelector('.film-track');
+        if(!track) return;
+
+        track.classList.remove('dragging');
+        track.style.animationPlayState = 'running';
+
+        // Forza restart animazione se qualche script l'ha stoppata
+        const currentAnimation = getComputedStyle(track).animationName;
+        if(currentAnimation && currentAnimation !== 'none'){
+            track.style.animation = 'none';
+            track.offsetHeight;
+            track.style.animation = '';
+            track.style.animationPlayState = 'running';
+        }
+
+        // fallback per versioni custom con transform manuale
+        if(window.__filmAutoplayRestart && typeof window.__filmAutoplayRestart === 'function'){
+            try{ window.__filmAutoplayRestart(); }catch(e){}
+        }
+    }
+
+    document.addEventListener('click', function(e){
+        const clickable = e.target.closest('.film-frame, .vp, .cp, .cuccaro-photos img, .venue-photos-2 img, .venue-photos-3 img');
+        if(!clickable) return;
+
+        const img = getImgFromTarget(clickable);
+        if(!img) return;
+
+        e.preventDefault();
+        e.stopPropagation();
+        openImgLightbox(img);
+        setTimeout(restartFilmAutoplay, 80);
+        setTimeout(restartFilmAutoplay, 300);
+    }, true);
+
+    document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape'){
+            restartFilmAutoplay();
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function(){
+        document.querySelectorAll('.film-frame, .vp, .cp').forEach(function(el){
+            el.style.cursor = 'pointer';
+        });
+        restartFilmAutoplay();
+    });
+
+    window.addEventListener('focus', restartFilmAutoplay);
+    window.addEventListener('pageshow', restartFilmAutoplay);
+})();
+</script>
+
+
+<style>
+/* FIX v35 — apertura foto desktop forzata */
+.film-track-wrap,
+.film-track,
+.film-piece,
+.film-frame,
+.venue-photos-2,
+.venue-photos-3,
+.cuccaro-photos,
+.vp,
+.cp{
+    pointer-events:auto !important;
+}
+
+.film-frame,
+.vp,
+.cp{
+    cursor:zoom-in !important;
+}
+
+.film-frame img,
+.vp img,
+.cp img{
+    pointer-events:auto !important;
+    cursor:zoom-in !important;
+    -webkit-user-drag:none !important;
+    user-select:none !important;
+}
+</style>
+
+
+
+
+<style>
+/* FIX v36 — niente lente zoom */
+.film-frame,
+.vp,
+.cp,
+.film-frame img,
+.vp img,
+.cp img{
+    cursor:pointer !important;
+}
+</style>
+
+<script>
+/* FIX v36 — click foto desktop come mobile + autoplay sempre */
+(function(){
+
+    function restartFilmAutoplay(){
+        const track = document.getElementById('filmTrack') || document.querySelector('.film-track');
+        if(!track) return;
+
+        track.classList.remove('dragging');
+        track.style.animationPlayState = 'running';
+
+        const oldAnimation = track.style.animation;
+        track.style.animation = 'none';
+        track.offsetHeight;
+        track.style.animation = oldAnimation || '';
+        track.style.animationPlayState = 'running';
+    }
+
+    function bindDesktopPhotoOpen(){
+        const selectors = [
+            '.film-frame',
+            '.film-frame img',
+            '.vp',
+            '.vp img',
+            '.cp',
+            '.cp img',
+            '.venue-photos-2 img',
+            '.venue-photos-3 img',
+            '.cuccaro-photos img'
+        ].join(',');
+
+        document.querySelectorAll(selectors).forEach(function(el){
+
+            if(el.dataset.mobileLikeBound === '1') return;
+            el.dataset.mobileLikeBound = '1';
+
+            el.addEventListener('click', function(e){
+
+                const wrapper = el.closest('.film-frame, .vp, .cp') || el;
+                const img = el.tagName.toLowerCase() === 'img'
+                    ? el
+                    : el.querySelector('img');
+
+                if(!img) return;
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                // usa la stessa apertura del mobile se esiste
+                if(typeof window.openLightbox === 'function'){
+                    try{
+                        window.openLightbox(wrapper);
+                    }catch(err){
+                        window.openLightbox(img);
+                    }
+                }
+
+                restartFilmAutoplay();
+                setTimeout(restartFilmAutoplay, 120);
+                setTimeout(restartFilmAutoplay, 320);
+
+            }, true);
+
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+        bindDesktopPhotoOpen();
+        restartFilmAutoplay();
+    });
+
+    window.addEventListener('load', function(){
+        bindDesktopPhotoOpen();
+        restartFilmAutoplay();
+    });
+
+    setInterval(function(){
+        bindDesktopPhotoOpen();
+    }, 1500);
+
+})();
+</script>
+
+
+<script>
+/* FIX v37 — desktop click apre sempre le foto */
+(function(){
+
+function restartFilm(){
+    const track = document.getElementById('filmTrack') || document.querySelector('.film-track');
+    if(!track) return;
+    track.style.animationPlayState = 'running';
+}
+
+function ensureLB(){
+    let lb = document.getElementById('desktopGalleryLB');
+    if(lb) return lb;
+
+    lb = document.createElement('div');
+    lb.id = 'desktopGalleryLB';
+    lb.innerHTML = '<img id="desktopGalleryLBImg"><button id="desktopGalleryLBClose">×</button>';
+
+    lb.style.cssText = `
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.92);
+        z-index:999999;
+        display:none;
+        align-items:center;
+        justify-content:center;
+        padding:20px;
+    `;
+
+    const img = lb.querySelector('img');
+    img.style.cssText = `
+        max-width:92vw;
+        max-height:88vh;
+        object-fit:contain;
+        border-radius:12px;
+    `;
+
+    const close = lb.querySelector('button');
+    close.style.cssText = `
+        position:absolute;
+        top:18px;
+        right:18px;
+        width:42px;
+        height:42px;
+        border-radius:50%;
+        border:none;
+        background:rgba(255,255,255,.12);
+        color:white;
+        font-size:28px;
+        cursor:pointer;
+    `;
+
+    function closeLB(){
+        lb.style.display = 'none';
+        document.body.style.overflow = '';
+        restartFilm();
+    }
+
+    close.addEventListener('click', closeLB);
+    lb.addEventListener('click', function(e){
+        if(e.target === lb) closeLB();
+    });
+
+    document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape') closeLB();
+    });
+
+    document.body.appendChild(lb);
+    return lb;
+}
+
+function openLB(src){
+    const lb = ensureLB();
+    lb.querySelector('img').src = src;
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    restartFilm();
+}
+
+function bind(){
+    const els = document.querySelectorAll(
+        '.film-frame img, .vp img, .cp img, .venue-photos-2 img, .venue-photos-3 img, .cuccaro-photos img'
+    );
+
+    els.forEach(function(img){
+
+        if(img.dataset.desktopLbBound === '1') return;
+        img.dataset.desktopLbBound = '1';
+
+        img.style.cursor = 'pointer';
+
+        img.addEventListener('click', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            openLB(img.currentSrc || img.src);
+            restartFilm();
+        }, true);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', bind);
+window.addEventListener('load', bind);
+setInterval(bind, 1200);
+
+})();
+</script>
 
 </body></html>
 
