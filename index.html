@@ -2646,6 +2646,155 @@ document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click
 }
 </style>
 
+
+<style>
+/* FIX v26 — transizione subhero → storia più morbida + dettagli film vintage */
+
+/* La subhero chiude con una sfumatura champagne/moka, non nero netto */
+.split{
+    background:
+        linear-gradient(
+            to bottom,
+            #f5ead8 0%,
+            #efe0c6 56%,
+            #b6a58f 78%,
+            #7d7163 92%,
+            #6b6258 100%
+        ) !important;
+    padding-bottom: clamp(6.5rem, 12vw, 10rem) !important;
+}
+
+/* tolgo eventuale nero duro in uscita dalla subhero */
+.split::after{
+    content:'' !important;
+    position:absolute !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:-1px !important;
+    height:clamp(160px, 18vw, 260px) !important;
+    pointer-events:none !important;
+    z-index:1 !important;
+    background:linear-gradient(
+        to bottom,
+        rgba(245,234,216,0) 0%,
+        rgba(198,181,156,.34) 34%,
+        rgba(139,126,111,.64) 68%,
+        #6b6258 100%
+    ) !important;
+}
+
+/* La sezione storia parte dal moka/grigio caldo e poi entra nel film nero */
+.film-section{
+    background:
+        linear-gradient(
+            to bottom,
+            #6b6258 0%,
+            #4d463f 12%,
+            #211d18 28%,
+            #090806 58%,
+            #090806 100%
+        ) !important;
+    padding-top: clamp(6rem, 12vw, 9rem) !important;
+}
+
+.film-section::before{
+    content:'' !important;
+    position:absolute !important;
+    left:0 !important;
+    right:0 !important;
+    top:0 !important;
+    height:clamp(170px, 18vw, 260px) !important;
+    background:linear-gradient(
+        to bottom,
+        #6b6258 0%,
+        rgba(77,70,63,.72) 44%,
+        rgba(9,8,6,0) 100%
+    ) !important;
+    pointer-events:none !important;
+    z-index:1 !important;
+}
+
+/* Scrittine vintage stile bordo pellicola/Kodak tra le foto */
+.film-gap{
+    width:44px !important;
+    background:#15120e !important;
+    position:relative !important;
+    overflow:hidden !important;
+}
+
+.film-gap span{
+    display:block !important;
+    font-family:'Courier New', monospace !important;
+    font-size:.52rem !important;
+    line-height:1 !important;
+    color:rgba(232,205,138,.42) !important;
+    writing-mode:vertical-rl !important;
+    text-orientation:mixed !important;
+    letter-spacing:.18em !important;
+    text-transform:uppercase !important;
+    opacity:1 !important;
+}
+
+.film-gap::before{
+    content:'PORTRA 400';
+    position:absolute;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%) rotate(180deg);
+    writing-mode:vertical-rl;
+    font-family:'Courier New', monospace;
+    font-size:.48rem;
+    letter-spacing:.16em;
+    color:rgba(232,205,138,.32);
+    white-space:nowrap;
+}
+
+.film-gap::after{
+    content:'G • M  12·09·26';
+    position:absolute;
+    bottom:18px;
+    left:50%;
+    transform:translateX(-50%);
+    writing-mode:vertical-rl;
+    font-family:'Courier New', monospace;
+    font-size:.48rem;
+    letter-spacing:.15em;
+    color:rgba(255,255,255,.22);
+    white-space:nowrap;
+}
+
+.frame-num{
+    display:block !important;
+    position:absolute !important;
+    top:10px !important;
+    right:12px !important;
+    font-family:'Courier New', monospace !important;
+    font-size:.52rem !important;
+    letter-spacing:.14em !important;
+    color:rgba(232,205,138,.40) !important;
+    z-index:2 !important;
+}
+
+@media(max-width:768px){
+    .split{
+        padding-bottom:clamp(5.8rem, 18vw, 7.5rem) !important;
+    }
+
+    .film-section{
+        padding-top:clamp(5.8rem, 18vw, 7.5rem) !important;
+    }
+
+    .film-gap{
+        width:34px !important;
+    }
+
+    .film-gap::before,
+    .film-gap::after{
+        font-size:.42rem !important;
+    }
+}
+</style>
+
 </body></html>
 
 <style>
