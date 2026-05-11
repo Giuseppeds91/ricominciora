@@ -855,6 +855,223 @@ footer::before{display:none!important;}
   .info .tl-item{padding-left:1.1rem!important;}
   .info .tl-item::before{left:-.18rem!important;}
 }
+
+
+/* =========================================================
+   V9 — correzioni richieste 11/05: anteprima, sfumature, programma desktop,
+   navetta editoriale, Cuccaro mobile, footer
+   ========================================================= */
+:root{
+  --v9-cream:#F7EAD6;
+  --v9-cream-2:#EEDDC1;
+  --v9-cream-3:#E4CDA7;
+  --v9-gold:#A77A37;
+  --v9-gold-soft:#DAB872;
+  --v9-ink:#2B2116;
+  --v9-muted:#75624A;
+  --v9-fade:clamp(150px,16vw,260px);
+}
+
+/* Anteprima: niente "Manca ancora", clessidra centrale con sabbia a granelli */
+.preloader{
+  background:
+    radial-gradient(circle at 50% 18%,rgba(255,255,255,.56),transparent 34%),
+    radial-gradient(circle at 50% 68%,rgba(167,122,55,.13),transparent 48%),
+    linear-gradient(145deg,#FAEFDE 0%,#EBD6B8 54%,#F9EAD5 100%)!important;
+  transition:opacity .62s ease,visibility .62s ease!important;
+}
+.pre-count::before{content:none!important;display:none!important;}
+.pre-count{margin:1.5rem auto 1.15rem!important;}
+.hourglass.luxury-hourglass,
+.hourglass{
+  width:44px!important;
+  height:64px!important;
+  margin:1.15rem auto .15rem!important;
+  border:1px solid rgba(126,92,43,.42)!important;
+  border-radius:22px!important;
+  overflow:hidden!important;
+  clip-path:polygon(21% 0,79% 0,59% 48%,79% 100%,21% 100%,41% 48%)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.20),rgba(255,255,255,.04))!important;
+  box-shadow:0 18px 42px rgba(74,53,35,.10)!important;
+}
+.hourglass::before,
+.hourglass::after{
+  content:''!important;
+  position:absolute!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  width:28px!important;
+  opacity:.96!important;
+  background:
+    radial-gradient(circle at 18% 22%,rgba(255,247,211,.95) 0 1px,transparent 1.35px),
+    radial-gradient(circle at 58% 42%,rgba(192,145,76,.96) 0 1px,transparent 1.45px),
+    radial-gradient(circle at 82% 72%,rgba(133,94,42,.80) 0 1px,transparent 1.5px),
+    linear-gradient(180deg,#E8CD8A,#A77A37)!important;
+  background-size:6px 6px,7px 7px,8px 8px,100% 100%!important;
+}
+.hourglass::before{
+  top:7px!important;
+  height:22px!important;
+  border-radius:0 0 18px 18px!important;
+  clip-path:polygon(0 0,100% 0,50% 100%)!important;
+  animation:v9SandTop 3s linear infinite!important;
+}
+.hourglass::after{
+  bottom:7px!important;
+  height:4px!important;
+  border-radius:18px 18px 5px 5px!important;
+  clip-path:polygon(50% 0,100% 100%,0 100%)!important;
+  animation:v9SandBottom 3s linear infinite!important;
+}
+.hourglass span{
+  display:block!important;
+  position:absolute!important;
+  left:50%!important;
+  top:29px!important;
+  width:3px!important;
+  height:0!important;
+  transform:translateX(-50%)!important;
+  border-radius:999px!important;
+  background:
+    radial-gradient(circle,#C89D58 0 1px,transparent 1.4px),
+    radial-gradient(circle,#8D652E 0 .9px,transparent 1.3px)!important;
+  background-size:3px 6px,3px 8px!important;
+  animation:v9SandStream 3s linear infinite!important;
+}
+@keyframes v9SandTop{0%{height:23px;opacity:1}82%{height:2px;opacity:.56}100%{height:23px;opacity:1}}
+@keyframes v9SandBottom{0%{height:4px}82%{height:24px}100%{height:4px}}
+@keyframes v9SandStream{0%,12%,92%,100%{height:0;opacity:0}22%,82%{height:25px;opacity:.9}}
+
+/* Hero/Subhero: stessa sfumatura morbida dello screenshot su desktop e mobile, nessuna riga nera */
+.hero{background:var(--v9-cream)!important;}
+.hero-grad,.hero::after{
+  height:48vh!important;
+  bottom:-1px!important;
+  background:linear-gradient(to bottom,
+    rgba(247,234,214,0) 0%,
+    rgba(247,234,214,.18) 36%,
+    rgba(247,234,214,.66) 76%,
+    var(--v9-cream) 100%)!important;
+  z-index:2!important;
+}
+.split{
+  margin-top:-1px!important;
+  background:linear-gradient(180deg,var(--v9-cream) 0%,#F9EFDF 50%,var(--v9-cream-2) 100%)!important;
+}
+.split::before{
+  display:block!important;
+  top:0!important;
+  height:calc(var(--v9-fade) * .78)!important;
+  background:linear-gradient(180deg,var(--v9-cream),rgba(247,234,214,0))!important;
+}
+.split::after{
+  height:calc(var(--v9-fade) + 80px)!important;
+  bottom:-1px!important;
+  background:linear-gradient(180deg,
+    rgba(238,221,193,0) 0%,
+    rgba(228,205,167,.72) 50%,
+    rgba(37,28,20,.98) 100%)!important;
+}
+.film-section::before{
+  height:calc(var(--v9-fade) + 80px)!important;
+  background:linear-gradient(180deg,var(--v9-cream-2) 0%,rgba(86,63,40,.32) 48%,rgba(31,23,15,0) 100%)!important;
+}
+.film-section::after{
+  height:calc(var(--v9-fade) * .85)!important;
+  background:linear-gradient(180deg,rgba(37,28,20,0),rgba(247,234,214,.92))!important;
+}
+.places-section::before,.info::before,.navetta::before,.rsvp-section::before,.regalo-section::before,.cuccaro-section::before{
+  height:calc(var(--v9-fade) * .78)!important;
+  background:linear-gradient(180deg,rgba(167,122,55,.10),rgba(247,234,214,0))!important;
+}
+.places-section::after,.info::after,.navetta::after,.rsvp-section::after,.regalo-section::after,.cuccaro-section::after{
+  height:calc(var(--v9-fade) * .78)!important;
+  background:linear-gradient(180deg,rgba(247,234,214,0),rgba(167,122,55,.08),rgba(247,234,214,.34))!important;
+}
+
+/* Programma: desktop torna alla struttura editoriale precedente; mobile resta verticale come ultima versione */
+@media(min-width:769px){
+  .info .timeline{
+    max-width:960px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    display:grid!important;
+    gap:0!important;
+  }
+  .info .timeline::before{display:none!important;content:none!important;}
+  .info .tl-item{
+    display:grid!important;
+    grid-template-columns:150px 1fr!important;
+    gap:clamp(1rem,3vw,2.8rem)!important;
+    align-items:start!important;
+    border-top:1px solid rgba(167,122,55,.22)!important;
+    padding:1.6rem 0!important;
+    margin:0!important;
+  }
+  .info .tl-item:last-child{border-bottom:1px solid rgba(167,122,55,.22)!important;}
+  .info .tl-item::before{display:none!important;content:none!important;}
+  .info .tl-content{padding:0!important;text-align:left!important;background:transparent!important;border:0!important;box-shadow:none!important;}
+}
+@media(max-width:768px){
+  .info .map-btn{font-size:.66rem!important;}
+}
+
+/* Come raggiungerci: tolti i box, formato editoriale luxury equilibrato */
+.navetta .nav-grid{
+  max-width:980px!important;
+  margin:2.7rem auto 0!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:0!important;
+  border-top:1px solid rgba(167,122,55,.24)!important;
+  border-bottom:1px solid rgba(167,122,55,.24)!important;
+}
+.navetta .nav-card{
+  display:grid!important;
+  grid-template-columns:minmax(130px,210px) 1fr!important;
+  gap:clamp(1rem,4vw,3rem)!important;
+  align-items:center!important;
+  background:transparent!important;
+  border:0!important;
+  border-bottom:1px solid rgba(167,122,55,.15)!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+  padding:1.55rem .25rem!important;
+  text-align:left!important;
+}
+.navetta .nav-card:last-child{border-bottom:0!important;}
+.navetta .nc-time{color:var(--v9-ink)!important;font-size:clamp(2rem,4vw,3rem)!important;font-weight:300!important;}
+.navetta .nc-label{color:var(--v9-gold)!important;letter-spacing:.20em!important;}
+.navetta .nc-route{color:rgba(43,33,22,.72)!important;}
+.navetta .nc-route strong{font-family:'Cormorant Garamond',serif!important;color:var(--v9-ink)!important;font-size:1.34rem!important;font-weight:400!important;}
+.nav-note{color:var(--v9-muted)!important;}
+@media(max-width:768px){
+  .navetta .nav-card{grid-template-columns:1fr!important;text-align:center!important;gap:.55rem!important;padding:1.35rem .2rem!important;}
+}
+
+/* Cuccaro: desktop invariato, mobile seconda foto come le altre con fuoco su paese/mare */
+@media(max-width:768px){
+  .cuccaro-photos .cp:nth-child(2) img{
+    object-fit:cover!important;
+    object-position:center 46%!important;
+    background:transparent!important;
+  }
+  .cuccaro-photos .cp:nth-child(3) img{object-position:center 72%!important;}
+}
+
+/* Fascetta finale: nomi + data sotto, visibile e sottile */
+footer,footer.final-band{
+  display:block!important;
+  background:linear-gradient(180deg,#FAF0DF,var(--v9-cream))!important;
+  color:var(--v9-ink)!important;
+  border-top:1px solid rgba(167,122,55,.24)!important;
+  padding:1.5rem 1rem 1.75rem!important;
+  text-align:center!important;
+}
+footer::before{display:none!important;}
+footer .foot-names,.foot-names{color:var(--v9-gold)!important;font-size:clamp(2rem,6vw,3.1rem)!important;line-height:1!important;}
+footer .foot-date,.foot-date{display:block!important;color:rgba(43,33,22,.68)!important;margin-top:.55rem!important;font-size:clamp(.66rem,2vw,.8rem)!important;letter-spacing:.18em!important;text-transform:uppercase!important;}
+
 </style>
 </head>
 <body><div aria-hidden="true" class="preloader" id="preloader">
@@ -1456,7 +1673,7 @@ footer::before{display:none!important;}
                     Chiesa Madre di Pisciotta<br/>Pisciotta (SA), Cilento
                 </p>
 <p style="margin-top:.6rem;font-size:.8rem;color:#888;line-height:1.6;font-style:italic">La chiesa si trova nel centro storico del borgo, raggiungibile solo a piedi.</p>
-<a class="map-btn" href="https://maps.google.com/?q=Chiesa+Madre+di+Pisciotta,+Pisciotta,+SA" rel="noopener" target="_blank">📍 Apri in Maps</a>
+<a class="map-btn" href="https://maps.google.com/?q=Chiesa+Madre+di+Pisciotta,+Pisciotta,+SA" rel="noopener" target="_blank">Apri in Maps</a>
 </div>
 </div>
 <div class="tl-item reveal">
@@ -1480,7 +1697,7 @@ footer::before{display:none!important;}
 <p>
                     Savoy Beach Hotel<br/>Paestum (SA)
                 </p>
-<a class="map-btn" href="https://maps.google.com/?q=Savoy+Beach+Hotel,+Paestum,+SA" rel="noopener" target="_blank">📍 Apri in Maps</a>
+<a class="map-btn" href="https://maps.google.com/?q=Savoy+Beach+Hotel,+Paestum,+SA" rel="noopener" target="_blank">Apri in Maps</a>
 </div>
 </div>
 <div class="tl-item reveal">
@@ -1727,8 +1944,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click
 /* V8: preloader un secondo più breve rispetto alla versione precedente */
 (function(){
   const hideV8 = () => document.getElementById('preloader')?.classList.add('hide');
-  window.addEventListener('load', () => setTimeout(hideV8, 2000));
-  setTimeout(hideV8, 2400);
+  window.addEventListener('load', () => setTimeout(hideV8, 2500));
+  setTimeout(hideV8, 2900);
 })();
 </script>
 </body></html>
