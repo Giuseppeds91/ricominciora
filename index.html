@@ -1495,6 +1495,68 @@ footer .foot-date,.foot-date{display:block!important;color:rgba(43,33,22,.68)!im
     margin-bottom: 1.35rem !important;
 }
 
+
+/* FIX v17 — menu desktop elegante allo scroll */
+@media (min-width: 769px){
+    .navbar,
+    .navbar.scrolled{
+        background: rgba(248, 240, 227, 0.34) !important;
+        backdrop-filter: blur(18px) saturate(140%) !important;
+        -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+        border-bottom: 1px solid rgba(184,150,90,.18) !important;
+        box-shadow: 0 10px 34px rgba(54,38,18,.06) !important;
+    }
+
+    .navbar .nav-logo,
+    .navbar.scrolled .nav-logo{
+        color: #8f672b !important;
+        text-shadow: none !important;
+    }
+
+    .navbar .nav-links a,
+    .navbar.scrolled .nav-links a{
+        color: rgba(54,38,18,.74) !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        border: 0 !important;
+        padding: .25rem 0 !important;
+        border-radius: 0 !important;
+        position: relative;
+    }
+
+    .navbar .nav-links a::after,
+    .navbar.scrolled .nav-links a::after{
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -.35rem;
+        width: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #b8965a, transparent);
+        transform: translateX(-50%);
+        transition: width .28s ease;
+    }
+
+    .navbar .nav-links a:hover,
+    .navbar.scrolled .nav-links a:hover{
+        color: #8f672b !important;
+        background: transparent !important;
+    }
+
+    .navbar .nav-links a:hover::after,
+    .navbar.scrolled .nav-links a:hover::after{
+        width: 100%;
+    }
+
+    .navbar .nav-links a[href="#rsvp"],
+    .navbar.scrolled .nav-links a[href="#rsvp"]{
+        color: #8f672b !important;
+        font-weight: 500 !important;
+        background: transparent !important;
+    }
+}
+
 </style>
 </head>
 <body><div aria-hidden="true" class="preloader" id="preloader">
@@ -2260,7 +2322,7 @@ const couplePhoto = document.getElementById('couplePhoto');
 if (B64 && heroBg) heroBg.style.backgroundImage = 'url(data:image/jpeg;base64,' + B64 + ')';
 if (B64 && couplePhoto) couplePhoto.src = 'data:image/jpeg;base64,' + B64;
 
-window.addEventListener('load', () => { setTimeout(() => document.getElementById('preloader')?.classList.add('hide'), 4100); });
+window.addEventListener('load', () => { setTimeout(() => document.getElementById('preloader')?.classList.add('hide'), 1750); });
 
 const PC = document.getElementById('petals');
 const cols = ['#B8965A','#E2C07A','#F7EFE2','#fff'];
@@ -2297,7 +2359,7 @@ function copyIban() {
   const iban='IT09H0306976533100000006556';
   navigator.clipboard.writeText(iban).then(() => {
     const btn=document.getElementById('copyBtn'); document.getElementById('copyIcon').textContent='✓'; document.getElementById('copyText').textContent='Copiato!'; btn.classList.add('copied');
-    setTimeout(() => { btn.classList.remove('copied'); document.getElementById('copyIcon').textContent='📋'; document.getElementById('copyText').textContent='Copia IBAN'; }, 2600);
+    setTimeout(() => { btn.classList.remove('copied'); document.getElementById('copyIcon').textContent='📋'; document.getElementById('copyText').textContent='Copia IBAN'; }, 1750);
   });
 }
 window.addEventListener('scroll', () => document.getElementById('navbar')?.classList.toggle('scrolled', window.scrollY>40));
@@ -2312,7 +2374,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   const goTop = () => window.scrollTo({top:0,left:0,behavior:'auto'});
   window.addEventListener('pageshow', goTop);
-  window.addEventListener('load', () => { setTimeout(goTop, 0); setTimeout(() => document.getElementById('preloader')?.classList.add('hide'), 3800); });
+  window.addEventListener('load', () => { setTimeout(goTop, 1750); setTimeout(() => document.getElementById('preloader')?.classList.add('hide'), 1750); });
   const logo = document.querySelector('.nav-logo');
   if (logo) logo.addEventListener('click', function(e){ e.preventDefault(); history.replaceState(null,'',location.pathname); window.scrollTo(0,0); location.reload(); });
 })();
@@ -2333,7 +2395,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click
   }
   function down(e){ dragging = true; didDrag = false; startX = e.clientX; base = pos; lastX = e.clientX; velocity = 0; track.classList.add('dragging'); wrap.setPointerCapture?.(e.pointerId); }
   function move(e){ if(!dragging) return; const dx=e.clientX-startX; if(Math.abs(dx)>5) didDrag=true; velocity=(e.clientX-lastX)*.55; lastX=e.clientX; pos=base+dx; paint(); e.preventDefault(); }
-  function up(e){ if(!dragging) return; dragging=false; track.classList.remove('dragging'); try{wrap.releasePointerCapture?.(e.pointerId)}catch(_){} setTimeout(()=>didDrag=false,90); }
+  function up(e){ if(!dragging) return; dragging=false; track.classList.remove('dragging'); try{wrap.releasePointerCapture?.(e.pointerId)}catch(_){} setTimeout(()=>didDrag=false,1750); }
   wrap.addEventListener('pointerdown', down, {passive:false});
   wrap.addEventListener('pointermove', move, {passive:false});
   wrap.addEventListener('pointerup', up); wrap.addEventListener('pointercancel', up); wrap.addEventListener('pointerleave', up);
@@ -2343,7 +2405,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click
       e.preventDefault(); openLightbox(this);
     });
   });
-  window.resumeFilmstrip = function(){ dragging=false; didDrag=false; velocity=0; track.classList.remove('dragging'); setTimeout(()=>{ pos -= baseSpeed*2; paint(); }, 20); };
+  window.resumeFilmstrip = function(){ dragging=false; didDrag=false; velocity=0; track.classList.remove('dragging'); setTimeout(()=>{ pos -= baseSpeed*2; paint(); }, 1750); };
   requestAnimationFrame(loop);
 })();
 </script>
@@ -2352,7 +2414,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click
 /* V7 final behavior override */
 (function(){
   const hide = () => document.getElementById('preloader')?.classList.add('hide');
-  window.addEventListener('load', () => setTimeout(hide, 3300));
+  window.addEventListener('load', () => setTimeout(hide, 1750));
   window.addEventListener('scroll', () => {
     const nav=document.getElementById('navbar');
     if(nav) nav.classList.toggle('scrolled', window.scrollY>20);
@@ -2361,7 +2423,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click
   const oldClose = window.closeLightbox;
   window.closeLightbox = function(e){
     if(typeof oldClose === 'function') oldClose(e);
-    if(window.resumeFilmstrip) setTimeout(window.resumeFilmstrip, 10);
+    if(window.resumeFilmstrip) setTimeout(window.resumeFilmstrip, 1750);
   };
 })();
 </script>
@@ -2370,8 +2432,224 @@ document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click
 /* V8: preloader un secondo più breve rispetto alla versione precedente */
 (function(){
   const hideV8 = () => document.getElementById('preloader')?.classList.add('hide');
-  window.addEventListener('load', () => setTimeout(hideV8, 2800));
-  setTimeout(hideV8, 3200);
+  window.addEventListener('load', () => setTimeout(hideV8, 1750));
+  setTimeout(hideV8, 1750);
 })();
 </script>
+
+<style>
+/* FIX v20 — sfumatura hero → subhero ripresa dalla v2 */
+.hero-grad,
+.hero::after{
+    position:absolute !important;
+    content:'' !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    height:38vh !important;
+    background:linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(247,239,226,.72) 72%,
+        var(--cream) 100%
+    ) !important;
+    z-index:2 !important;
+    pointer-events:none !important;
+}
+
+.split{
+    background:linear-gradient(to bottom,var(--cream),var(--cream2)) !important;
+    margin-top:0 !important;
+    border-top:none !important;
+}
+
+.split::before{
+    display:none !important;
+}
+
+@media(max-width:768px){
+    .hero-grad,
+    .hero::after{
+        height:38vh !important;
+        background:linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(247,239,226,.72) 72%,
+            var(--cream) 100%
+        ) !important;
+    }
+}
+</style>
+
+
+<style>
+/* FIX v21 */
+
+/* menu ancora più trasparente */
+@media (min-width:769px){
+  .navbar,
+  .navbar.scrolled{
+      background: rgba(248,240,227,.035) !important;
+      backdrop-filter: blur(8px) saturate(110%) !important;
+      -webkit-backdrop-filter: blur(8px) saturate(110%) !important;
+      border-bottom:none !important;
+      box-shadow:none !important;
+  }
+}
+
+/* rimuove linea/stacco tra hero e subhero */
+.hero::after,
+.hero-grad{
+    background:linear-gradient(
+        to bottom,
+        rgba(245,234,216,0) 0%,
+        rgba(245,234,216,.18) 38%,
+        rgba(245,234,216,.55) 62%,
+        rgba(245,234,216,.92) 84%,
+        #f5ead8 100%
+    ) !important;
+    filter: blur(18px) !important;
+}
+
+/* rimuove cuore */
+.split-heart,
+.heart-divider,
+.hero-heart,
+.section-heart{
+    display:none !important;
+}
+</style>
+
+
+<style>
+/* FIX v22 — hero/subhero senza nero + preloader 1.75s */
+
+/* Transizione hero → subhero: solo beige/champagne, nessun nero */
+.hero-grad,
+.hero::after{
+    content:'' !important;
+    position:absolute !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:-1px !important;
+    height:42vh !important;
+    z-index:2 !important;
+    pointer-events:none !important;
+    filter:none !important;
+    background:linear-gradient(
+        to bottom,
+        rgba(245,234,216,0) 0%,
+        rgba(245,234,216,.10) 28%,
+        rgba(245,234,216,.38) 55%,
+        rgba(245,234,216,.76) 78%,
+        #f5ead8 100%
+    ) !important;
+}
+
+/* Subhero attaccata alla hero senza bordo/stacco */
+.split{
+    margin-top:0 !important;
+    border-top:0 !important;
+    background:linear-gradient(
+        to bottom,
+        #f5ead8 0%,
+        #efe0c6 100%
+    ) !important;
+}
+
+.split::before{
+    display:none !important;
+}
+
+/* Rimuove eventuali overlay scuri rimasti nel punto di passaggio */
+.hero + .split::before,
+.hero + .split::after{
+    background:transparent !important;
+}
+
+/* Desktop e mobile coerenti */
+@media(max-width:768px){
+    .hero-grad,
+    .hero::after{
+        height:38vh !important;
+        background:linear-gradient(
+            to bottom,
+            rgba(245,234,216,0) 0%,
+            rgba(245,234,216,.12) 30%,
+            rgba(245,234,216,.42) 58%,
+            rgba(245,234,216,.80) 82%,
+            #f5ead8 100%
+        ) !important;
+    }
+}
+</style>
+
 </body></html>
+
+<style>
+/* FIX v18 — menu più trasparente */
+@media (min-width:769px){
+
+    .navbar,
+    .navbar.scrolled{
+        background: rgba(248,240,227,.18) !important;
+        backdrop-filter: blur(16px) saturate(130%) !important;
+        -webkit-backdrop-filter: blur(16px) saturate(130%) !important;
+        border-bottom: 1px solid rgba(184,150,90,.10) !important;
+        box-shadow: 0 8px 26px rgba(54,38,18,.03) !important;
+    }
+
+}
+</style>
+
+<style>
+/* FIX v19 — menu ultra trasparente desktop */
+@media (min-width:769px){
+
+  .navbar,
+  .navbar.scrolled{
+      background: rgba(248,240,227,.08) !important;
+      backdrop-filter: blur(12px) saturate(120%) !important;
+      -webkit-backdrop-filter: blur(12px) saturate(120%) !important;
+      border-bottom: 1px solid rgba(184,150,90,.06) !important;
+      box-shadow:none !important;
+  }
+
+}
+</style>
+
+<style>
+/* FIX v19 — sfumatura hero/subhero elegante */
+.hero::after{
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-1px;
+    height:180px;
+    pointer-events:none;
+    background: linear-gradient(
+        to bottom,
+        rgba(245,234,216,0) 0%,
+        rgba(245,234,216,.18) 22%,
+        rgba(245,234,216,.48) 48%,
+        rgba(245,234,216,.82) 76%,
+        #f5ead8 100%
+    ) !important;
+    z-index:2;
+}
+
+.subhero{
+    margin-top:0 !important;
+    border-top:none !important;
+    position:relative;
+    z-index:3;
+    background:#f5ead8 !important;
+}
+
+@media(max-width:768px){
+  .hero::after{
+      height:120px;
+  }
+}
+</style>
