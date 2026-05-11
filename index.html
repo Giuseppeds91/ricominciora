@@ -1072,21 +1072,447 @@ footer::before{display:none!important;}
 footer .foot-names,.foot-names{color:var(--v9-gold)!important;font-size:clamp(2rem,6vw,3.1rem)!important;line-height:1!important;}
 footer .foot-date,.foot-date{display:block!important;color:rgba(43,33,22,.68)!important;margin-top:.55rem!important;font-size:clamp(.66rem,2vw,.8rem)!important;letter-spacing:.18em!important;text-transform:uppercase!important;}
 
+
+
+/* ===================== V10 — ANTEPRIMA WEDDING HOURGLASS + CLEAN COUNTDOWN ===================== */
+.preloader{
+  background:
+    radial-gradient(circle at 50% 26%, rgba(255,255,255,.42), transparent 28%),
+    radial-gradient(circle at 50% 56%, rgba(184,150,90,.16), transparent 40%),
+    linear-gradient(145deg,#F8EEDC 0%,#E7D2AD 50%,#F7EBD8 100%) !important;
+}
+.pre-card{color:#2b2116!important;}
+.pre-title{
+  margin-top:.85rem!important;
+  color:#3f2e1a!important;
+  letter-spacing:.18em!important;
+}
+.pre-divider{
+  width:118px!important;
+  margin:1.05rem auto 1.15rem!important;
+  background:linear-gradient(90deg,transparent,rgba(140,106,48,.42),transparent)!important;
+}
+.wedding-hourglass{
+  position:relative!important;
+  width:48px!important;
+  height:70px!important;
+  margin:1.25rem auto .4rem!important;
+  border:0!important;
+  border-radius:0!important;
+  overflow:visible!important;
+  clip-path:none!important;
+  box-shadow:none!important;
+  background:transparent!important;
+}
+.wedding-hourglass::before{
+  content:''!important;
+  position:absolute!important;
+  inset:0!important;
+  transform:none!important;
+  width:auto!important;
+  height:auto!important;
+  opacity:1!important;
+  background:
+    linear-gradient(135deg, transparent 13%, rgba(129,99,54,.50) 14%, rgba(129,99,54,.50) 16%, transparent 17%) top left/50% 50% no-repeat,
+    linear-gradient(225deg, transparent 13%, rgba(129,99,54,.50) 14%, rgba(129,99,54,.50) 16%, transparent 17%) top right/50% 50% no-repeat,
+    linear-gradient(45deg, transparent 13%, rgba(129,99,54,.50) 14%, rgba(129,99,54,.50) 16%, transparent 17%) bottom left/50% 50% no-repeat,
+    linear-gradient(315deg, transparent 13%, rgba(129,99,54,.50) 14%, rgba(129,99,54,.50) 16%, transparent 17%) bottom right/50% 50% no-repeat!important;
+  animation:none!important;
+  pointer-events:none;
+}
+.wedding-hourglass::after{
+  content:''!important;
+  position:absolute!important;
+  left:7px!important;
+  right:7px!important;
+  top:4px!important;
+  bottom:4px!important;
+  transform:none!important;
+  width:auto!important;
+  height:auto!important;
+  opacity:1!important;
+  border-top:1px solid rgba(129,99,54,.48)!important;
+  border-bottom:1px solid rgba(129,99,54,.48)!important;
+  background:transparent!important;
+  animation:none!important;
+  pointer-events:none;
+}
+.wedding-hourglass span{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  transform:none!important;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(184,150,90,.92) 0 1.5px, transparent 1.8px),
+    radial-gradient(circle at 45% 19%, rgba(184,150,90,.55) 0 1px, transparent 1.3px),
+    radial-gradient(circle at 55% 20%, rgba(184,150,90,.55) 0 1px, transparent 1.3px),
+    linear-gradient(to bottom, rgba(184,150,90,.78), rgba(184,150,90,.78)) 50% 30%/2px 0 no-repeat,
+    radial-gradient(ellipse at 50% 26%, rgba(184,150,90,.78) 0 30%, transparent 31%),
+    radial-gradient(ellipse at 50% 75%, rgba(184,150,90,.22) 0 16%, transparent 17%)!important;
+  animation:weddingSandDrop 3.3s cubic-bezier(.66,0,.22,1) forwards!important;
+  display:block!important;
+}
+@keyframes weddingSandDrop{
+  0%{
+    background-size:auto,auto,auto,2px 0, 30px 18px, 10px 4px;
+    background-position:50% 14%,45% 18%,55% 19%,50% 31%,50% 21%,50% 82%;
+  }
+  35%{
+    background-size:auto,auto,auto,2px 18px, 26px 13px, 17px 7px;
+    background-position:50% 28%,47% 34%,53% 36%,50% 32%,50% 19%,50% 79%;
+  }
+  70%{
+    background-size:auto,auto,auto,2px 28px, 18px 8px, 26px 12px;
+    background-position:50% 46%,44% 51%,56% 52%,50% 32%,50% 20%,50% 76%;
+  }
+  100%{
+    background-size:auto,auto,auto,2px 0, 6px 2px, 32px 15px;
+    background-position:50% 70%,44% 75%,56% 77%,50% 61%,50% 22%,50% 73%;
+  }
+}
+.clean-countdown,
+.pre-count.clean-countdown,
+.luxury-count.clean-countdown{
+  display:flex!important;
+  justify-content:center!important;
+  align-items:flex-start!important;
+  gap:clamp(.65rem,3vw,1.45rem)!important;
+  margin:0 auto!important;
+  max-width:540px!important;
+}
+.clean-countdown .cd-box,
+.pre-count.clean-countdown .cd-box,
+.luxury-count.clean-countdown .cd-box{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  border-radius:0!important;
+  padding:0 clamp(.2rem,1vw,.55rem)!important;
+  min-width:auto!important;
+  position:relative!important;
+}
+.clean-countdown .cd-box:not(:last-child)::after{
+  content:'·'!important;
+  position:absolute!important;
+  right:calc(-.42rem - .3vw)!important;
+  top:.15rem!important;
+  font-family:'Cormorant Garamond',serif!important;
+  color:rgba(140,106,48,.74)!important;
+  font-size:clamp(1.4rem,4vw,2.2rem)!important;
+  line-height:1!important;
+}
+.clean-countdown .cd-num{
+  color:#2b2116!important;
+  font-weight:300!important;
+  font-size:clamp(1.85rem,7vw,3.25rem)!important;
+}
+.clean-countdown .cd-lbl{
+  color:#82683f!important;
+  font-size:clamp(.48rem,1.9vw,.6rem)!important;
+  letter-spacing:.18em!important;
+}
+@media(max-width:430px){
+  .wedding-hourglass{width:42px!important;height:62px!important;margin:1rem auto .35rem!important;}
+  .pre-divider{margin:.85rem auto 1rem!important;}
+  .clean-countdown{gap:.42rem!important;}
+  .clean-countdown .cd-box{padding:0 .16rem!important;}
+  .clean-countdown .cd-box:not(:last-child)::after{right:-.3rem!important;}
+  .clean-countdown .cd-num{font-size:clamp(1.55rem,8vw,2.2rem)!important;}
+  .clean-countdown .cd-lbl{font-size:.43rem!important;letter-spacing:.12em!important;}
+}
+
+
+
+
+/* =========================
+   V12 ANTEPRIMA — COUTURE MONOGRAM BLOOM
+   Niente clessidra, niente fedi: sigillo luxury animato con polvere d'oro
+   ========================= */
+.preloader .hourglass,
+.preloader .luxury-hourglass,
+.preloader .wedding-hourglass,
+.preloader .wedding-rings-loader{
+    display:none!important;
+}
+.preloader .couture-loader{
+    position:relative!important;
+    width:124px!important;
+    height:124px!important;
+    margin:1.18rem auto 1rem!important;
+    display:grid!important;
+    place-items:center!important;
+    isolation:isolate!important;
+}
+.preloader .couture-loader::before{
+    content:''!important;
+    position:absolute!important;
+    inset:10px!important;
+    border-radius:50%!important;
+    border:1px solid rgba(143,105,43,.34)!important;
+    background:
+        radial-gradient(circle at 50% 50%,rgba(255,255,255,.72),rgba(255,255,255,.16) 54%,rgba(255,255,255,0) 72%)!important;
+    box-shadow:
+        0 22px 50px rgba(125,88,31,.12),
+        inset 0 0 26px rgba(255,255,255,.34)!important;
+}
+.preloader .couture-loader::after{
+    content:''!important;
+    position:absolute!important;
+    inset:0!important;
+    border-radius:50%!important;
+    background:
+        radial-gradient(circle at 50% 2%,#b8965a 0 2px,transparent 3px),
+        radial-gradient(circle at 84% 20%,rgba(184,150,90,.9) 0 1.5px,transparent 2.5px),
+        radial-gradient(circle at 98% 52%,rgba(216,184,115,.9) 0 2px,transparent 3px),
+        radial-gradient(circle at 80% 86%,rgba(184,150,90,.8) 0 1.5px,transparent 2.5px),
+        radial-gradient(circle at 48% 98%,rgba(216,184,115,.9) 0 2px,transparent 3px),
+        radial-gradient(circle at 16% 80%,rgba(184,150,90,.75) 0 1.5px,transparent 2.5px),
+        radial-gradient(circle at 2% 48%,rgba(216,184,115,.85) 0 2px,transparent 3px),
+        radial-gradient(circle at 18% 14%,rgba(184,150,90,.75) 0 1.5px,transparent 2.5px)!important;
+    filter:drop-shadow(0 0 12px rgba(216,184,115,.24))!important;
+    animation:coutureOrbit 3.6s linear infinite!important;
+}
+.preloader .couture-monogram{
+    position:relative!important;
+    z-index:2!important;
+    width:76px!important;
+    height:76px!important;
+    border-radius:50%!important;
+    display:grid!important;
+    place-items:center!important;
+    font-family:'Cormorant Garamond',serif!important;
+    font-size:2.15rem!important;
+    line-height:1!important;
+    color:#8b682e!important;
+    letter-spacing:-.06em!important;
+    background:linear-gradient(145deg,rgba(255,255,255,.34),rgba(255,255,255,.06))!important;
+    border:1px solid rgba(184,150,90,.30)!important;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.32),0 14px 32px rgba(115,82,31,.10)!important;
+    animation:monogramBreath 2.4s ease-in-out infinite!important;
+}
+.preloader .couture-monogram span{
+    display:inline-block!important;
+    transform:translateY(-1px)!important;
+}
+.preloader .couture-leaf{
+    position:absolute!important;
+    z-index:3!important;
+    width:13px!important;
+    height:7px!important;
+    border-radius:100% 0 100% 0!important;
+    background:linear-gradient(135deg,#f6df9e,#b8965a)!important;
+    opacity:.72!important;
+    box-shadow:0 6px 14px rgba(127,92,35,.13)!important;
+    animation:leafDrift 3.4s ease-in-out infinite!important;
+}
+.preloader .leaf-a{top:16px!important;left:54px!important;transform:rotate(22deg)!important;animation-delay:.1s!important;}
+.preloader .leaf-b{right:22px!important;top:46px!important;transform:rotate(78deg)!important;animation-delay:.45s!important;}
+.preloader .leaf-c{bottom:18px!important;left:58px!important;transform:rotate(205deg)!important;animation-delay:.85s!important;}
+.preloader .couture-line{
+    position:absolute!important;
+    z-index:1!important;
+    width:1px!important;
+    height:42px!important;
+    background:linear-gradient(to bottom,transparent,rgba(184,150,90,.42),transparent)!important;
+    animation:coutureLine 2.8s ease-in-out infinite!important;
+}
+.preloader .line-a{top:-8px!important;left:50%!important;}
+.preloader .line-b{bottom:-8px!important;left:50%!important;}
+@keyframes coutureOrbit{
+    from{transform:rotate(0deg) scale(1);opacity:.86}
+    50%{opacity:1;filter:drop-shadow(0 0 18px rgba(216,184,115,.36))}
+    to{transform:rotate(360deg) scale(1);opacity:.86}
+}
+@keyframes monogramBreath{
+    0%,100%{transform:scale(1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.32),0 14px 32px rgba(115,82,31,.10)}
+    50%{transform:scale(1.035);box-shadow:inset 0 0 0 1px rgba(255,255,255,.44),0 20px 42px rgba(115,82,31,.16)}
+}
+@keyframes leafDrift{
+    0%,100%{opacity:.48;translate:0 0;filter:blur(0)}
+    45%{opacity:1;translate:0 -5px;filter:blur(.05px)}
+}
+@keyframes coutureLine{
+    0%,100%{opacity:.28;transform:scaleY(.72)}
+    50%{opacity:.64;transform:scaleY(1)}
+}
+@media(max-width:768px){
+    .preloader .couture-loader{width:108px!important;height:108px!important;margin:1rem auto .8rem!important;}
+    .preloader .couture-monogram{width:68px!important;height:68px!important;font-size:1.95rem!important;}
+    .preloader .couture-leaf{width:12px!important;height:6px!important;}
+}
+
+
+
+/* ===================== V13 — PRELOADER EFFETTO SETA LUXURY ===================== */
+.preloader .couture-loader{display:none!important;}
+.preloader .silk-loader{
+    position:relative!important;
+    width:min(178px,46vw)!important;
+    height:92px!important;
+    margin:1.18rem auto 1rem!important;
+    display:grid!important;
+    place-items:center!important;
+    overflow:hidden!important;
+    isolation:isolate!important;
+}
+.preloader .silk-loader::before,
+.preloader .silk-loader::after{
+    content:''!important;
+    position:absolute!important;
+    left:0!important;
+    right:0!important;
+    height:1px!important;
+    background:linear-gradient(90deg,transparent,rgba(148,106,46,.65),rgba(229,196,125,.85),transparent)!important;
+    transform-origin:center!important;
+    animation:silkLineBreath 3.2s ease-in-out infinite!important;
+}
+.preloader .silk-loader::before{top:13px!important;}
+.preloader .silk-loader::after{bottom:13px!important;animation-delay:.35s!important;}
+.preloader .silk-initials{
+    position:relative!important;
+    z-index:2!important;
+    font-family:'Pinyon Script',cursive!important;
+    font-size:clamp(3.15rem,12vw,4.55rem)!important;
+    line-height:1!important;
+    color:#8d672d!important;
+    text-shadow:0 18px 42px rgba(141,103,45,.16)!important;
+    letter-spacing:.015em!important;
+    animation:silkInitialsBreath 3.2s ease-in-out infinite!important;
+}
+.preloader .silk-sweep{
+    position:absolute!important;
+    inset:0!important;
+    z-index:3!important;
+    background:linear-gradient(112deg,
+        transparent 0%,
+        transparent 27%,
+        rgba(255,255,255,.10) 38%,
+        rgba(255,255,255,.82) 49%,
+        rgba(229,196,125,.28) 58%,
+        transparent 72%,
+        transparent 100%)!important;
+    transform:translateX(-125%) skewX(-10deg)!important;
+    animation:silkCoutureSweep 3.2s cubic-bezier(.55,0,.22,1) infinite!important;
+    pointer-events:none!important;
+    mix-blend-mode:screen!important;
+}
+@keyframes silkCoutureSweep{
+    0%,18%{transform:translateX(-125%) skewX(-10deg);opacity:0;}
+    30%{opacity:.95;}
+    68%{transform:translateX(125%) skewX(-10deg);opacity:.95;}
+    100%{transform:translateX(125%) skewX(-10deg);opacity:0;}
+}
+@keyframes silkInitialsBreath{
+    0%,100%{transform:translateY(0) scale(1);opacity:1;}
+    50%{transform:translateY(-1px) scale(.985);opacity:.88;}
+}
+@keyframes silkLineBreath{
+    0%,100%{transform:scaleX(.72);opacity:.36;}
+    50%{transform:scaleX(1);opacity:.78;}
+}
+@media(max-width:768px){
+    .preloader .silk-loader{width:150px!important;height:82px!important;margin:1rem auto .8rem!important;}
+    .preloader .silk-initials{font-size:3.35rem!important;}
+}
+
+
+
+/* =========================================================
+   V14 — PRELOADER SEMPLICE E RAFFINATO: CHAMPAGNE DOTS
+   Override finale: sostituisce effetto seta con micro-animazione luxury.
+========================================================= */
+.preloader .silk-loader,
+.preloader .silk-initials,
+.preloader .silk-sweep{
+    display:none!important;
+}
+.preloader .champagne-loader{
+    width:136px!important;
+    height:44px!important;
+    margin:1.15rem auto 1.05rem!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:13px!important;
+    position:relative!important;
+}
+.preloader .champagne-loader::before,
+.preloader .champagne-loader::after{
+    content:''!important;
+    position:absolute!important;
+    top:50%!important;
+    width:34px!important;
+    height:1px!important;
+    background:linear-gradient(90deg,transparent,rgba(156,113,48,.55))!important;
+    transform:translateY(-50%)!important;
+}
+.preloader .champagne-loader::before{right:calc(50% + 47px)!important;}
+.preloader .champagne-loader::after{left:calc(50% + 47px)!important;transform:translateY(-50%) scaleX(-1)!important;}
+.preloader .champagne-loader span{
+    width:6px!important;
+    height:6px!important;
+    border-radius:50%!important;
+    display:block!important;
+    background:radial-gradient(circle at 35% 30%,#fff6d9 0%,#e7c77c 35%,#a77935 78%)!important;
+    box-shadow:0 0 16px rgba(184,150,90,.24)!important;
+    opacity:.34!important;
+    animation:champagneDotWave 1.7s ease-in-out infinite!important;
+}
+.preloader .champagne-loader span:nth-child(2){animation-delay:.14s!important;}
+.preloader .champagne-loader span:nth-child(3){animation-delay:.28s!important;}
+.preloader .champagne-loader span:nth-child(4){animation-delay:.42s!important;}
+.preloader .champagne-loader span:nth-child(5){animation-delay:.56s!important;}
+@keyframes champagneDotWave{
+    0%,100%{transform:translateY(0) scale(.78);opacity:.30;}
+    45%{transform:translateY(-7px) scale(1.08);opacity:1;}
+    72%{transform:translateY(0) scale(.9);opacity:.55;}
+}
+@media(max-width:768px){
+    .preloader .champagne-loader{
+        width:118px!important;
+        gap:10px!important;
+        margin:.95rem auto .85rem!important;
+    }
+    .preloader .champagne-loader::before,
+    .preloader .champagne-loader::after{width:24px!important;}
+    .preloader .champagne-loader::before{right:calc(50% + 39px)!important;}
+    .preloader .champagne-loader::after{left:calc(50% + 39px)!important;}
+    .preloader .champagne-loader span{width:5px!important;height:5px!important;}
+}
+
+/* FIX v15 — riga tra animazione e countdown rimossa */
+.pre-divider,
+.pre-line,
+.loader-divider,
+.preloader hr{
+    display:none !important;
+}
+.preloader .champagne-dots,
+.preloader .dots,
+.preloader .simple-luxury-loader{
+    margin-bottom: 1.35rem !important;
+}
+
 </style>
 </head>
 <body><div aria-hidden="true" class="preloader" id="preloader">
 <div class="pre-card">
 <div class="pre-kicker">Giulio &amp; Mariasofia</div>
 <div class="pre-title">12 Settembre 2026</div>
-<div class="pre-divider"></div>
-<div class="pre-count luxury-count">
+<div aria-hidden="true" class="champagne-loader">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<div class="pre-count luxury-count clean-countdown">
 <div class="cd-box"><span class="cd-num" id="days">--</span><span class="cd-lbl">Giorni</span></div>
 <div class="cd-box"><span class="cd-num" id="hours">--</span><span class="cd-lbl">Ore</span></div>
 <div class="cd-box"><span class="cd-num" id="mins">--</span><span class="cd-lbl">Minuti</span></div>
 <div class="cd-box"><span class="cd-num" id="secs">--</span><span class="cd-lbl">Secondi</span></div>
-</div>
-<div aria-hidden="true" class="hourglass luxury-hourglass">
-<span></span>
 </div>
 </div>
 </div>
@@ -1834,7 +2260,7 @@ const couplePhoto = document.getElementById('couplePhoto');
 if (B64 && heroBg) heroBg.style.backgroundImage = 'url(data:image/jpeg;base64,' + B64 + ')';
 if (B64 && couplePhoto) couplePhoto.src = 'data:image/jpeg;base64,' + B64;
 
-window.addEventListener('load', () => { setTimeout(() => document.getElementById('preloader')?.classList.add('hide'), 2800); });
+window.addEventListener('load', () => { setTimeout(() => document.getElementById('preloader')?.classList.add('hide'), 3800); });
 
 const PC = document.getElementById('petals');
 const cols = ['#B8965A','#E2C07A','#F7EFE2','#fff'];
@@ -1886,7 +2312,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   const goTop = () => window.scrollTo({top:0,left:0,behavior:'auto'});
   window.addEventListener('pageshow', goTop);
-  window.addEventListener('load', () => { setTimeout(goTop, 0); setTimeout(() => document.getElementById('preloader')?.classList.add('hide'), 3000); });
+  window.addEventListener('load', () => { setTimeout(goTop, 0); setTimeout(() => document.getElementById('preloader')?.classList.add('hide'), 3500); });
   const logo = document.querySelector('.nav-logo');
   if (logo) logo.addEventListener('click', function(e){ e.preventDefault(); history.replaceState(null,'',location.pathname); window.scrollTo(0,0); location.reload(); });
 })();
