@@ -2722,9 +2722,62 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 //# sourceURL=https://festivaldellaprevenzione.it/wp-includes/js/wp-emoji-loader.min.js
 </script>
 
+
+<!-- BLOCCO TEMPORANEO LINK / CTA / FORM - INSERITO DA CHATGPT -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Blocca tutti i link della pagina
+  document.querySelectorAll("a").forEach(function(link) {
+    link.removeAttribute("href");
+    link.removeAttribute("target");
+    link.setAttribute("aria-disabled", "true");
+    link.style.cursor = "default";
+
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }, true);
+  });
+
+  // Blocca tutti i bottoni
+  document.querySelectorAll("button, input[type='button'], input[type='submit'], input[type='reset']").forEach(function(button) {
+    button.setAttribute("type", "button");
+    button.style.cursor = "default";
+
+    button.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }, true);
+  });
+
+  // Blocca tutti i form
+  document.querySelectorAll("form").forEach(function(form) {
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }, true);
+  });
+
+  // Blocca eventuali click gestiti da script su elementi con ruolo button/link
+  document.querySelectorAll("[role='button'], [role='link']").forEach(function(el) {
+    el.style.cursor = "default";
+    el.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }, true);
+  });
+
+});
+</script>
+<!-- FINE BLOCCO TEMPORANEO -->
+
 </body>
 </html>
-
 
 
 
