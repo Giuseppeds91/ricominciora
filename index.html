@@ -17,9 +17,9 @@
     }
 
     *{
-      box-sizing:border-box;
       margin:0;
       padding:0;
+      box-sizing:border-box;
     }
 
     html{
@@ -78,9 +78,8 @@
     }
 
     .splash-img{
-      width:100%;
-      max-width:1100px;
-      max-height:78vh;
+      width:min(100vw, 1200px);
+      height:min(100vh, 820px);
       object-fit:contain;
       object-position:center;
     }
@@ -252,299 +251,11 @@
       letter-spacing:.12em;
     }
 
-    /* SECTIONS */
-
-    section{
-      padding:86px 22px;
-    }
-
-    .container{
-      width:min(1180px,100%);
-      margin:auto;
-    }
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      margin-bottom:34px;
-      align-items:end;
-    }
-
-    .section-head h2{
-      font-size:clamp(34px,4vw,56px);
-      line-height:.98;
-      letter-spacing:-.05em;
-      color:var(--green-dark);
-    }
-
-    .section-head p{
-      max-width:420px;
-      line-height:1.55;
-      color:var(--muted);
-      font-weight:700;
-    }
-
-    /* EVENTS */
-
-    .events{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:18px;
-    }
-
-    .event-card{
-      background:#fff;
-      border-radius:26px;
-      padding:22px;
-      box-shadow:0 16px 44px rgba(23,49,38,.08);
-      border:1px solid rgba(31,122,76,.08);
-      min-height:270px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .event-card:before{
-      content:"";
-      position:absolute;
-      top:-40px;
-      right:-40px;
-      width:110px;
-      height:110px;
-      border-radius:50%;
-      background:rgba(241,135,0,.12);
-    }
-
-    .date{
-      width:74px;
-      height:74px;
-      border-radius:22px;
-      background:var(--green-soft);
-      display:grid;
-      place-items:center;
-      text-align:center;
-      font-weight:900;
-      color:var(--green-dark);
-    }
-
-    .date b{
-      font-size:26px;
-      display:block;
-    }
-
-    .date span{
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-    }
-
-    .event-card h3{
-      margin:22px 0 12px;
-      font-size:21px;
-      line-height:1.08;
-    }
-
-    .event-card p{
-      color:var(--muted);
-      line-height:1.5;
-      font-size:14px;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-self:flex-start;
-      margin-top:18px;
-      padding:8px 11px;
-      border-radius:999px;
-      background:#fff7e8;
-      color:#a85c00;
-      font-size:12px;
-      font-weight:900;
-    }
-
-    .events-cta{
-      margin-top:30px;
-      text-align:center;
-    }
-
-    /* STORY */
-
-    .story-wrap{
-      display:grid;
-      grid-template-columns:.9fr 1.1fr;
-      gap:28px;
-    }
-
-    .story-card{
-      background:linear-gradient(135deg,var(--green-dark),#287d51);
-      color:#fff;
-      border-radius:34px;
-      padding:34px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .story-card:after{
-      content:"";
-      position:absolute;
-      right:-70px;
-      bottom:-70px;
-      width:190px;
-      height:190px;
-      border-radius:50%;
-      background:rgba(255,216,77,.18);
-    }
-
-    .story-card h2{
-      font-size:clamp(34px,4vw,58px);
-      line-height:.94;
-      letter-spacing:-.06em;
-      margin-bottom:22px;
-      position:relative;
-      z-index:2;
-    }
-
-    .story-card p{
-      position:relative;
-      z-index:2;
-      line-height:1.7;
-      color:rgba(255,255,255,.82);
-    }
-
-    .story-text{
-      background:#fff;
-      border-radius:34px;
-      padding:34px;
-      box-shadow:0 16px 44px rgba(23,49,38,.07);
-      border:1px solid rgba(31,122,76,.08);
-    }
-
-    .story-text p{
-      margin-bottom:18px;
-      line-height:1.8;
-      color:#44584f;
-      font-size:18px;
-    }
-
-    .pillars{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-      margin-top:24px;
-    }
-
-    .pillar{
-      background:var(--green-soft);
-      border-radius:22px;
-      padding:18px;
-      font-weight:800;
-      color:var(--green-dark);
-    }
-
-    .pillar span{
-      display:block;
-      font-size:28px;
-      margin-bottom:8px;
-    }
-
-    /* CONTACT */
-
-    .contact-news{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-    }
-
-    .panel{
-      background:#fff;
-      border-radius:34px;
-      padding:32px;
-      box-shadow:0 16px 44px rgba(23,49,38,.07);
-      border:1px solid rgba(31,122,76,.08);
-    }
-
-    .panel h2{
-      font-size:clamp(30px,3vw,44px);
-      margin-bottom:18px;
-      color:var(--green-dark);
-      letter-spacing:-.04em;
-    }
-
-    .info-line{
-      display:flex;
-      gap:14px;
-      padding:14px 0;
-      border-bottom:1px solid rgba(31,122,76,.08);
-      color:#496158;
-    }
-
-    .info-line:last-child{
-      border-bottom:0;
-    }
-
-    .newsletter-form{
-      display:flex;
-      gap:10px;
-      margin-top:20px;
-    }
-
-    .newsletter-form input{
-      flex:1;
-      min-width:0;
-      height:54px;
-      border-radius:999px;
-      border:1px solid rgba(31,122,76,.16);
-      padding:0 18px;
-      font-size:16px;
-      outline:none;
-    }
-
-    .newsletter-form button{
-      border:0;
-      cursor:pointer;
-    }
-
-    /* BACK TOP */
-
-    .back-top{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      width:54px;
-      height:54px;
-      border-radius:999px;
-      border:0;
-      background:var(--orange);
-      color:#fff;
-      font-size:24px;
-      font-weight:900;
-      cursor:pointer;
-      box-shadow:0 16px 34px rgba(241,135,0,.35);
-      z-index:90;
-    }
-
-    footer{
-      padding:30px 22px;
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-      font-weight:700;
-    }
-
     /* RESPONSIVE */
 
     @media (max-width:1100px){
 
-      .events{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .hero-grid,
-      .story-wrap,
-      .contact-news{
+      .hero-grid{
         grid-template-columns:1fr;
       }
 
@@ -563,27 +274,10 @@
         padding:32px 16px 60px;
       }
 
-      .events,
-      .pillars{
-        grid-template-columns:1fr;
-      }
-
-      .section-head{
-        display:block;
-      }
-
-      .section-head p{
-        margin-top:12px;
-      }
-
-      .newsletter-form{
-        flex-direction:column;
-      }
-
       .splash-img{
-        width:125vw;
-        max-width:none;
-        max-height:70vh;
+        width:100vw;
+        height:78vh;
+        object-fit:contain;
       }
 
       .floating-note{
@@ -610,29 +304,14 @@
 
     @media (max-width:520px){
 
-      .story-card,
-      .story-text,
-      .panel{
-        padding:24px;
-        border-radius:28px;
-      }
-
       .hands-card{
         border-width:6px;
       }
 
       .splash-img{
-        width:138vw;
-      }
-
-      .info-line{
-        flex-direction:column;
-        gap:5px;
-      }
-
-      .back-top{
-        width:50px;
-        height:50px;
+        width:100vw;
+        height:72vh;
+        object-fit:contain;
       }
     }
 
@@ -687,11 +366,11 @@
 
           <div class="cta-row">
 
-            <a class="btn btn-primary" href="#programma">
+            <a class="btn btn-primary" href="#">
               Scopri il programma
             </a>
 
-            <a class="btn btn-light" href="#storia">
+            <a class="btn btn-light" href="#">
               Perché partecipare
             </a>
 
@@ -704,7 +383,7 @@
           <div class="hands-card">
 
             <img
-              src="./anteprima-prevenzione.png"
+              src="anteprima-prevenzione.png"
               alt="Prevenzione"
             >
 
@@ -723,8 +402,6 @@
 
   </main>
 
-  <button class="back-top" id="backTop">↑</button>
-
   <script>
 
     window.addEventListener('load', function(){
@@ -738,14 +415,6 @@
         document.body.classList.remove('loading');
 
       }, 3000);
-
-    });
-
-    document.getElementById('backTop').addEventListener('click', function(){
-
-      document.getElementById('top').scrollIntoView({
-        behavior:'smooth'
-      });
 
     });
 
