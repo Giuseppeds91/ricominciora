@@ -35,52 +35,11 @@
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
 
-    .site-header{
-      position:fixed;
-      top:0; left:0; right:0;
-      z-index:50;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:22px clamp(18px,4vw,56px);
-      background:rgba(255,250,240,.78);
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(31,122,76,.09);
-    }
-    .brand{display:flex;align-items:center;gap:13px;font-weight:900;letter-spacing:-.03em;line-height:1.02}
-    .brand-mark{
-      width:48px;height:48px;border-radius:16px;
-      background:linear-gradient(135deg,var(--green),#5fbd7a);
-      display:grid;place-items:center;box-shadow:0 14px 34px rgba(31,122,76,.22);
-      position:relative;overflow:hidden;
-    }
-    .brand-mark:after{content:"";position:absolute;inset:auto -8px -14px auto;width:34px;height:34px;border-radius:50%;background:rgba(255,216,77,.95)}
-    .brand-mark svg{width:31px;height:31px;position:relative;z-index:2}
-    .brand span{display:block;font-size:14px;color:var(--green);letter-spacing:.08em;text-transform:uppercase}
-    .brand strong{display:block;font-size:18px;color:var(--ink)}
-
-    .menu-toggle{
-      width:48px;height:48px;border:0;border-radius:16px;background:#fff;box-shadow:0 10px 30px rgba(23,49,38,.10);
-      display:grid;place-items:center;gap:4px;cursor:pointer;
-    }
-    .menu-toggle i{display:block;width:22px;height:2px;background:var(--green-dark);border-radius:999px;transition:.25s ease}
-    .menu-toggle.open i:nth-child(1){transform:translateY(6px) rotate(45deg)}
-    .menu-toggle.open i:nth-child(2){opacity:0}
-    .menu-toggle.open i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-    .menu-panel{
-      position:fixed;right:clamp(18px,4vw,56px);top:86px;z-index:49;
-      width:min(310px,calc(100vw - 36px));padding:16px;border-radius:24px;background:#fff;box-shadow:var(--shadow);
-      border:1px solid rgba(31,122,76,.10);transform:translateY(-10px);opacity:0;pointer-events:none;transition:.25s ease;
-    }
-    .menu-panel.open{transform:translateY(0);opacity:1;pointer-events:auto}
-    .menu-panel a{display:block;padding:14px 16px;border-radius:15px;font-weight:800;color:var(--green-dark)}
-    .menu-panel a:hover{background:var(--green-soft)}
-
     .hero{
       min-height:100vh;
       display:grid;
       place-items:center;
-      padding:130px clamp(18px,4vw,56px) 80px;
+      padding:56px clamp(18px,4vw,56px) 80px;
       position:relative;
       overflow:hidden;
     }
@@ -151,32 +110,11 @@
       .floating-note{right:12px;bottom:12px}
     }
     @media (max-width:620px){
-      .site-header{padding:14px 16px}.brand strong{font-size:15px}.brand span{font-size:11px}.brand-mark{width:42px;height:42px}
-      .hero{padding-top:104px}.hands-card{border-width:6px;border-radius:28px}.events,.pillars{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:12px}.newsletter-form{flex-direction:column}.newsletter-form .btn{width:100%}
+      .hero{padding-top:38px}.hands-card{border-width:6px;border-radius:28px}.events,.pillars{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:12px}.newsletter-form{flex-direction:column}.newsletter-form .btn{width:100%}
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="Cuccaro Vetere e la Prevenzione">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M32 53s-20-11.8-20-27.2C12 17.2 17.6 12 24.3 12c4.1 0 6.8 2 7.7 3.5C32.9 14 35.6 12 39.7 12 46.4 12 52 17.2 52 25.8 52 41.2 32 53 32 53Z" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M25 31h5l3-7 4 15 3-8h5" stroke="#FFD84D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-      <span><span>Cuccaro Vetere</span><strong>e la Prevenzione</strong></span>
-    </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Apri menu" aria-expanded="false"><i></i><i></i><i></i></button>
-  </header>
-
-  <nav class="menu-panel" id="menuPanel" aria-label="Menu principale">
-    <a href="#programma">Programma</a>
-    <a href="#storia">Perché prevenzione</a>
-    <a href="#contatti">Contatti</a>
-    <a href="#newsletter">Resta aggiornato</a>
-  </nav>
-
   <main id="top">
     <section class="hero">
       <div class="hero-grid">
@@ -286,20 +224,5 @@
   </main>
 
   <footer>© 2026 Cuccaro Vetere e la Prevenzione · Iniziativa per la salute e la comunità</footer>
-
-  <script>
-    const toggle = document.getElementById('menuToggle');
-    const panel = document.getElementById('menuPanel');
-    toggle.addEventListener('click', () => {
-      const isOpen = panel.classList.toggle('open');
-      toggle.classList.toggle('open', isOpen);
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-    panel.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      panel.classList.remove('open');
-      toggle.classList.remove('open');
-      toggle.setAttribute('aria-expanded','false');
-    }));
-  </script>
 </body>
 </html>
