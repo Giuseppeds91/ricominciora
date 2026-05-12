@@ -1,305 +1,224 @@
-<!doctype html>
-<html lang="it">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cuccaro Vetere e la Prevenzione</title>
-  <meta name="description" content="Giornate per la prevenzione a Cuccaro Vetere: salute, alimentazione, controlli e stili di vita sani per tutta la comunità." />
-  <style>
-    :root{
-      --green:#1f7a4c;
-      --green-dark:#0f4f31;
-      --green-soft:#eaf6ef;
-      --orange:#f18700;
-      --yellow:#ffd84d;
-      --blue:#28b8d8;
-      --pink:#ef3f8f;
-      --red:#e84537;
-      --ink:#173126;
-      --muted:#6b7b73;
-      --cream:#fffaf0;
-      --white:#ffffff;
-      --shadow:0 24px 70px rgba(23,49,38,.13);
-      --radius:28px;
-    }
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color:var(--ink);
-      background:linear-gradient(180deg,#fffaf0 0%,#fff 42%,#f3fbf6 100%);
-      overflow-x:hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    <!-- LOGO -->
+    <a href="#" class="logo-wrap">
+      <div class="logo-icon">
+        <span class="logo-heart">❤</span>
+      </div>
 
-    .site-header{
-      position:fixed;
-      top:0; left:0; right:0;
-      z-index:50;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:22px clamp(18px,4vw,56px);
-      background:rgba(255,250,240,.78);
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(31,122,76,.09);
-    }
-    .brand{display:flex;align-items:center;gap:13px;font-weight:900;letter-spacing:-.03em;line-height:1.02}
-    .brand-mark{
-      width:48px;height:48px;border-radius:16px;
-      background:linear-gradient(135deg,var(--green),#5fbd7a);
-      display:grid;place-items:center;box-shadow:0 14px 34px rgba(31,122,76,.22);
-      position:relative;overflow:hidden;
-    }
-    .brand-mark:after{content:"";position:absolute;inset:auto -8px -14px auto;width:34px;height:34px;border-radius:50%;background:rgba(255,216,77,.95)}
-    .brand-mark svg{width:31px;height:31px;position:relative;z-index:2}
-    .brand span{display:block;font-size:14px;color:var(--green);letter-spacing:.08em;text-transform:uppercase}
-    .brand strong{display:block;font-size:18px;color:var(--ink)}
-
-    .menu-toggle{
-      width:48px;height:48px;border:0;border-radius:16px;background:#fff;box-shadow:0 10px 30px rgba(23,49,38,.10);
-      display:grid;place-items:center;gap:4px;cursor:pointer;
-    }
-    .menu-toggle i{display:block;width:22px;height:2px;background:var(--green-dark);border-radius:999px;transition:.25s ease}
-    .menu-toggle.open i:nth-child(1){transform:translateY(6px) rotate(45deg)}
-    .menu-toggle.open i:nth-child(2){opacity:0}
-    .menu-toggle.open i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-    .menu-panel{
-      position:fixed;right:clamp(18px,4vw,56px);top:86px;z-index:49;
-      width:min(310px,calc(100vw - 36px));padding:16px;border-radius:24px;background:#fff;box-shadow:var(--shadow);
-      border:1px solid rgba(31,122,76,.10);transform:translateY(-10px);opacity:0;pointer-events:none;transition:.25s ease;
-    }
-    .menu-panel.open{transform:translateY(0);opacity:1;pointer-events:auto}
-    .menu-panel a{display:block;padding:14px 16px;border-radius:15px;font-weight:800;color:var(--green-dark)}
-    .menu-panel a:hover{background:var(--green-soft)}
-
-    .hero{
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      padding:130px clamp(18px,4vw,56px) 80px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero:before{
-      content:"";position:absolute;inset:0;
-      background:radial-gradient(circle at 15% 22%,rgba(255,216,77,.35),transparent 28%),radial-gradient(circle at 82% 18%,rgba(40,184,216,.18),transparent 30%),radial-gradient(circle at 75% 82%,rgba(31,122,76,.16),transparent 32%);
-      pointer-events:none;
-    }
-    .hero-grid{width:min(1180px,100%);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:44px;position:relative;z-index:1}
-    .hero-copy{text-align:center;justify-self:center;max-width:660px}
-    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 14px;border-radius:999px;background:#fff;border:1px solid rgba(31,122,76,.12);box-shadow:0 12px 34px rgba(23,49,38,.08);font-size:12px;text-transform:uppercase;letter-spacing:.14em;font-weight:900;color:var(--green)}
-    .eyebrow:before{content:"";width:9px;height:9px;border-radius:99px;background:var(--orange);box-shadow:0 0 0 7px rgba(241,135,0,.13)}
-    h1{font-size:clamp(42px,6vw,86px);line-height:.92;letter-spacing:-.075em;margin:24px 0 20px;font-weight:950;color:var(--green-dark)}
-    h1 span{display:block;color:var(--orange)}
-    .hero-copy p{margin:0 auto 30px;max-width:560px;font-size:clamp(17px,1.45vw,21px);line-height:1.58;color:var(--muted)}
-    .cta-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:999px;font-weight:900;box-shadow:0 16px 34px rgba(31,122,76,.16);transition:.25s ease}
-    .btn-primary{background:var(--green);color:#fff}.btn-primary:hover{transform:translateY(-2px);background:var(--green-dark)}
-    .btn-light{background:#fff;color:var(--green-dark);border:1px solid rgba(31,122,76,.12)}
-
-    .hero-visual{position:relative;justify-self:center;width:min(570px,100%)}
-    .hands-card{position:relative;border-radius:38px;overflow:hidden;background:#fff;box-shadow:var(--shadow);border:10px solid rgba(255,255,255,.7)}
-    .hands-card img{width:100%;aspect-ratio:1.28/1;object-fit:cover;object-position:center;filter:saturate(1.03) contrast(1.03)}
-    .floating-note{position:absolute;right:-14px;bottom:24px;background:#fff;border-radius:22px;padding:14px 18px;box-shadow:0 18px 45px rgba(23,49,38,.15);font-weight:900;color:var(--green-dark);max-width:230px}
-    .floating-note small{display:block;color:var(--orange);text-transform:uppercase;letter-spacing:.12em;font-size:11px;margin-bottom:4px}
-
-    section{padding:86px clamp(18px,4vw,56px)}
-    .container{width:min(1180px,100%);margin:0 auto}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:30px}
-    .section-head h2{margin:0;font-size:clamp(34px,4vw,56px);line-height:.98;letter-spacing:-.055em;color:var(--green-dark)}
-    .section-head p{margin:0;color:var(--muted);font-weight:700;max-width:420px;line-height:1.55}
-
-    .events{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .event-card{background:#fff;border:1px solid rgba(31,122,76,.10);border-radius:26px;padding:22px;box-shadow:0 16px 44px rgba(23,49,38,.08);min-height:270px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-    .event-card:before{content:"";position:absolute;top:-40px;right:-40px;width:110px;height:110px;border-radius:50%;background:rgba(241,135,0,.12)}
-    .date{width:74px;height:74px;border-radius:22px;background:var(--green-soft);display:grid;place-items:center;text-align:center;color:var(--green-dark);font-weight:950;line-height:1}
-    .date b{font-size:26px}.date span{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--green)}
-    .event-card h3{font-size:21px;line-height:1.05;margin:22px 0 12px;letter-spacing:-.035em;color:var(--ink)}
-    .event-card p{font-size:14px;line-height:1.5;color:var(--muted);margin:0}
-    .tag{display:inline-flex;margin-top:18px;align-self:flex-start;padding:8px 11px;border-radius:999px;background:#fff7e8;color:#a85c00;font-size:12px;font-weight:900}
-    .events-cta{text-align:center;margin-top:28px}
-
-    .story-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch}
-    .story-card{background:linear-gradient(135deg,var(--green-dark),#287d51);color:#fff;border-radius:34px;padding:34px;box-shadow:var(--shadow);min-height:100%;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}
-    .story-card:after{content:"";position:absolute;right:-70px;bottom:-70px;width:190px;height:190px;border-radius:50%;background:rgba(255,216,77,.18)}
-    .story-card h2{margin:0 0 22px;font-size:clamp(34px,4vw,58px);line-height:.94;letter-spacing:-.06em;position:relative;z-index:1}
-    .story-card p{margin:0;color:rgba(255,255,255,.82);line-height:1.6;font-size:17px;position:relative;z-index:1}
-    .story-text{background:#fff;border-radius:34px;padding:34px;border:1px solid rgba(31,122,76,.10);box-shadow:0 16px 44px rgba(23,49,38,.07)}
-    .story-text p{font-size:18px;line-height:1.78;color:#44584f;margin:0 0 18px}
-    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
-    .pillar{background:var(--green-soft);border-radius:22px;padding:18px;color:var(--green-dark);font-weight:900;min-height:112px}
-    .pillar span{display:block;font-size:28px;margin-bottom:8px}
-
-    .contact-news{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-    .panel{background:#fff;border-radius:34px;padding:32px;border:1px solid rgba(31,122,76,.10);box-shadow:0 16px 44px rgba(23,49,38,.07)}
-    .panel h2{margin:0 0 18px;font-size:clamp(30px,3vw,44px);letter-spacing:-.045em;color:var(--green-dark)}
-    .info-line{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid rgba(31,122,76,.08);line-height:1.45;color:#496158}
-    .info-line:last-child{border-bottom:0}.info-line b{color:var(--green-dark)}
-    .newsletter-form{display:flex;gap:10px;margin-top:20px}
-    .newsletter-form input{flex:1;min-width:0;height:54px;border:1px solid rgba(31,122,76,.18);border-radius:999px;padding:0 18px;font-size:16px;outline:none}
-    .newsletter-form button{border:0;cursor:pointer}
-
-    footer{padding:30px clamp(18px,4vw,56px);color:var(--muted);text-align:center;font-weight:700;font-size:14px}
-
-    @media (max-width:980px){
-      .hero-grid,.story-wrap,.contact-news{grid-template-columns:1fr}
-      .hero-copy{order:2}.hero-visual{order:1}.events{grid-template-columns:repeat(2,1fr)}
-      .floating-note{right:12px;bottom:12px}
-    }
-    @media (max-width:620px){
-      .site-header{padding:14px 16px}.brand strong{font-size:15px}.brand span{font-size:11px}.brand-mark{width:42px;height:42px}
-      .hero{padding-top:104px}.hands-card{border-width:6px;border-radius:28px}.events,.pillars{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:12px}.newsletter-form{flex-direction:column}.newsletter-form .btn{width:100%}
-    }
-  </style>
-</head>
-<body>
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="Cuccaro Vetere e la Prevenzione">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M32 53s-20-11.8-20-27.2C12 17.2 17.6 12 24.3 12c4.1 0 6.8 2 7.7 3.5C32.9 14 35.6 12 39.7 12 46.4 12 52 17.2 52 25.8 52 41.2 32 53 32 53Z" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M25 31h5l3-7 4 15 3-8h5" stroke="#FFD84D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-      <span><span>Cuccaro Vetere</span><strong>e la Prevenzione</strong></span>
+      <div class="logo-text">
+        <span class="logo-top">CUCCARO VETERE</span>
+        <span class="logo-bottom">e la prevenzione</span>
+      </div>
     </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Apri menu" aria-expanded="false"><i></i><i></i><i></i></button>
-  </header>
 
-  <nav class="menu-panel" id="menuPanel" aria-label="Menu principale">
-    <a href="#programma">Programma</a>
-    <a href="#storia">Perché prevenzione</a>
-    <a href="#contatti">Contatti</a>
-    <a href="#newsletter">Resta aggiornato</a>
-  </nav>
+    <!-- MENU -->
+    <button class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Salute · Comunità · Futuro</div>
-          <h1>Giornate per la prevenzione <span>a Cuccaro Vetere</span></h1>
-          <p>Un percorso semplice e vicino alle persone, pensato per portare informazione, controlli, corretti stili di vita e cultura della salute nel cuore della nostra comunità.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#programma">Scopri il programma</a>
-            <a class="btn btn-light" href="#storia">Perché partecipare</a>
-          </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-section">
+
+  <div class="hero-image">
+
+    <!-- MANI A CUORE -->
+    <img src="image.png" alt="Cuccaro Vetere e la prevenzione">
+
+  </div>
+
+  <div class="hero-content">
+
+    <h1>
+      GIORNATE PER LA PREVENZIONE<br>
+      A CUCCARO VETERE
+    </h1>
+
+    <p class="hero-subtitle">
+      Salute, alimentazione, sport e prevenzione.
+      Un percorso dedicato alla comunità e alle nuove generazioni.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#programma" class="btn-primary">
+        Scopri il programma
+      </a>
+
+      <a href="#perche-partecipare" class="btn-secondary">
+        Perchè partecipare
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROGRAMMA -->
+<section id="programma" class="events-section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <span>PROGRAMMA EVENTI</span>
+    </div>
+
+    <!-- EVENTI -->
+    <div class="events-grid">
+
+      <div class="event-card">
+        <div class="event-date">
+          25 MARZO
         </div>
 
-        <div class="hero-visual">
-          <div class="hands-card">
-            <img src="image.png" alt="Due mani formano un cuore con simboli della prevenzione e della salute" />
-          </div>
-          <div class="floating-note"><small>Prevenire è vivere meglio</small>Un gesto semplice può diventare cultura per tutti.</div>
-        </div>
+        <h3>Prevenzione e screening</h3>
+
+        <p>
+          Giornata dedicata alla prevenzione con visite informative
+          e attività di sensibilizzazione aperte alla comunità.
+        </p>
       </div>
-    </section>
 
-    <section id="programma">
-      <div class="container">
-        <div class="section-head">
-          <h2>Programma eventi</h2>
-          <p>Appuntamenti dedicati a visite, alimentazione, movimento e consapevolezza. Il calendario definitivo sarà aggiornato progressivamente.</p>
+      <div class="event-card">
+        <div class="event-date">
+          26 MARZO
         </div>
-        <div class="events">
-          <article class="event-card">
-            <div>
-              <div class="date"><div><b>01</b><span>Giorno</span></div></div>
-              <h3>Screening e controlli di prevenzione</h3>
-              <p>Momenti dedicati all’informazione sanitaria e all’orientamento verso controlli utili, con il supporto di professionisti.</p>
-            </div>
-            <span class="tag">Su prenotazione</span>
-          </article>
-          <article class="event-card">
-            <div>
-              <div class="date"><div><b>02</b><span>Giorno</span></div></div>
-              <h3>Dieta mediterranea e salute</h3>
-              <p>Un incontro sul valore dell’alimentazione quotidiana, dell’olio EVO, dei prodotti locali e delle scelte consapevoli.</p>
-            </div>
-            <span class="tag">Alimentazione</span>
-          </article>
-          <article class="event-card">
-            <div>
-              <div class="date"><div><b>03</b><span>Giorno</span></div></div>
-              <h3>Sport, movimento e stili di vita</h3>
-              <p>Attività e consigli pratici per avvicinare giovani, adulti e anziani a una vita più attiva e più sana.</p>
-            </div>
-            <span class="tag">Benessere</span>
-          </article>
-          <article class="event-card">
-            <div>
-              <div class="date"><div><b>04</b><span>Giorno</span></div></div>
-              <h3>Giovani e cultura della prevenzione</h3>
-              <p>Un dialogo diretto per trasformare la prevenzione in un’abitudine, non in qualcosa a cui pensare solo quando c’è un problema.</p>
-            </div>
-            <span class="tag">Comunità</span>
-          </article>
-        </div>
-        <div class="events-cta"><a class="btn btn-primary" href="#contatti">Vedi tutti gli eventi</a></div>
+
+        <h3>Dieta mediterranea</h3>
+
+        <p>
+          Alimentazione sana, olio EVO e corretti stili di vita
+          per prevenire malattie e migliorare il benessere.
+        </p>
       </div>
-    </section>
 
-    <section id="storia">
-      <div class="container story-wrap">
-        <div class="story-card">
-          <div>
-            <h2>Cuccaro per la prevenzione</h2>
-            <p>Un paese piccolo può fare una cosa grande: mettere la salute al centro, creare attenzione e coinvolgere tutte le generazioni.</p>
-          </div>
+      <div class="event-card">
+        <div class="event-date">
+          27 MARZO
         </div>
-        <div class="story-text">
-          <p>Portare le giornate della prevenzione a Cuccaro Vetere significa rendere la salute più vicina, più semplice e più accessibile. In una comunità come la nostra, dove le persone si conoscono, ogni iniziativa può diventare un’occasione per parlare, informarsi e prendersi cura di sé prima che nascano problemi più seri.</p>
-          <p>La prevenzione non è solo una visita o un controllo: è uno stile di vita. Vuol dire imparare ad ascoltare il proprio corpo, seguire i consigli dei medici, fare movimento, ridurre le cattive abitudini e riscoprire il valore della dieta mediterranea, fatta di equilibrio, prodotti semplici, olio extravergine, verdure, legumi e convivialità.</p>
-          <p>Vogliamo parlare anche ai giovani, perché la salute non riguarda solo gli adulti o gli anziani. Le scelte di oggi costruiscono il benessere di domani: mangiare meglio, muoversi di più, informarsi, fare controlli quando serve e non avere paura di chiedere supporto sono gesti concreti che possono cambiare il futuro di una comunità.</p>
-          <div class="pillars">
-            <div class="pillar"><span>🍅</span>Dieta mediterranea e prodotti del territorio</div>
-            <div class="pillar"><span>🩺</span>Controlli, ascolto e consigli medici</div>
-            <div class="pillar"><span>🏃</span>Movimento e abitudini sane fin da giovani</div>
-          </div>
-        </div>
+
+        <h3>Sport e salute</h3>
+
+        <p>
+          Movimento, attività fisica e consigli utili
+          per una vita più sana e attiva.
+        </p>
       </div>
-    </section>
 
-    <section id="contatti">
-      <div class="container contact-news">
-        <div class="panel">
-          <h2>Contatti</h2>
-          <div class="info-line"><b>Comune</b><span>Comune di Cuccaro Vetere</span></div>
-          <div class="info-line"><b>Indirizzo</b><span>Piazza Umberto I, 84050 Cuccaro Vetere (SA)</span></div>
-          <div class="info-line"><b>Telefono</b><span>0974 953042</span></div>
-          <div class="info-line"><b>Email</b><span>info@comune.cuccarovetere.sa.it</span></div>
-        </div>
-        <div class="panel" id="newsletter">
-          <h2>Resta aggiornato</h2>
-          <p style="margin:0;color:#496158;line-height:1.65;font-size:17px">Lascia la tua email per ricevere aggiornamenti sul programma, sulle modalità di prenotazione e sulle prossime iniziative dedicate alla prevenzione.</p>
-          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Grazie! Funzione newsletter da collegare.');">
-            <input type="email" placeholder="La tua email" aria-label="La tua email" required />
-            <button class="btn btn-primary" type="submit">Iscriviti</button>
-          </form>
-        </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PERCHE PARTECIPARE -->
+<section id="perche-partecipare" class="story-section">
+
+  <div class="container story-wrapper">
+
+    <div class="story-content">
+
+      <span class="story-label">
+        CUCCARO E LA PREVENZIONE
+      </span>
+
+      <h2>
+        La salute parte dalle nostre abitudini
+      </h2>
+
+      <p>
+        La prevenzione significa prendersi cura di sé prima che un problema si presenti.
+        Significa imparare ad ascoltare il proprio corpo, fare controlli periodici,
+        seguire una corretta alimentazione e costruire uno stile di vita sano.
+      </p>
+
+      <p>
+        In un territorio come il Cilento, culla della dieta mediterranea,
+        parlare di prevenzione significa anche valorizzare la nostra cultura:
+        alimentazione equilibrata, movimento, aria pulita e benessere quotidiano.
+      </p>
+
+      <p>
+        Queste giornate nascono per sensibilizzare soprattutto i giovani,
+        creando momenti di confronto con medici, professionisti e associazioni,
+        affinché la salute diventi una scelta consapevole e condivisa.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTATTI -->
+<section class="contacts-section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <span>CONTATTI</span>
+    </div>
+
+    <div class="contacts-grid">
+
+      <div class="contact-box">
+        <h4>Comune di Cuccaro Vetere</h4>
+
+        <p>
+          Piazza Umberto I<br>
+          Cuccaro Vetere (SA)
+        </p>
       </div>
-    </section>
-  </main>
 
-  <footer>© 2026 Cuccaro Vetere e la Prevenzione · Iniziativa per la salute e la comunità</footer>
+      <div class="contact-box">
+        <h4>Email</h4>
 
-  <script>
-    const toggle = document.getElementById('menuToggle');
-    const panel = document.getElementById('menuPanel');
-    toggle.addEventListener('click', () => {
-      const isOpen = panel.classList.toggle('open');
-      toggle.classList.toggle('open', isOpen);
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-    panel.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      panel.classList.remove('open');
-      toggle.classList.remove('open');
-      toggle.setAttribute('aria-expanded','false');
-    }));
-  </script>
-</body>
-</html>
+        <p>
+          info@cuccarovetere.it
+        </p>
+      </div>
+
+      <div class="contact-box">
+        <h4>Telefono</h4>
+
+        <p>
+          +39 0974 000000
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+
+  <div class="container newsletter-box">
+
+    <h2>Resta aggiornato</h2>
+
+    <p>
+      Ricevi aggiornamenti sulle giornate dedicate alla prevenzione.
+    </p>
+
+    <form class="newsletter-form">
+
+      <input type="email" placeholder="Inserisci la tua email">
+
+      <button type="submit">
+        Iscriviti
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
