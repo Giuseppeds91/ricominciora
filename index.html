@@ -6,10 +6,10 @@
   <title>Cuccaro Vetere e la Prevenzione</title>
 
   <style>
+
     :root{
       --green:#1f7a4c;
       --green-dark:#0f4f31;
-      --green-soft:#eaf6ef;
       --orange:#f18700;
       --ink:#173126;
       --muted:#6b7b73;
@@ -55,13 +55,13 @@
       inset:0;
       width:100vw;
       height:100dvh;
-      background:#fffaf0;
+      background:#000;
       z-index:99999;
       display:flex;
       align-items:center;
       justify-content:center;
-      transition:opacity .7s ease, visibility .7s ease;
       overflow:hidden;
+      transition:opacity .8s ease, visibility .8s ease;
     }
 
     .splash.hide{
@@ -73,21 +73,17 @@
     .splash-inner{
       width:100%;
       height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:clamp(10px,2vw,28px);
     }
 
     .splash-img{
-      width:100%;
-      height:100%;
-      max-width:100vw;
-      max-height:100dvh;
-      object-fit:contain;
+      width:100vw;
+      height:100dvh;
+      object-fit:cover;
       object-position:center;
-      filter:contrast(1.05) saturate(1.08) brightness(1.02);
-      image-rendering:auto;
+      filter:
+        contrast(1.08)
+        saturate(1.1)
+        brightness(1.03);
       transform:translateZ(0);
       backface-visibility:hidden;
     }
@@ -202,7 +198,10 @@
       width:100%;
       aspect-ratio:1.28/1;
       object-fit:cover;
-      filter:contrast(1.04) saturate(1.06) brightness(1.02);
+      filter:
+        contrast(1.05)
+        saturate(1.08)
+        brightness(1.02);
     }
 
     .floating-note{
@@ -230,6 +229,7 @@
     /* RESPONSIVE */
 
     @media (max-width:1100px){
+
       .hero-grid{
         grid-template-columns:1fr;
       }
@@ -244,18 +244,9 @@
     }
 
     @media (max-width:768px){
+
       .hero{
         padding:32px 16px 60px;
-      }
-
-      .splash-inner{
-        padding:12px;
-      }
-
-      .splash-img{
-        width:100%;
-        height:100%;
-        object-fit:contain;
       }
 
       .floating-note{
@@ -281,12 +272,9 @@
     }
 
     @media (max-width:520px){
+
       .hands-card{
         border-width:6px;
-      }
-
-      .splash-inner{
-        padding:8px;
       }
     }
 
@@ -298,13 +286,17 @@
   <!-- SPLASH -->
 
   <div class="splash" id="splashScreen">
+
     <div class="splash-inner">
+
       <img
         class="splash-img"
         src="anteprima-prevenzione.png"
         alt="Cuccaro Vetere e la Prevenzione"
       >
+
     </div>
+
   </div>
 
   <!-- HERO -->
@@ -368,13 +360,21 @@
   </main>
 
   <script>
+
     window.addEventListener('load', function(){
+
       setTimeout(function(){
+
         const splash = document.getElementById('splashScreen');
+
         splash.classList.add('hide');
+
         document.body.classList.remove('loading');
+
       }, 3000);
+
     });
+
   </script>
 
 </body>
