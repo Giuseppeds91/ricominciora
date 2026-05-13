@@ -6,6 +6,7 @@
   <title>Cuccaro Vetere e la Prevenzione</title>
 
   <style>
+
     :root{
       --green:#1f7a4c;
       --green-dark:#0f4f31;
@@ -21,7 +22,8 @@
       box-sizing:border-box;
     }
 
-    html, body{
+    html,
+    body{
       width:100%;
       min-height:100%;
       overflow-x:hidden;
@@ -47,7 +49,7 @@
       max-width:100%;
     }
 
-    /* ANTEPRIMA FULLSCREEN */
+    /* SPLASH SCREEN */
 
     .splash{
       position:fixed;
@@ -55,13 +57,18 @@
       width:100vw;
       height:100vh;
       height:100svh;
+
       background-image:url("anteprima-desktop.png");
       background-size:cover;
       background-position:center center;
       background-repeat:no-repeat;
       background-color:#fffaf0;
+
       z-index:99999;
-      transition:opacity .8s ease, visibility .8s ease;
+
+      transition:
+      opacity .8s ease,
+      visibility .8s ease;
     }
 
     .splash.hide{
@@ -85,9 +92,11 @@
       content:"";
       position:absolute;
       inset:0;
+
       background:
-        radial-gradient(circle at 15% 22%,rgba(255,216,77,.35),transparent 28%),
-        radial-gradient(circle at 82% 18%,rgba(31,122,76,.12),transparent 30%);
+      radial-gradient(circle at 15% 22%,rgba(255,216,77,.35),transparent 28%),
+      radial-gradient(circle at 82% 18%,rgba(31,122,76,.12),transparent 30%);
+
       pointer-events:none;
     }
 
@@ -186,11 +195,15 @@
       position:absolute;
       right:-10px;
       bottom:20px;
+
       background:#fff;
       padding:15px 18px;
       border-radius:20px;
+
       box-shadow:0 18px 45px rgba(23,49,38,.15);
+
       max-width:230px;
+
       font-weight:800;
       color:var(--green-dark);
     }
@@ -207,6 +220,7 @@
     /* TABLET */
 
     @media (max-width:1100px){
+
       .hero-grid{
         grid-template-columns:1fr;
       }
@@ -223,10 +237,15 @@
     /* MOBILE */
 
     @media (max-width:768px){
+
       .splash{
         background-image:url("anteprima-mobile.png");
-        background-size:cover;
+
+        background-size:contain;
         background-position:center center;
+        background-repeat:no-repeat;
+
+        background-color:#fffaf0;
       }
 
       .hero{
@@ -256,22 +275,34 @@
     }
 
     @media (max-width:520px){
+
       .hands-card{
         border-width:6px;
       }
     }
+
   </style>
 </head>
 
 <body class="loading">
 
-  <div class="splash" id="splashScreen"></div>
+  <!-- SPLASH -->
+
+  <div
+    class="splash"
+    id="splashScreen">
+  </div>
+
+  <!-- HERO -->
 
   <main id="top">
+
     <section class="hero">
+
       <div class="hero-grid">
 
         <div class="hero-copy">
+
           <h1>
             Giornate per la prevenzione
             <span>a Cuccaro Vetere</span>
@@ -285,33 +316,68 @@
           </p>
 
           <div class="cta-row">
-            <a class="btn btn-primary" href="#">Scopri il programma</a>
-            <a class="btn btn-light" href="#">Perché partecipare</a>
+
+            <a
+              class="btn btn-primary"
+              href="#">
+              Scopri il programma
+            </a>
+
+            <a
+              class="btn btn-light"
+              href="#">
+              Perché partecipare
+            </a>
+
           </div>
+
         </div>
 
         <div class="hero-visual">
+
           <div class="hands-card">
-            <img src="anteprima-mobile.png" alt="Prevenzione Cuccaro Vetere">
+
+            <img
+              src="anteprima-mobile.png"
+              alt="Prevenzione Cuccaro Vetere">
+
           </div>
 
           <div class="floating-note">
-            <small>Prevenire è vivere meglio</small>
+
+            <small>
+              Prevenire è vivere meglio
+            </small>
+
             Un gesto semplice può diventare cultura per tutti.
+
           </div>
+
         </div>
 
       </div>
+
     </section>
+
   </main>
 
   <script>
+
     window.addEventListener('load', function(){
+
       setTimeout(function(){
-        document.getElementById('splashScreen').classList.add('hide');
+
+        document
+          .getElementById('splashScreen')
+          .classList
+          .add('hide');
+
         document.body.classList.remove('loading');
+
       }, 3000);
+
     });
+
   </script>
 
 </body>
