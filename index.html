@@ -15,13 +15,9 @@
       --shadow:0 24px 70px rgba(23,49,38,.13);
     }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;}
 
-    html, body{
+    html,body{
       width:100%;
       min-height:100%;
       overflow-x:hidden;
@@ -34,25 +30,11 @@
       color:var(--ink);
     }
 
-    body.loading{
-      overflow:hidden;
-    }
+    body.loading{overflow:hidden;}
 
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    img{
-      display:block;
-      max-width:100%;
-    }
-
-    button{
-      font-family:inherit;
-    }
-
-    /* SPLASH */
+    a{text-decoration:none;color:inherit;}
+    img{display:block;max-width:100%;}
+    button,input,select,textarea{font-family:inherit;}
 
     .splash{
       position:fixed;
@@ -73,8 +55,6 @@
       visibility:hidden;
       pointer-events:none;
     }
-
-    /* HERO */
 
     .hero{
       min-height:100vh;
@@ -180,22 +160,20 @@
       filter:brightness(.96);
     }
 
-    /* SEZIONI ESPANDIBILI */
-
     .why-section,
     .support-section,
-    .promote-section{
+    .promote-section,
+    .program-section{
       display:none;
       animation:fadeIn .5s ease;
     }
 
     .why-section.active,
     .support-section.active,
-    .promote-section.active{
+    .promote-section.active,
+    .program-section.active{
       display:block;
     }
-
-    /* WHY */
 
     .why-section{
       padding:50px 22px 120px;
@@ -203,7 +181,8 @@
     }
 
     .why-inner,
-    .promote-inner{
+    .promote-inner,
+    .program-inner{
       width:min(980px,100%);
       margin:0 auto;
     }
@@ -218,7 +197,8 @@
     }
 
     .why-title,
-    .promote-title{
+    .promote-title,
+    .program-title{
       font-size:clamp(38px,6vw,72px);
       line-height:.95;
       letter-spacing:-.06em;
@@ -263,7 +243,167 @@
       line-height:1.8;
     }
 
-    /* SUPPORTO */
+    .program-section{
+      padding:80px 22px 130px;
+      background:linear-gradient(180deg,#fffaf0 0%,#f3fbf6 100%);
+    }
+
+    .program-intro{
+      width:min(760px,100%);
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.8;
+      margin-bottom:38px;
+    }
+
+    .program-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+    }
+
+    .program-card{
+      width:100%;
+      border:none;
+      background:#fff;
+      border-radius:30px;
+      padding:26px;
+      display:grid;
+      grid-template-columns:150px 1fr;
+      gap:24px;
+      text-align:left;
+      cursor:pointer;
+      box-shadow:0 18px 50px rgba(23,49,38,.08);
+      transition:.25s ease;
+    }
+
+    .program-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 26px 70px rgba(23,49,38,.12);
+    }
+
+    .program-date{
+      color:var(--orange);
+      font-weight:900;
+      line-height:.85;
+      letter-spacing:-.06em;
+      font-size:clamp(46px,6vw,74px);
+    }
+
+    .program-date small{
+      display:block;
+      font-size:14px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--green-dark);
+      margin-bottom:8px;
+    }
+
+    .program-card h3{
+      color:var(--green-dark);
+      font-size:28px;
+      margin-bottom:10px;
+    }
+
+    .program-card p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+      margin-bottom:14px;
+    }
+
+    .program-tags{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .program-tags span{
+      padding:8px 12px;
+      border-radius:999px;
+      background:#f3fbf6;
+      color:var(--green-dark);
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .booking-box{
+      display:none;
+      margin-top:26px;
+      background:#fff;
+      border-radius:32px;
+      padding:32px;
+      box-shadow:0 20px 55px rgba(23,49,38,.08);
+      animation:fadeIn .4s ease;
+    }
+
+    .booking-box.active{
+      display:block;
+    }
+
+    .booking-box h3{
+      color:var(--green-dark);
+      font-size:32px;
+      margin-bottom:12px;
+      letter-spacing:-.04em;
+    }
+
+    .booking-note{
+      color:var(--muted);
+      line-height:1.75;
+      margin-bottom:24px;
+    }
+
+    .booking-note strong{
+      color:var(--green-dark);
+    }
+
+    .booking-form{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .field.full{
+      grid-column:1/-1;
+    }
+
+    .field label{
+      font-size:13px;
+      font-weight:900;
+      color:var(--green-dark);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .field input,
+    .field select,
+    .field textarea{
+      width:100%;
+      border:1px solid rgba(31,122,76,.16);
+      background:#f9fffb;
+      border-radius:18px;
+      padding:15px 16px;
+      font-size:16px;
+      outline:none;
+      color:var(--ink);
+    }
+
+    .field textarea{
+      min-height:100px;
+      resize:vertical;
+    }
+
+    .booking-submit{
+      margin-top:18px;
+      width:100%;
+    }
 
     .support-section{
       padding:90px 22px 130px;
@@ -458,8 +598,6 @@
       display:block;
     }
 
-    /* PROMUOVI */
-
     .promote-section{
       padding:70px 22px 120px;
       background:linear-gradient(180deg,#f3fbf6 0%,#fffaf0 100%);
@@ -498,14 +636,8 @@
     }
 
     @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:translateY(20px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:translateY(0);}
     }
 
     @media (max-width:980px){
@@ -576,6 +708,36 @@
         padding:24px 0;
       }
 
+      .program-section{
+        padding:70px 18px 110px;
+      }
+
+      .program-intro{
+        font-size:16px;
+        line-height:1.75;
+      }
+
+      .program-card{
+        grid-template-columns:1fr;
+        padding:24px;
+      }
+
+      .program-date{
+        font-size:56px;
+      }
+
+      .program-card h3{
+        font-size:24px;
+      }
+
+      .booking-box{
+        padding:24px 18px;
+      }
+
+      .booking-form{
+        grid-template-columns:1fr;
+      }
+
       .support-section{
         padding:80px 18px 110px;
       }
@@ -626,9 +788,9 @@
             Perché partecipare
           </button>
 
-          <a class="btn btn-primary" href="#programma">
+          <button class="btn btn-primary" onclick="toggleSection('programSection')">
             Scopri il programma
-          </a>
+          </button>
 
           <button class="btn btn-orange" onclick="toggleSection('supportSection')">
             Sostieni l’iniziativa
@@ -703,6 +865,137 @@
         </div>
 
       </div>
+    </section>
+
+    <section class="program-section" id="programSection">
+
+      <div class="program-inner">
+
+        <div class="section-label">Programma</div>
+
+        <h2 class="program-title">
+          Le prossime giornate
+        </h2>
+
+        <p class="program-intro">
+          Ogni giornata potrà prevedere due specializzazioni in contemporanea.
+          Le prenotazioni saranno raccolte fino a esaurimento posti e organizzate
+          per fasce orarie.
+        </p>
+
+        <div class="program-grid">
+
+          <button
+            class="program-card"
+            onclick="openBooking('Giornata prevenzione cardiovascolare e nutrizione')">
+
+            <div class="program-date">
+              <small>Data</small>
+              01
+            </div>
+
+            <div>
+              <h3>Cardiologia + Nutrizione</h3>
+              <p>
+                Controlli base, pressione, prevenzione cardiovascolare,
+                alimentazione e corretti stili di vita.
+              </p>
+
+              <div class="program-tags">
+                <span>Posti limitati</span>
+                <span>Fasce orarie</span>
+                <span>Prenotazione richiesta</span>
+              </div>
+            </div>
+
+          </button>
+
+          <button
+            class="program-card"
+            onclick="openBooking('Giornata dermatologia e screening base')">
+
+            <div class="program-date">
+              <small>Data</small>
+              02
+            </div>
+
+            <div>
+              <h3>Dermatologia + Screening base</h3>
+              <p>
+                Controllo nei, prevenzione della pelle, glicemia,
+                saturazione e parametri vitali.
+              </p>
+
+              <div class="program-tags">
+                <span>Posti limitati</span>
+                <span>Fasce orarie</span>
+                <span>Dettagli in arrivo</span>
+              </div>
+            </div>
+
+          </button>
+
+        </div>
+
+        <div class="booking-box" id="bookingBox">
+
+          <h3>Richiedi la prenotazione</h3>
+
+          <p class="booking-note">
+            Le prenotazioni saranno gestite <strong>fino a esaurimento posti</strong>.
+            La fascia oraria indicata è una preferenza: l’orario definitivo verrà
+            confermato dall’organizzazione in base alla disponibilità.
+          </p>
+
+          <div class="booking-form">
+
+            <div class="field">
+              <label>Nome e cognome</label>
+              <input type="text" id="bookingName" placeholder="Es. Mario Rossi">
+            </div>
+
+            <div class="field">
+              <label>Telefono</label>
+              <input type="tel" id="bookingPhone" placeholder="Es. 333 1234567">
+            </div>
+
+            <div class="field">
+              <label>Visita richiesta</label>
+              <select id="bookingVisit">
+                <option value="">Seleziona una visita</option>
+                <option>Cardiologia</option>
+                <option>Nutrizione</option>
+                <option>Dermatologia</option>
+                <option>Screening base</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Fascia oraria preferita</label>
+              <select id="bookingTime">
+                <option value="">Seleziona una fascia</option>
+                <option>Mattina - 09:00 / 10:30</option>
+                <option>Mattina - 10:30 / 12:00</option>
+                <option>Pomeriggio - 15:00 / 16:30</option>
+                <option>Pomeriggio - 16:30 / 18:00</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label>Note eventuali</label>
+              <textarea id="bookingNotes" placeholder="Scrivi qui eventuali preferenze o informazioni utili"></textarea>
+            </div>
+
+          </div>
+
+          <button class="btn btn-primary booking-submit" onclick="sendBookingWhatsapp()">
+            Invia richiesta su WhatsApp
+          </button>
+
+        </div>
+
+      </div>
+
     </section>
 
     <section class="support-section" id="supportSection">
@@ -868,6 +1161,8 @@
   </main>
 
   <script>
+    let selectedProgram = "";
+
     window.addEventListener('load', function(){
       setTimeout(function(){
         document.getElementById('splashScreen').classList.add('hide');
@@ -878,6 +1173,7 @@
     function toggleSection(id){
       const sections = [
         document.getElementById('whySection'),
+        document.getElementById('programSection'),
         document.getElementById('supportSection'),
         document.getElementById('promoteSection')
       ];
@@ -904,6 +1200,44 @@
 
     function toggleContributionBox(){
       document.getElementById('contributionBox').classList.toggle('active');
+    }
+
+    function openBooking(programName){
+      selectedProgram = programName;
+
+      const bookingBox = document.getElementById('bookingBox');
+      bookingBox.classList.add('active');
+
+      setTimeout(function(){
+        bookingBox.scrollIntoView({
+          behavior:'smooth',
+          block:'start'
+        });
+      }, 100);
+    }
+
+    function sendBookingWhatsapp(){
+      const name = document.getElementById('bookingName').value.trim();
+      const phone = document.getElementById('bookingPhone').value.trim();
+      const visit = document.getElementById('bookingVisit').value;
+      const time = document.getElementById('bookingTime').value;
+      const notes = document.getElementById('bookingNotes').value.trim();
+
+      if(!name || !phone || !visit || !time){
+        alert("Compila nome, telefono, visita richiesta e fascia oraria preferita.");
+        return;
+      }
+
+      const message =
+        "Ciao, vorrei richiedere una prenotazione per le giornate di prevenzione a Cuccaro Vetere.%0A%0A" +
+        "Giornata: " + encodeURIComponent(selectedProgram || "Programma prevenzione") + "%0A" +
+        "Nome e cognome: " + encodeURIComponent(name) + "%0A" +
+        "Telefono: " + encodeURIComponent(phone) + "%0A" +
+        "Visita richiesta: " + encodeURIComponent(visit) + "%0A" +
+        "Fascia oraria preferita: " + encodeURIComponent(time) + "%0A" +
+        "Note: " + encodeURIComponent(notes || "Nessuna nota");
+
+      window.open("https://wa.me/393493732259?text=" + message, "_blank");
     }
   </script>
 
