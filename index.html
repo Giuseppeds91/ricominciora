@@ -45,6 +45,11 @@
       color:inherit;
     }
 
+    img{
+      display:block;
+      max-width:100%;
+    }
+
     /* SPLASH */
 
     .splash{
@@ -185,7 +190,7 @@
       transform:translateY(-2px);
     }
 
-    /* SEZIONE PERCHE */
+    /* WHY SECTION */
 
     .why-section{
       max-width:950px;
@@ -227,6 +232,222 @@
       color:var(--green-dark);
     }
 
+    /* SUPPORT SECTION */
+
+    .support-section{
+      padding:120px 22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .support-wrapper{
+      width:min(1250px,100%);
+      margin:0 auto;
+
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .support-copy h2{
+      font-size:clamp(42px,6vw,82px);
+      line-height:.92;
+      letter-spacing:-.07em;
+
+      margin-bottom:24px;
+
+      color:var(--green-dark);
+      font-weight:900;
+    }
+
+    .support-copy h2 span{
+      display:block;
+      color:var(--orange);
+    }
+
+    .support-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      min-height:40px;
+      padding:0 16px;
+
+      border-radius:999px;
+
+      background:rgba(31,122,76,.08);
+
+      color:var(--green-dark);
+
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+
+      margin-bottom:22px;
+    }
+
+    .support-description{
+      font-size:18px;
+      line-height:1.9;
+      color:var(--muted);
+
+      margin-bottom:34px;
+    }
+
+    .progress-card{
+      background:#fff;
+
+      border-radius:30px;
+
+      padding:28px;
+
+      box-shadow:0 20px 55px rgba(23,49,38,.08);
+
+      margin-bottom:26px;
+    }
+
+    .progress-top{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+
+      margin-bottom:18px;
+    }
+
+    .progress-top small{
+      display:block;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+
+    .progress-top strong{
+      font-size:28px;
+      color:var(--green-dark);
+    }
+
+    .goal{
+      color:var(--orange);
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .progress-bar{
+      width:100%;
+      height:18px;
+
+      background:#edf4ef;
+
+      border-radius:999px;
+
+      overflow:hidden;
+
+      margin-bottom:16px;
+    }
+
+    .progress-fill{
+      height:100%;
+
+      border-radius:999px;
+
+      background:
+      linear-gradient(
+        90deg,
+        var(--green),
+        #37b06d
+      );
+
+      box-shadow:
+      0 0 20px rgba(31,122,76,.3);
+    }
+
+    .progress-bottom{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .support-btn{
+      min-height:58px;
+      padding:0 30px;
+
+      border-radius:999px;
+
+      background:var(--green);
+
+      color:#fff;
+
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      font-weight:800;
+
+      box-shadow:0 16px 34px rgba(31,122,76,.18);
+
+      transition:.25s ease;
+    }
+
+    .support-btn:hover{
+      background:var(--green-dark);
+      transform:translateY(-2px);
+    }
+
+    .support-visual{
+      position:relative;
+    }
+
+    .support-image-wrap{
+      border-radius:36px;
+      overflow:hidden;
+
+      background:#fff;
+
+      box-shadow:0 30px 70px rgba(23,49,38,.12);
+    }
+
+    .support-image-wrap img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .support-floating{
+      position:absolute;
+
+      right:-20px;
+      bottom:30px;
+
+      background:#fff;
+
+      padding:18px 20px;
+
+      border-radius:22px;
+
+      max-width:260px;
+
+      box-shadow:0 18px 45px rgba(23,49,38,.14);
+
+      font-weight:800;
+      color:var(--green-dark);
+
+      line-height:1.5;
+    }
+
+    .support-floating small{
+      display:block;
+
+      color:var(--orange);
+
+      text-transform:uppercase;
+
+      letter-spacing:.12em;
+
+      font-size:11px;
+
+      margin-bottom:5px;
+    }
+
     @keyframes fadeIn{
       from{
         opacity:0;
@@ -239,6 +460,17 @@
     }
 
     /* MOBILE */
+
+    @media (max-width:980px){
+
+      .support-wrapper{
+        grid-template-columns:1fr;
+      }
+
+      .support-visual{
+        order:-1;
+      }
+    }
 
     @media (max-width:768px){
 
@@ -279,6 +511,38 @@
       .why-text{
         font-size:16px;
         line-height:1.8;
+      }
+
+      .support-section{
+        padding:90px 18px;
+      }
+
+      .support-description{
+        font-size:16px;
+        line-height:1.8;
+      }
+
+      .progress-top{
+        flex-direction:column;
+      }
+
+      .progress-top strong{
+        font-size:24px;
+      }
+
+      .support-btn{
+        width:100%;
+      }
+
+      .support-floating{
+        position:relative;
+
+        right:auto;
+        bottom:auto;
+
+        margin:14px auto 0;
+
+        max-width:100%;
       }
     }
 
@@ -391,6 +655,104 @@
             per tutta la comunità.
 
           </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SUPPORT SECTION -->
+
+    <section class="support-section" id="sostieni">
+
+      <div class="support-wrapper">
+
+        <div class="support-copy">
+
+          <div class="support-badge">
+            Obiettivo comunità
+          </div>
+
+          <h2>
+            Insieme possiamo lasciare
+            <span>qualcosa di concreto</span>
+          </h2>
+
+          <p class="support-description">
+
+            Le eventuali donazioni raccolte durante il progetto
+            verranno custodite dalla tesoreria della Pro Loco
+            di Cuccaro Vetere e destinate esclusivamente
+            al raggiungimento di obiettivi concreti per la comunità,
+            come l’acquisto di un defibrillatore
+            o altre dotazioni utili alla salute pubblica.
+
+          </p>
+
+          <div class="progress-card">
+
+            <div class="progress-top">
+
+              <div>
+                <small>Raccolta attuale</small>
+                <strong>€ 820 raccolti</strong>
+              </div>
+
+              <div class="goal">
+                Obiettivo € 1.500
+              </div>
+
+            </div>
+
+            <div class="progress-bar">
+
+              <div
+                class="progress-fill"
+                style="width:55%;">
+              </div>
+
+            </div>
+
+            <div class="progress-bottom">
+
+              <span>
+                Donazione dopo donazione,
+                possiamo costruire qualcosa di utile per tutti.
+              </span>
+
+            </div>
+
+          </div>
+
+          <a
+            href="#"
+            class="support-btn">
+
+            Sostieni l’iniziativa
+
+          </a>
+
+        </div>
+
+        <div class="support-visual">
+
+          <div class="support-image-wrap">
+
+            <img
+              src="defibrillatore.png"
+              alt="Defibrillatore">
+
+          </div>
+
+          <div class="support-floating">
+
+            <small>Primo obiettivo</small>
+
+            Acquisto di un defibrillatore
+            per la comunità
+
+          </div>
 
         </div>
 
