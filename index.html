@@ -31,7 +31,7 @@
 
     body{
       font-family:Inter,Arial,sans-serif;
-      background:linear-gradient(180deg,#fffaf0 0%,#fff 42%,#f3fbf6 100%);
+      background:#fffaf0;
       color:var(--ink);
     }
 
@@ -49,11 +49,12 @@
       max-width:100%;
     }
 
-    /* SPLASH SCREEN */
+    /* SPLASH */
 
     .splash{
       position:fixed;
       inset:0;
+
       width:100vw;
       height:100vh;
       height:100svh;
@@ -62,7 +63,6 @@
       background-size:cover;
       background-position:center center;
       background-repeat:no-repeat;
-      background-color:#fffaf0;
 
       z-index:99999;
 
@@ -86,6 +86,8 @@
       place-items:center;
       position:relative;
       overflow:hidden;
+      background:
+      linear-gradient(180deg,#fffaf0 0%,#fff 42%,#f3fbf6 100%);
     }
 
     .hero:before{
@@ -241,11 +243,9 @@
       .splash{
         background-image:url("anteprima-mobile.png");
 
-        background-size:contain;
+        background-size:cover;
         background-position:center center;
         background-repeat:no-repeat;
-
-        background-color:#fffaf0;
       }
 
       .hero{
