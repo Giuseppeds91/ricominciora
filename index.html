@@ -28,6 +28,7 @@
       font-family:Inter,Arial,sans-serif;
       background:#fffaf0;
       color:var(--ink);
+      padding-bottom:74px;
     }
 
     body.loading{overflow:hidden;}
@@ -207,6 +208,14 @@
       margin-bottom:28px;
     }
 
+    .why-title-soft{
+      font-size:clamp(34px,5vw,60px);
+      line-height:1.08;
+      letter-spacing:-.045em;
+      font-weight:800;
+      max-width:850px;
+    }
+
     .why-intro{
       width:min(820px,100%);
       font-size:clamp(18px,2vw,22px);
@@ -342,9 +351,7 @@
       animation:fadeIn .4s ease;
     }
 
-    .booking-box.active{
-      display:block;
-    }
+    .booking-box.active{display:block;}
 
     .booking-box h3{
       color:var(--green-dark);
@@ -359,9 +366,7 @@
       margin-bottom:24px;
     }
 
-    .booking-note strong{
-      color:var(--green-dark);
-    }
+    .booking-note strong{color:var(--green-dark);}
 
     .booking-form{
       display:grid;
@@ -375,9 +380,7 @@
       gap:8px;
     }
 
-    .field.full{
-      grid-column:1/-1;
-    }
+    .field.full{grid-column:1/-1;}
 
     .field label{
       font-size:13px;
@@ -542,9 +545,7 @@
       animation:fadeIn .4s ease;
     }
 
-    .contribution-box.active{
-      display:block;
-    }
+    .contribution-box.active{display:block;}
 
     .contribution-box strong{
       color:var(--green-dark);
@@ -663,6 +664,54 @@
       filter:brightness(.96);
     }
 
+    .fixed-footer{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:9999;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:12px 18px;
+      background:rgba(255,250,240,.86);
+      backdrop-filter:blur(14px);
+      border-top:1px solid rgba(31,122,76,.12);
+    }
+
+    .fixed-footer button{
+      min-height:44px;
+      padding:0 24px;
+      border-radius:999px;
+      border:none;
+      background:var(--green-dark);
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .footer-update-message{
+      display:none;
+      position:absolute;
+      bottom:64px;
+      left:50%;
+      transform:translateX(-50%);
+      width:min(420px,calc(100vw - 36px));
+      padding:16px 18px;
+      border-radius:18px;
+      background:#fff;
+      color:var(--green-dark);
+      font-weight:800;
+      line-height:1.5;
+      box-shadow:0 18px 45px rgba(23,49,38,.16);
+      text-align:center;
+    }
+
+    .footer-update-message.active{
+      display:block;
+      animation:fadeIn .35s ease;
+    }
+
     @keyframes fadeIn{
       from{opacity:0;transform:translateY(20px);}
       to{opacity:1;transform:translateY(0);}
@@ -720,6 +769,10 @@
 
       .why-section{
         padding:55px 18px 95px;
+      }
+
+      .why-title-soft{
+        font-size:clamp(32px,9vw,46px);
       }
 
       .why-intro{
@@ -835,18 +888,15 @@
     <section class="why-section" id="whySection">
       <div class="why-inner">
 
-        <div class="section-label">Perché partecipare</div>
-
-        <h2 class="why-title">
-          Una scelta semplice, per prenderci cura di chi vive il paese.
+        <h2 class="why-title why-title-soft">
+          Una scelta semplice per prenderci cura di chi vive il paese
         </h2>
 
         <p class="why-intro">
-          Partecipare significa dare valore a qualcosa che riguarda tutti:
-          la salute, l’ascolto e la possibilità di sentirsi più vicini come comunità.
-          Lo facciamo per amore di Cuccaro Vetere, ma soprattutto per le persone
-          che lo abitano ogni giorno, per chi ci è cresciuto, per chi torna appena può
-          e per chi continua a sentirlo casa.
+          Lo facciamo per amore di Cuccaro Vetere, ma soprattutto per amore
+          delle persone che lo vivono ogni giorno: i nostri genitori, i nostri nonni,
+          i giovani che restano, chi torna appena può e chi sente ancora questo paese
+          come una parte importante della propria storia.
           <br><br>
           La prevenzione non deve essere lontana o complicata. Può diventare
           un momento semplice, accessibile e utile, capace di portare consapevolezza,
@@ -909,9 +959,7 @@
 
         <div class="program-grid">
 
-          <button
-            class="program-card"
-            onclick="openBooking('Cardiologia + Nutrizione')">
+          <button class="program-card" onclick="openBooking('Cardiologia + Nutrizione')">
 
             <div class="program-date">
               <small>Prima giornata</small>
@@ -938,9 +986,7 @@
 
           </button>
 
-          <button
-            class="program-card"
-            onclick="openBooking('Dermatologia + Screening base')">
+          <button class="program-card" onclick="openBooking('Dermatologia + Screening base')">
 
             <div class="program-date">
               <small>Seconda giornata</small>
@@ -1193,6 +1239,16 @@
     </section>
 
   </main>
+
+  <footer class="fixed-footer">
+    <button onclick="showUpdateMessage('footerUpdateMessage')">
+      Contatti
+    </button>
+
+    <div class="footer-update-message" id="footerUpdateMessage">
+      Il sito è in fase di aggiornamento. A breve saranno disponibili tutti i contatti ufficiali.
+    </div>
+  </footer>
 
   <script>
     let selectedProgram = "";
