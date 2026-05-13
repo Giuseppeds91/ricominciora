@@ -14,13 +14,10 @@
       --muted:#6b7b73;
       --cream:#fffaf0;
       --soft:#f3fbf6;
+      --shadow:0 24px 70px rgba(23,49,38,.13);
     }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;}
 
     html,body{
       width:100%;
@@ -36,9 +33,7 @@
       padding-bottom:34px;
     }
 
-    body.loading{
-      overflow:hidden;
-    }
+    body.loading{overflow:hidden;}
 
     body.loading main,
     body.loading footer{
@@ -53,26 +48,25 @@
       transition:opacity .4s ease;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    button,input,select,textarea{
-      font-family:inherit;
-    }
+    a{text-decoration:none;color:inherit;}
+    img{display:block;max-width:100%;}
+    button,input,select,textarea{font-family:inherit;}
 
     .splash{
       position:fixed;
       inset:0;
       width:100vw;
       height:100vh;
+      height:100svh;
       background-color:var(--cream);
       background-image:url("anteprima-desktop.png");
       background-size:cover;
-      background-position:center;
+      background-position:center center;
       background-repeat:no-repeat;
       z-index:99999;
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
       transition:opacity .8s ease, visibility .8s ease;
     }
 
@@ -93,11 +87,21 @@
       background:linear-gradient(180deg,#fffaf0 0%,#fff 42%,#f3fbf6 100%);
     }
 
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 15% 22%,rgba(255,216,77,.35),transparent 28%),
+        radial-gradient(circle at 82% 18%,rgba(31,122,76,.12),transparent 30%);
+      pointer-events:none;
+    }
+
     .hero-content{
       width:min(900px,100%);
-      text-align:center;
       position:relative;
       z-index:2;
+      text-align:center;
     }
 
     h1{
@@ -161,28 +165,103 @@
       color:var(--green-dark);
     }
 
+    .btn-light:hover{transform:translateY(-2px);}
+
     .btn-orange{
       background:var(--orange);
       color:#fff;
+      box-shadow:0 16px 34px rgba(241,135,0,.18);
     }
 
+    .btn-orange:hover{
+      transform:translateY(-2px);
+      filter:brightness(.96);
+    }
+
+    .why-section,
+    .support-section,
+    .promote-section,
     .program-section{
-      padding:90px 22px 130px;
-      background:linear-gradient(180deg,#fffaf0 0%,#f3fbf6 100%);
+      display:none;
+      animation:fadeIn .5s ease;
     }
 
-    .program-inner{
+    .why-section.active,
+    .support-section.active,
+    .promote-section.active,
+    .program-section.active{
+      display:block;
+    }
+
+    .why-section{
+      padding:50px 22px 120px;
+      background:linear-gradient(180deg,#f3fbf6 0%,#fffaf0 100%);
+    }
+
+    .why-inner,
+    .promote-inner,
+    .program-inner,
+    .support-inner{
       width:min(1080px,100%);
       margin:0 auto;
     }
 
-    .program-title{
+    .why-title,
+    .promote-title,
+    .program-title,
+    .support-title{
       font-size:clamp(38px,6vw,72px);
       line-height:.95;
       letter-spacing:-.06em;
       color:var(--green-dark);
       font-weight:900;
-      margin-bottom:20px;
+      margin-bottom:28px;
+    }
+
+    .why-title-soft{
+      font-size:clamp(34px,5vw,60px);
+      line-height:1.08;
+      letter-spacing:-.045em;
+      font-weight:800;
+      max-width:850px;
+    }
+
+    .why-intro{
+      width:min(820px,100%);
+      font-size:clamp(18px,2vw,22px);
+      line-height:1.85;
+      color:var(--muted);
+      margin-bottom:36px;
+    }
+
+    .why-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+    }
+
+    .why-item{
+      padding:26px 0;
+      border-top:1px solid rgba(31,122,76,.16);
+    }
+
+    .why-item h3{
+      color:var(--green-dark);
+      font-size:22px;
+      margin-bottom:10px;
+    }
+
+    .why-item p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.8;
+    }
+
+    .program-section{
+      padding:90px 22px 130px;
+      background:
+        radial-gradient(circle at 8% 8%,rgba(241,135,0,.10),transparent 26%),
+        linear-gradient(180deg,#fffaf0 0%,#f3fbf6 100%);
     }
 
     .program-intro{
@@ -197,28 +276,44 @@
       display:grid;
       grid-template-columns:repeat(2,1fr);
       gap:22px;
+      align-items:stretch;
     }
 
     .program-card{
       position:relative;
       overflow:hidden;
       min-height:390px;
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(31,122,76,.08);
-      border-radius:38px;
-      padding:32px;
+      background:rgba(255,255,255,.86);
+      border:1px solid rgba(31,122,76,.10);
+      border-radius:36px;
+      padding:30px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
-      backdrop-filter:blur(18px);
-      box-shadow:
-        0 20px 80px rgba(23,49,38,.08),
-        inset 0 1px 0 rgba(255,255,255,.7);
+      box-shadow:0 26px 80px rgba(23,49,38,.10);
+      backdrop-filter:blur(14px);
       transition:.28s ease;
+    }
+
+    .program-card:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 85% 0%,rgba(241,135,0,.18),transparent 34%),
+        radial-gradient(circle at 0% 100%,rgba(31,122,76,.10),transparent 34%);
+      pointer-events:none;
     }
 
     .program-card:hover{
       transform:translateY(-6px);
+      box-shadow:0 34px 90px rgba(23,49,38,.15);
+    }
+
+    .program-top,
+    .program-bottom{
+      position:relative;
+      z-index:2;
     }
 
     .program-kicker{
@@ -241,7 +336,7 @@
       font-weight:900;
       line-height:1;
       letter-spacing:-.045em;
-      font-size:clamp(30px,3vw,42px);
+      font-size:clamp(30px,3.3vw,42px);
       white-space:nowrap;
       margin-bottom:18px;
     }
@@ -283,38 +378,147 @@
       height:9px;
       border-radius:999px;
       background:var(--green);
+      flex:0 0 auto;
     }
 
     .program-cta{
       width:100%;
       min-height:52px;
-      border:none;
+      padding:0 24px;
       border-radius:999px;
       background:var(--green);
       color:#fff;
+      border:none;
+      cursor:pointer;
       font-weight:900;
       font-size:15px;
+      transition:.25s ease;
+      box-shadow:0 16px 32px rgba(31,122,76,.18);
+    }
+
+    .program-cta:hover{
+      background:var(--green-dark);
+      transform:translateY(-2px);
+    }
+
+    .booking-box{
+      display:none;
+      margin-top:30px;
+      background:#fff;
+      border-radius:32px;
+      padding:32px;
+      box-shadow:0 20px 55px rgba(23,49,38,.08);
+      animation:fadeIn .4s ease;
+    }
+
+    .booking-box.active{display:block;}
+
+    .booking-box h3{
+      color:var(--green-dark);
+      font-size:32px;
+      margin-bottom:12px;
+      letter-spacing:-.04em;
+    }
+
+    .booking-note{
+      color:var(--muted);
+      line-height:1.75;
+      margin-bottom:24px;
+    }
+
+    .booking-note strong{color:var(--green-dark);}
+
+    .booking-form{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .field.full{grid-column:1/-1;}
+
+    .field label{
+      font-size:13px;
+      font-weight:900;
+      color:var(--green-dark);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .field input,
+    .field select,
+    .field textarea{
+      width:100%;
+      border:1px solid rgba(31,122,76,.16);
+      background:#f9fffb;
+      border-radius:18px;
+      padding:15px 16px;
+      font-size:16px;
+      outline:none;
+      color:var(--ink);
+    }
+
+    .field textarea{
+      min-height:100px;
+      resize:vertical;
+    }
+
+    .booking-submit{
+      margin-top:18px;
+      width:100%;
+    }
+
+    .call-help-btn{
+      margin-top:12px;
+      width:100%;
+      min-height:44px;
+      border:none;
+      background:transparent;
+      color:var(--green-dark);
+      font-size:14px;
+      font-weight:500;
+      text-decoration:underline;
       cursor:pointer;
+    }
+
+    .update-message{
+      display:none;
+      margin-top:18px;
+      padding:18px 20px;
+      border-radius:20px;
+      background:#f3fbf6;
+      color:var(--green-dark);
+      font-weight:800;
+      line-height:1.6;
+      border:1px solid rgba(31,122,76,.12);
+    }
+
+    .update-message.active{
+      display:block;
+      animation:fadeIn .35s ease;
     }
 
     .support-section{
       padding:90px 22px 130px;
-      background:linear-gradient(180deg,#fffaf0 0%,#f3fbf6 100%);
+      background:
+        radial-gradient(circle at 88% 18%,rgba(31,122,76,.12),transparent 30%),
+        linear-gradient(180deg,#fffaf0 0%,#f3fbf6 100%);
+      position:relative;
+      overflow:hidden;
     }
 
     .support-inner{
-      width:min(900px,100%);
-      margin:0 auto;
       text-align:center;
     }
 
     .support-title{
-      font-size:clamp(38px,6vw,72px);
-      line-height:.95;
-      letter-spacing:-.06em;
-      color:var(--green-dark);
-      font-weight:900;
-      margin-bottom:26px;
+      width:min(850px,100%);
+      margin:0 auto 26px;
     }
 
     .support-title span{
@@ -323,11 +527,14 @@
     }
 
     .support-top-card{
+      width:min(760px,100%);
+      margin:0 auto 28px;
       background:#fff;
       border-radius:34px;
       padding:30px;
-      box-shadow:0 24px 70px rgba(23,49,38,.08);
-      margin-bottom:26px;
+      box-shadow:0 24px 70px rgba(23,49,38,.10);
+      border:1px solid rgba(31,122,76,.10);
+      text-align:left;
     }
 
     .progress-top{
@@ -335,16 +542,26 @@
       justify-content:space-between;
       gap:20px;
       margin-bottom:18px;
+      align-items:flex-start;
+    }
+
+    .progress-top small{
+      display:block;
+      color:var(--muted);
+      margin-bottom:6px;
     }
 
     .progress-top strong{
       font-size:32px;
       color:var(--green-dark);
+      letter-spacing:-.03em;
     }
 
     .goal{
       color:var(--orange);
       font-weight:900;
+      white-space:nowrap;
+      padding-top:8px;
     }
 
     .progress-bar{
@@ -359,83 +576,209 @@
     .progress-fill{
       height:100%;
       width:0%;
+      border-radius:999px;
       background:linear-gradient(90deg,var(--green),#37b06d);
+      box-shadow:0 0 20px rgba(31,122,76,.3);
     }
 
     .support-description{
+      width:min(760px,100%);
+      margin:0 auto 26px;
       font-size:18px;
       line-height:1.9;
       color:var(--muted);
-      margin-bottom:24px;
+      text-align:center;
+    }
+
+    .support-description strong{
+      color:var(--green-dark);
+      font-weight:900;
+    }
+
+    .support-actions{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin:20px 0 26px;
+    }
+
+    .contribution-box{
+      display:none;
+      width:min(720px,100%);
+      margin:0 auto 30px;
+      padding:24px;
+      border-radius:24px;
+      background:#fff;
+      box-shadow:0 18px 45px rgba(23,49,38,.08);
+      color:var(--muted);
+      line-height:1.75;
+      text-align:left;
+      animation:fadeIn .4s ease;
+    }
+
+    .contribution-box.active{display:block;}
+
+    .contact-card{
+      margin-top:18px;
+      padding:18px;
+      border-radius:20px;
+      background:#f3fbf6;
+      border:1px solid rgba(31,122,76,.12);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .contact-name{
+      font-size:18px;
+      color:var(--green-dark);
+      font-weight:900;
+    }
+
+    .contact-note{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+    }
+
+    .contact-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .contact-btn{
+      min-height:46px;
+      padding:0 18px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      transition:.25s ease;
+      border:none;
+      cursor:pointer;
+      font-size:15px;
+    }
+
+    .contact-call{
+      background:var(--green);
+      color:#fff;
+    }
+
+    .contact-wa{
+      background:#25D366;
+      color:#fff;
+    }
+
+    .contact-btn:hover{
+      transform:translateY(-2px);
+      filter:brightness(.96);
     }
 
     .defib-visual{
-      width:min(280px,100%);
-      margin:20px auto 0;
+      width:min(310px,100%);
+      margin:18px auto 0;
       opacity:.9;
+      filter:drop-shadow(0 30px 45px rgba(23,49,38,.10));
+    }
+
+    .defib-visual svg{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .promote-section{
+      padding:70px 22px 120px;
+      background:linear-gradient(180deg,#f3fbf6 0%,#fffaf0 100%);
+    }
+
+    .promote-text{
+      width:min(760px,100%);
+      font-size:18px;
+      line-height:1.9;
+      color:var(--muted);
+      margin-bottom:26px;
+    }
+
+    .whatsapp-btn{
+      min-height:58px;
+      padding:0 30px;
+      border-radius:999px;
+      background:#25D366;
+      color:#fff;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      box-shadow:0 16px 34px rgba(37,211,102,.20);
+      transition:.25s ease;
+      border:none;
+      cursor:pointer;
+      font-size:15px;
+    }
+
+    .whatsapp-btn:hover{
+      transform:translateY(-2px);
+      filter:brightness(.96);
     }
 
     .fixed-footer{
       position:fixed;
       left:0;
       right:0;
-      bottom:10px;
+      bottom:0;
       z-index:9999;
+      height:34px;
       display:flex;
       justify-content:center;
       align-items:center;
-      pointer-events:none;
+      background:rgba(255,250,240,.18);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-top:1px solid rgba(255,255,255,.22);
     }
 
     .fixed-footer button{
-      pointer-events:auto;
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.10);
-      backdrop-filter:blur(22px);
-      -webkit-backdrop-filter:blur(22px);
-      color:rgba(15,79,49,.88);
-      height:34px;
-      padding:0 20px;
-      border-radius:999px;
+      border:none;
+      background:transparent;
+      color:rgba(15,79,49,.86);
       font-size:11px;
       font-weight:700;
-      letter-spacing:.22em;
+      letter-spacing:.18em;
       text-transform:uppercase;
       cursor:pointer;
-      box-shadow:
-        0 10px 30px rgba(23,49,38,.10),
-        inset 0 1px 0 rgba(255,255,255,.22);
-      transition:.28s ease;
+      padding:0 12px;
+      line-height:34px;
+      font-family:Inter,Arial,sans-serif;
+      transition:.25s ease;
     }
 
     .fixed-footer button:hover{
-      transform:translateY(-2px);
-      background:rgba(255,255,255,.18);
       color:var(--green-dark);
-      box-shadow:
-        0 18px 40px rgba(23,49,38,.14),
-        inset 0 1px 0 rgba(255,255,255,.30);
+      letter-spacing:.22em;
     }
 
     .footer-update-message{
       display:none;
       position:absolute;
-      bottom:46px;
+      bottom:42px;
       left:50%;
       transform:translateX(-50%);
       width:min(420px,calc(100vw - 36px));
       padding:16px 18px;
-      border-radius:22px;
-      background:rgba(255,255,255,.70);
-      backdrop-filter:blur(24px);
+      border-radius:20px;
+      background:rgba(255,255,255,.74);
+      backdrop-filter:blur(22px);
+      -webkit-backdrop-filter:blur(22px);
       color:var(--green-dark);
       font-weight:500;
       line-height:1.5;
+      box-shadow:0 18px 45px rgba(23,49,38,.12);
       text-align:center;
-      border:1px solid rgba(255,255,255,.28);
-      box-shadow:
-        0 18px 45px rgba(23,49,38,.10),
-        inset 0 1px 0 rgba(255,255,255,.45);
+      border:1px solid rgba(255,255,255,.35);
     }
 
     .footer-update-message.active{
@@ -444,14 +787,8 @@
     }
 
     @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:translateX(-50%) translateY(14px);
-      }
-      to{
-        opacity:1;
-        transform:translateX(-50%) translateY(0);
-      }
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:translateY(0);}
     }
 
     @media (max-width:900px){
@@ -461,15 +798,21 @@
     }
 
     @media (max-width:768px){
-
       .splash{
         background-image:url("anteprima-mobile.png");
+        background-size:cover;
         background-position:center 25%;
+        background-repeat:no-repeat;
       }
 
       .hero{
         min-height:auto;
         padding:55px 18px 55px;
+        align-items:flex-start;
+      }
+
+      .hero-content{
+        padding-top:10px;
       }
 
       .hero-description{
@@ -477,38 +820,89 @@
         line-height:1.65;
       }
 
-      .cta-row{
+      .cta-row,
+      .support-actions,
+      .contact-actions{
         flex-direction:column;
       }
 
       .btn,
+      .whatsapp-btn,
+      .contact-btn,
       .program-cta{
         width:100%;
+      }
+
+      h1{
+        font-size:clamp(46px,13vw,78px);
+      }
+
+      .why-section{
+        padding:55px 18px 95px;
+      }
+
+      .why-title-soft{
+        font-size:clamp(32px,9vw,46px);
+      }
+
+      .why-intro{
+        font-size:16px;
+        line-height:1.75;
+      }
+
+      .why-grid{
+        grid-template-columns:1fr;
+        gap:0;
+      }
+
+      .why-item{
+        padding:24px 0;
       }
 
       .program-section{
         padding:70px 18px 110px;
       }
 
+      .program-intro{
+        font-size:16px;
+        line-height:1.75;
+      }
+
       .program-card{
         min-height:auto;
         padding:24px;
+        border-radius:30px;
       }
 
       .program-date{
         font-size:27px;
+        white-space:nowrap;
       }
 
       .program-card h3{
         font-size:25px;
       }
 
+      .booking-box{
+        padding:24px 18px;
+      }
+
+      .booking-form{
+        grid-template-columns:1fr;
+      }
+
       .support-section{
         padding:80px 18px 110px;
       }
 
-      .support-description{
+      .support-description,
+      .promote-text{
         font-size:16px;
+        line-height:1.8;
+      }
+
+      .support-top-card{
+        padding:24px;
       }
 
       .progress-top{
@@ -518,6 +912,16 @@
       .progress-top strong{
         font-size:26px;
       }
+
+      .defib-visual{
+        width:min(250px,80%);
+      }
+    }
+
+    @media (max-width:390px){
+      .program-date{
+        font-size:24px;
+      }
     }
   </style>
 </head>
@@ -526,7 +930,7 @@
 
   <div class="splash" id="splashScreen"></div>
 
-  <main>
+  <main id="top">
 
     <section class="hero">
       <div class="hero-content">
@@ -543,15 +947,84 @@
         </p>
 
         <div class="cta-row">
-          <button class="btn btn-light">Perché partecipare</button>
-          <button class="btn btn-primary">Scopri il programma</button>
-          <button class="btn btn-orange">Sostieni l’iniziativa</button>
+          <button class="btn btn-light" onclick="toggleSection('whySection')">
+            Perché partecipare
+          </button>
+
+          <button class="btn btn-primary" onclick="toggleSection('programSection')">
+            Scopri il programma
+          </button>
+
+          <button class="btn btn-orange" onclick="toggleSection('supportSection')">
+            Sostieni l’iniziativa
+          </button>
+
+          <button class="btn btn-light" onclick="toggleSection('promoteSection')">
+            Proponi un’iniziativa
+          </button>
         </div>
 
       </div>
     </section>
 
-    <section class="program-section">
+    <section class="why-section" id="whySection">
+      <div class="why-inner">
+
+        <h2 class="why-title why-title-soft">
+          Una scelta semplice per prenderci cura di chi vive il paese
+        </h2>
+
+        <p class="why-intro">
+          Lo facciamo per amore di Cuccaro Vetere, ma soprattutto per amore
+          delle persone che lo vivono ogni giorno: i nostri genitori, i nostri nonni,
+          i giovani che restano, chi torna appena può e chi sente ancora questo paese
+          come una parte importante della propria storia.
+          <br><br>
+          La prevenzione non deve essere lontana o complicata. Può diventare
+          un momento semplice, accessibile e utile, capace di portare consapevolezza,
+          controlli e buone abitudini direttamente nel cuore del paese.
+        </p>
+
+        <div class="why-grid">
+
+          <div class="why-item">
+            <h3>Per stare più vicini alle persone</h3>
+            <p>
+              Portare controlli, informazione e ascolto nel paese significa rendere
+              la salute più accessibile e meno distante dalla vita quotidiana.
+            </p>
+          </div>
+
+          <div class="why-item">
+            <h3>Per custodire ciò che siamo</h3>
+            <p>
+              Viviamo in una terra legata alla Dieta Mediterranea e a ritmi più umani,
+              ma abitudini, alimentazione e sedentarietà stanno cambiando anche qui.
+            </p>
+          </div>
+
+          <div class="why-item">
+            <h3>Per coinvolgere i giovani</h3>
+            <p>
+              Parlare di prevenzione ai giovani significa aiutarli a costruire
+              prima abitudini sane e renderli parte attiva della comunità.
+            </p>
+          </div>
+
+          <div class="why-item">
+            <h3>Per creare un percorso</h3>
+            <p>
+              L’obiettivo non è una singola giornata, ma un progetto che possa
+              tornare nel tempo e diventare una buona abitudine per tutti.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="program-section" id="programSection">
 
       <div class="program-inner">
 
@@ -560,14 +1033,15 @@
         </h2>
 
         <p class="program-intro">
-          Le prenotazioni saranno raccolte fino a esaurimento posti e organizzate per fasce orarie.
+          Le prenotazioni saranno raccolte fino a esaurimento posti e organizzate
+          per fasce orarie.
         </p>
 
         <div class="program-grid">
 
           <div class="program-card">
 
-            <div>
+            <div class="program-top">
               <div class="program-kicker">Prima giornata</div>
 
               <div class="program-date">
@@ -578,7 +1052,9 @@
                 Ore 09:00 - 12:30<br>
                 Via Convento, Cuccaro Vetere
               </div>
+            </div>
 
+            <div class="program-bottom">
               <h3>Cardiologia + Nutrizione</h3>
 
               <div class="doctor-list">
@@ -586,28 +1062,26 @@
                   <span class="doctor-dot"></span>
                   Dott. Giulio Rossi
                 </div>
-
                 <div class="doctor-item">
                   <span class="doctor-dot"></span>
                   Dott.ssa Marta Leone
                 </div>
-
                 <div class="doctor-item">
                   <span class="doctor-dot"></span>
                   Dott. Andrea Marino
                 </div>
               </div>
-            </div>
 
-            <button class="program-cta">
-              Iscriviti
-            </button>
+              <button class="program-cta" onclick="openBooking('01-06-2026')">
+                Iscriviti
+              </button>
+            </div>
 
           </div>
 
           <div class="program-card">
 
-            <div>
+            <div class="program-top">
               <div class="program-kicker">Seconda giornata</div>
 
               <div class="program-date">
@@ -618,7 +1092,9 @@
                 Ore 09:00 - 12:30<br>
                 Via Convento, Cuccaro Vetere
               </div>
+            </div>
 
+            <div class="program-bottom">
               <h3>Dermatologia + Screening base</h3>
 
               <div class="doctor-list">
@@ -626,23 +1102,89 @@
                   <span class="doctor-dot"></span>
                   Dott.ssa Chiara Romano
                 </div>
-
                 <div class="doctor-item">
                   <span class="doctor-dot"></span>
                   Dott. Paolo Greco
                 </div>
-
                 <div class="doctor-item">
                   <span class="doctor-dot"></span>
                   Dott.ssa Elena Vitale
                 </div>
               </div>
+
+              <button class="program-cta" onclick="openBooking('08-06-2026')">
+                Iscriviti
+              </button>
             </div>
 
-            <button class="program-cta">
-              Iscriviti
-            </button>
+          </div>
 
+        </div>
+
+        <div class="booking-box" id="bookingBox">
+
+          <h3>Richiedi la prenotazione</h3>
+
+          <p class="booking-note">
+            Le prenotazioni saranno gestite <strong>fino a esaurimento posti</strong>.
+            La fascia oraria indicata è una preferenza: l’orario definitivo verrà
+            confermato dall’organizzazione in base alla disponibilità.
+          </p>
+
+          <div class="booking-form">
+
+            <div class="field">
+              <label>Nome e cognome</label>
+              <input type="text" id="bookingName" placeholder="Es. Mario Rossi">
+            </div>
+
+            <div class="field">
+              <label>Data di riferimento</label>
+              <select id="bookingDate" onchange="updateVisitOptions()">
+                <option value="">Seleziona una data</option>
+                <option value="01-06-2026">Lunedì 1 giugno 2026</option>
+                <option value="08-06-2026">Lunedì 8 giugno 2026</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Telefono</label>
+              <input type="tel" id="bookingPhone" placeholder="Es. 333 1234567">
+            </div>
+
+            <div class="field">
+              <label>Visita richiesta</label>
+              <select id="bookingVisit">
+                <option value="">Prima seleziona una data</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Fascia oraria preferita</label>
+              <select id="bookingTime">
+                <option value="">Seleziona una fascia</option>
+                <option>Mattina - 09:00 / 10:30</option>
+                <option>Mattina - 10:30 / 12:30</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label>Note eventuali</label>
+              <textarea id="bookingNotes" placeholder="Scrivi qui eventuali preferenze o informazioni utili"></textarea>
+            </div>
+
+          </div>
+
+          <button class="btn btn-primary booking-submit" onclick="showUpdateMessage('bookingUpdateMessage')">
+            Invia richiesta
+          </button>
+
+          <button class="call-help-btn" onclick="showUpdateMessage('bookingUpdateMessage')">
+            Chiama se hai difficoltà ad iscriverti
+          </button>
+
+          <div class="update-message" id="bookingUpdateMessage">
+            Il sito è in fase di aggiornamento. A breve sarà possibile inviare correttamente la richiesta di prenotazione.
           </div>
 
         </div>
@@ -651,7 +1193,7 @@
 
     </section>
 
-    <section class="support-section">
+    <section class="support-section" id="supportSection">
 
       <div class="support-inner">
 
@@ -664,7 +1206,7 @@
 
           <div class="progress-top">
             <div>
-              <small>Raccolta attuale</small><br>
+              <small>Raccolta attuale</small>
               <strong>€ 0 raccolti</strong>
             </div>
 
@@ -677,26 +1219,113 @@
             <div class="progress-fill"></div>
           </div>
 
-          <button class="btn btn-primary">
+          <button class="btn btn-primary booking-submit" onclick="toggleContributionBox()">
             Versa un contributo
           </button>
 
         </div>
 
         <p class="support-description">
-          Le eventuali donazioni raccolte durante il progetto verranno custodite dalla Tesoreria del Forum dei Giovani di Cuccaro Vetere e destinate esclusivamente al raggiungimento di obiettivi concreti per la comunità.
+          Le eventuali <strong>donazioni</strong> raccolte durante il progetto
+          verranno custodite dalla <strong>Tesoreria del Forum dei Giovani</strong>
+          di Cuccaro Vetere e destinate esclusivamente al raggiungimento
+          di obiettivi concreti per la comunità, come l’acquisto di un
+          defibrillatore o altre dotazioni utili alla salute pubblica.
         </p>
+
+        <div class="contribution-box" id="contributionBox">
+          Una persona incaricata verrà da te a raccogliere la donazione,
+          anche di 1 euro, per portarla alla cassa del Forum dei Giovani
+          e aggiornare in breve tempo l’avanzamento della raccolta.
+
+          <div class="contact-card">
+            <div class="contact-name">
+              Christian Gatto
+            </div>
+
+            <div class="contact-note">
+              Chiama o scrivi su WhatsApp: verrai contattato tempestivamente
+              per concordare il ritiro del contributo.
+            </div>
+
+            <div class="contact-actions">
+              <button class="contact-btn contact-call" onclick="showUpdateMessage('supportUpdateMessage')">
+                Chiama ora
+              </button>
+
+              <button class="contact-btn contact-wa" onclick="showUpdateMessage('supportUpdateMessage')">
+                Scrivi su WhatsApp
+              </button>
+            </div>
+
+            <div class="update-message" id="supportUpdateMessage">
+              Il sito è in fase di aggiornamento. A breve saranno disponibili i contatti per contribuire all’iniziativa.
+            </div>
+          </div>
+        </div>
 
         <div class="defib-visual">
 
-          <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrazione defibrillatore">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#37b06d"/>
+                <stop offset="100%" stop-color="#1f7a4c"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#fff"/>
+                <stop offset="100%" stop-color="#eef8f2"/>
+              </linearGradient>
+            </defs>
+
             <circle cx="260" cy="260" r="240" fill="#eaf6ef"/>
-            <rect x="115" y="105" width="290" height="330" rx="42" fill="#1f7a4c"/>
-            <rect x="142" y="145" width="236" height="250" rx="28" fill="#fff"/>
+            <circle cx="120" cy="120" r="34" fill="#f18700" opacity=".18"/>
+            <circle cx="430" cy="390" r="48" fill="#1f7a4c" opacity=".10"/>
+
+            <rect x="115" y="105" width="290" height="330" rx="42" fill="url(#g1)"/>
+            <rect x="142" y="145" width="236" height="250" rx="28" fill="url(#g2)"/>
+
+            <rect x="178" y="176" width="164" height="52" rx="14" fill="#173126" opacity=".9"/>
+            <path d="M202 202h30l14-20 18 40 15-26h40" fill="none" stroke="#37b06d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
             <circle cx="260" cy="302" r="58" fill="#f18700"/>
             <path d="M260 262v80M220 302h80" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
+
+            <rect x="178" y="365" width="164" height="10" rx="5" fill="#1f7a4c" opacity=".25"/>
+
+            <path d="M190 105v-20c0-22 18-40 40-40h60c22 0 40 18 40 40v20" fill="none" stroke="#173126" stroke-width="22" stroke-linecap="round"/>
+
+            <path d="M405 245c38 10 68 42 73 83 6 52-29 100-79 110" fill="none" stroke="#f18700" stroke-width="18" stroke-linecap="round" opacity=".85"/>
+            <path d="M441 323l37 6 6-37" fill="none" stroke="#f18700" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
           </svg>
 
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="promote-section" id="promoteSection">
+
+      <div class="promote-inner">
+
+        <h2 class="promote-title">
+          Hai un’idea, una proposta
+          o vuoi semplicemente dare una mano?
+        </h2>
+
+        <p class="promote-text">
+          Qui chiunque può sentirsi libero di proporre idee, iniziative,
+          collaborazioni o semplicemente dare una mano nel promuovere il progetto
+          e far crescere nel tempo qualcosa di utile per tutta la comunità.
+        </p>
+
+        <button class="whatsapp-btn" onclick="showUpdateMessage('promoteUpdateMessage')">
+          Contattaci
+        </button>
+
+        <div class="update-message" id="promoteUpdateMessage">
+          Il sito è in fase di aggiornamento. A breve sarà possibile inviare proposte e iniziative.
         </div>
 
       </div>
@@ -706,19 +1335,16 @@
   </main>
 
   <footer class="fixed-footer">
-
-    <button onclick="showFooterMessage()">
+    <button onclick="showUpdateMessage('footerUpdateMessage')">
       Contatti
     </button>
 
     <div class="footer-update-message" id="footerUpdateMessage">
       Il sito è in fase di aggiornamento. A breve saranno disponibili tutti i contatti ufficiali.
     </div>
-
   </footer>
 
   <script>
-
     function preloadSplashImages(){
       const desktop = new Image();
       const mobile = new Image();
@@ -730,23 +1356,105 @@
     preloadSplashImages();
 
     window.addEventListener('load', function(){
-
       const splash = document.getElementById('splashScreen');
+
+      document.body.classList.add('loading');
 
       setTimeout(function(){
         splash.classList.add('hide');
         document.body.classList.remove('loading');
         document.body.classList.add('ready');
       }, 3000);
-
     });
 
-    function showFooterMessage(){
-      document
-        .getElementById('footerUpdateMessage')
-        .classList.add('active');
+    function toggleSection(id){
+      const sections = [
+        document.getElementById('whySection'),
+        document.getElementById('programSection'),
+        document.getElementById('supportSection'),
+        document.getElementById('promoteSection')
+      ];
+
+      const section = document.getElementById(id);
+
+      sections.forEach(function(item){
+        if(item !== section){
+          item.classList.remove('active');
+        }
+      });
+
+      section.classList.toggle('active');
+
+      if(section.classList.contains('active')){
+        setTimeout(function(){
+          section.scrollIntoView({
+            behavior:'smooth',
+            block:'start'
+          });
+        }, 100);
+      }
     }
 
+    function toggleContributionBox(){
+      document.getElementById('contributionBox').classList.toggle('active');
+    }
+
+    function openBooking(dateValue){
+      const bookingBox = document.getElementById('bookingBox');
+      const bookingDate = document.getElementById('bookingDate');
+
+      bookingBox.classList.add('active');
+
+      if(dateValue){
+        bookingDate.value = dateValue;
+        updateVisitOptions();
+      }
+
+      setTimeout(function(){
+        bookingBox.scrollIntoView({
+          behavior:'smooth',
+          block:'start'
+        });
+      }, 100);
+    }
+
+    function updateVisitOptions(){
+      const bookingDate = document.getElementById('bookingDate').value;
+      const bookingVisit = document.getElementById('bookingVisit');
+
+      bookingVisit.innerHTML = "";
+
+      let options = [];
+
+      if(bookingDate === "01-06-2026"){
+        options = [
+          "Cardiologia",
+          "Nutrizione",
+          "Cardiologia + Nutrizione"
+        ];
+      } else if(bookingDate === "08-06-2026"){
+        options = [
+          "Dermatologia",
+          "Screening base",
+          "Dermatologia + Screening base"
+        ];
+      } else {
+        options = [
+          "Prima seleziona una data"
+        ];
+      }
+
+      options.forEach(function(optionText){
+        const option = document.createElement('option');
+        option.textContent = optionText;
+        option.value = optionText;
+        bookingVisit.appendChild(option);
+      });
+    }
+
+    function showUpdateMessage(id){
+      document.getElementById(id).classList.add('active');
+    }
   </script>
 
 </body>
