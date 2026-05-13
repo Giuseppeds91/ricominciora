@@ -283,7 +283,7 @@
       border-radius:30px;
       padding:26px;
       display:grid;
-      grid-template-columns:210px 1fr;
+      grid-template-columns:250px 1fr;
       gap:24px;
       text-align:left;
       box-shadow:0 18px 50px rgba(23,49,38,.08);
@@ -298,9 +298,10 @@
     .program-date{
       color:var(--orange);
       font-weight:900;
-      line-height:.95;
+      line-height:1;
       letter-spacing:-.04em;
-      font-size:clamp(34px,5vw,58px);
+      font-size:clamp(27px,3.5vw,40px);
+      white-space:nowrap;
     }
 
     .program-date small{
@@ -310,6 +311,7 @@
       text-transform:uppercase;
       color:var(--green-dark);
       margin-bottom:8px;
+      white-space:normal;
     }
 
     .program-date span{
@@ -320,6 +322,7 @@
       line-height:1.5;
       letter-spacing:0;
       font-weight:700;
+      white-space:normal;
     }
 
     .program-card h3{
@@ -332,23 +335,7 @@
       color:var(--muted);
       font-size:17px;
       line-height:1.7;
-      margin-bottom:14px;
-    }
-
-    .program-tags{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
       margin-bottom:18px;
-    }
-
-    .program-tags span{
-      padding:8px 12px;
-      border-radius:999px;
-      background:#f3fbf6;
-      color:var(--green-dark);
-      font-size:13px;
-      font-weight:800;
     }
 
     .program-cta{
@@ -439,6 +426,19 @@
     .booking-submit{
       margin-top:18px;
       width:100%;
+    }
+
+    .call-help-btn{
+      margin-top:12px;
+      width:100%;
+      min-height:44px;
+      border:none;
+      background:transparent;
+      color:var(--green-dark);
+      font-size:14px;
+      font-weight:500;
+      text-decoration:underline;
+      cursor:pointer;
     }
 
     .update-message{
@@ -823,7 +823,8 @@
       }
 
       .program-date{
-        font-size:46px;
+        font-size:27px;
+        white-space:nowrap;
       }
 
       .program-card h3{
@@ -858,6 +859,12 @@
 
       .defib-visual{
         width:min(250px,80%);
+      }
+    }
+
+    @media (max-width:390px){
+      .program-date{
+        font-size:24px;
       }
     }
   </style>
@@ -994,13 +1001,7 @@
                 alimentazione e corretti stili di vita.
               </p>
 
-              <div class="program-tags">
-                <span>Posti limitati</span>
-                <span>Fasce orarie</span>
-                <span>Prenotazione richiesta</span>
-              </div>
-
-              <button class="program-cta" onclick="openBooking('Cardiologia + Nutrizione')">
+              <button class="program-cta" onclick="openBooking('01-06-2026')">
                 Iscriviti
               </button>
             </div>
@@ -1025,13 +1026,7 @@
                 saturazione e parametri vitali.
               </p>
 
-              <div class="program-tags">
-                <span>Posti limitati</span>
-                <span>Fasce orarie</span>
-                <span>Dettagli in aggiornamento</span>
-              </div>
-
-              <button class="program-cta" onclick="openBooking('Dermatologia + Screening base')">
+              <button class="program-cta" onclick="openBooking('08-06-2026')">
                 Iscriviti
               </button>
             </div>
@@ -1058,6 +1053,15 @@
             </div>
 
             <div class="field">
+              <label>Data di riferimento</label>
+              <select id="bookingDate" onchange="updateVisitOptions()">
+                <option value="">Seleziona una data</option>
+                <option value="01-06-2026">Lunedì 1 giugno 2026</option>
+                <option value="08-06-2026">Lunedì 8 giugno 2026</option>
+              </select>
+            </div>
+
+            <div class="field">
               <label>Telefono</label>
               <input type="tel" id="bookingPhone" placeholder="Es. 333 1234567">
             </div>
@@ -1065,11 +1069,7 @@
             <div class="field">
               <label>Visita richiesta</label>
               <select id="bookingVisit">
-                <option value="">Seleziona una visita</option>
-                <option>Cardiologia</option>
-                <option>Nutrizione</option>
-                <option>Dermatologia</option>
-                <option>Screening base</option>
+                <option value="">Prima seleziona una data</option>
               </select>
             </div>
 
@@ -1091,6 +1091,10 @@
 
           <button class="btn btn-primary booking-submit" onclick="showUpdateMessage('bookingUpdateMessage')">
             Invia richiesta
+          </button>
+
+          <button class="call-help-btn" onclick="showUpdateMessage('bookingUpdateMessage')">
+            Chiama se hai difficoltà ad iscriverti
           </button>
 
           <div class="update-message" id="bookingUpdateMessage">
@@ -1322,11 +1326,16 @@
       document.getElementById('contributionBox').classList.toggle('active');
     }
 
-    function openBooking(programName){
-      selectedProgram = programName;
-
+    function openBooking(dateValue){
       const bookingBox = document.getElementById('bookingBox');
+      const bookingDate = document.getElementById('bookingDate');
+
       bookingBox.classList.add('active');
+
+      if(dateValue){
+        bookingDate.value = dateValue;
+        updateVisitOptions();
+      }
 
       setTimeout(function(){
         bookingBox.scrollIntoView({
@@ -1334,6 +1343,40 @@
           block:'start'
         });
       }, 100);
+    }
+
+    function updateVisitOptions(){
+      const bookingDate = document.getElementById('bookingDate').value;
+      const bookingVisit = document.getElementById('bookingVisit');
+
+      bookingVisit.innerHTML = "";
+
+      let options = [];
+
+      if(bookingDate === "01-06-2026"){
+        options = [
+          "Cardiologia",
+          "Nutrizione",
+          "Cardiologia + Nutrizione"
+        ];
+      } else if(bookingDate === "08-06-2026"){
+        options = [
+          "Dermatologia",
+          "Screening base",
+          "Dermatologia + Screening base"
+        ];
+      } else {
+        options = [
+          "Prima seleziona una data"
+        ];
+      }
+
+      options.forEach(function(optionText){
+        const option = document.createElement('option');
+        option.textContent = optionText;
+        option.value = optionText;
+        bookingVisit.appendChild(option);
+      });
     }
 
     function showUpdateMessage(id){
