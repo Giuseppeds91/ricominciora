@@ -6,7 +6,6 @@
   <title>Cuccaro Vetere e la Prevenzione</title>
 
   <style>
-
     :root{
       --green:#1f7a4c;
       --green-dark:#0f4f31;
@@ -22,8 +21,9 @@
       box-sizing:border-box;
     }
 
-    html{
-      scroll-behavior:smooth;
+    html, body{
+      width:100%;
+      min-height:100%;
       overflow-x:hidden;
     }
 
@@ -31,16 +31,10 @@
       font-family:Inter,Arial,sans-serif;
       background:linear-gradient(180deg,#fffaf0 0%,#fff 42%,#f3fbf6 100%);
       color:var(--ink);
-      overflow-x:hidden;
     }
 
     body.loading{
       overflow:hidden;
-    }
-
-    img{
-      display:block;
-      max-width:100%;
     }
 
     a{
@@ -48,19 +42,25 @@
       color:inherit;
     }
 
-    /* SPLASH */
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    /* SPLASH FULLSCREEN */
 
     .splash{
       position:fixed;
       inset:0;
       width:100vw;
-      height:100dvh;
-      background:#000;
+      height:100vh;
+      height:100svh;
+      background-image:url("anteprima-prevenzione.png");
+      background-size:cover;
+      background-position:center center;
+      background-repeat:no-repeat;
+      background-color:#fffaf0;
       z-index:99999;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
       transition:opacity .8s ease, visibility .8s ease;
     }
 
@@ -68,27 +68,6 @@
       opacity:0;
       visibility:hidden;
       pointer-events:none;
-    }
-
-    .splash-inner{
-      width:100%;
-      height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .splash-img{
-      width:100vw;
-      height:100dvh;
-      object-fit:cover;
-      object-position:center;
-      filter:
-        contrast(1.08)
-        saturate(1.1)
-        brightness(1.03);
-      transform:translateZ(0);
-      backface-visibility:hidden;
     }
 
     /* HERO */
@@ -107,8 +86,8 @@
       position:absolute;
       inset:0;
       background:
-      radial-gradient(circle at 15% 22%,rgba(255,216,77,.35),transparent 28%),
-      radial-gradient(circle at 82% 18%,rgba(31,122,76,.12),transparent 30%);
+        radial-gradient(circle at 15% 22%,rgba(255,216,77,.35),transparent 28%),
+        radial-gradient(circle at 82% 18%,rgba(31,122,76,.12),transparent 30%);
       pointer-events:none;
     }
 
@@ -201,10 +180,6 @@
       width:100%;
       aspect-ratio:1.28/1;
       object-fit:cover;
-      filter:
-        contrast(1.05)
-        saturate(1.08)
-        brightness(1.02);
     }
 
     .floating-note{
@@ -229,10 +204,7 @@
       letter-spacing:.12em;
     }
 
-    /* TABLET */
-
     @media (max-width:1100px){
-
       .hero-grid{
         grid-template-columns:1fr;
       }
@@ -246,20 +218,10 @@
       }
     }
 
-    /* MOBILE */
-
     @media (max-width:768px){
-
       .splash{
-        background:#fffaf0;
-      }
-
-      .splash-img{
-        width:100vw;
-        height:100dvh;
-        object-fit:contain;
-        object-position:center;
-        padding:10px;
+        background-size:cover;
+        background-position:center center;
       }
 
       .hero{
@@ -289,47 +251,26 @@
     }
 
     @media (max-width:520px){
+      .splash{
+        background-position:center center;
+      }
 
       .hands-card{
         border-width:6px;
       }
-
-      .splash-img{
-        padding:6px;
-      }
     }
-
   </style>
 </head>
 
 <body class="loading">
 
-  <!-- SPLASH -->
-
-  <div class="splash" id="splashScreen">
-
-    <div class="splash-inner">
-
-      <img
-        class="splash-img"
-        src="anteprima-prevenzione.png"
-        alt="Cuccaro Vetere e la Prevenzione"
-      >
-
-    </div>
-
-  </div>
-
-  <!-- HERO -->
+  <div class="splash" id="splashScreen"></div>
 
   <main id="top">
-
     <section class="hero">
-
       <div class="hero-grid">
 
         <div class="hero-copy">
-
           <h1>
             Giornate per la prevenzione
             <span>a Cuccaro Vetere</span>
@@ -343,59 +284,33 @@
           </p>
 
           <div class="cta-row">
-
-            <a class="btn btn-primary" href="#">
-              Scopri il programma
-            </a>
-
-            <a class="btn btn-light" href="#">
-              Perché partecipare
-            </a>
-
+            <a class="btn btn-primary" href="#">Scopri il programma</a>
+            <a class="btn btn-light" href="#">Perché partecipare</a>
           </div>
-
         </div>
 
         <div class="hero-visual">
-
           <div class="hands-card">
-
-            <img
-              src="anteprima-prevenzione.png"
-              alt="Prevenzione"
-            >
-
+            <img src="anteprima-prevenzione.png" alt="Prevenzione">
           </div>
 
           <div class="floating-note">
             <small>Prevenire è vivere meglio</small>
             Un gesto semplice può diventare cultura per tutti.
           </div>
-
         </div>
 
       </div>
-
     </section>
-
   </main>
 
   <script>
-
     window.addEventListener('load', function(){
-
       setTimeout(function(){
-
-        const splash = document.getElementById('splashScreen');
-
-        splash.classList.add('hide');
-
+        document.getElementById('splashScreen').classList.add('hide');
         document.body.classList.remove('loading');
-
       }, 3000);
-
     });
-
   </script>
 
 </body>
