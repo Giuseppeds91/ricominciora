@@ -48,6 +48,12 @@
       max-width:100%;
     }
 
+    button{
+      font-family:inherit;
+    }
+
+    /* SPLASH */
+
     .splash{
       position:fixed;
       inset:0;
@@ -67,6 +73,8 @@
       visibility:hidden;
       pointer-events:none;
     }
+
+    /* HERO */
 
     .hero{
       min-height:100vh;
@@ -137,7 +145,6 @@
       transition:.25s ease;
       cursor:pointer;
       border:none;
-      font-family:inherit;
       font-size:15px;
     }
 
@@ -173,14 +180,18 @@
       filter:brightness(.96);
     }
 
+    /* SEZIONI ESPANDIBILI */
+
     .why-section,
-    .support-section{
+    .support-section,
+    .promote-section{
       display:none;
       animation:fadeIn .5s ease;
     }
 
     .why-section.active,
-    .support-section.active{
+    .support-section.active,
+    .promote-section.active{
       display:block;
     }
 
@@ -189,7 +200,8 @@
       background:linear-gradient(180deg,#f3fbf6 0%,#fffaf0 100%);
     }
 
-    .why-inner{
+    .why-inner,
+    .promote-inner{
       width:min(980px,100%);
       margin:0 auto;
     }
@@ -203,7 +215,8 @@
       margin-bottom:16px;
     }
 
-    .why-title{
+    .why-title,
+    .promote-title{
       font-size:clamp(38px,6vw,72px);
       line-height:.95;
       letter-spacing:-.06em;
@@ -235,6 +248,8 @@
       line-height:1.8;
     }
 
+    /* SUPPORTO */
+
     .support-section{
       padding:90px 22px 130px;
       background:linear-gradient(180deg,#fffaf0 0%,#f3fbf6 100%);
@@ -246,8 +261,8 @@
       width:min(1180px,100%);
       margin:0 auto;
       display:grid;
-      grid-template-columns:1fr .9fr;
-      gap:60px;
+      grid-template-columns:1fr .75fr;
+      gap:40px;
       align-items:center;
     }
 
@@ -269,7 +284,12 @@
       font-size:18px;
       line-height:1.9;
       color:var(--muted);
-      margin-bottom:34px;
+      margin-bottom:30px;
+    }
+
+    .support-description strong{
+      color:var(--green-dark);
+      font-weight:900;
     }
 
     .progress-card{
@@ -277,7 +297,7 @@
       border-radius:30px;
       padding:28px;
       box-shadow:0 20px 55px rgba(23,49,38,.08);
-      margin-bottom:26px;
+      margin-bottom:22px;
     }
 
     .progress-top{
@@ -326,16 +346,92 @@
       line-height:1.7;
     }
 
+    .support-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .contribution-box{
+      display:none;
+      margin-top:18px;
+      padding:22px;
+      border-radius:24px;
+      background:#fff;
+      box-shadow:0 18px 45px rgba(23,49,38,.08);
+      color:var(--muted);
+      line-height:1.75;
+      animation:fadeIn .4s ease;
+    }
+
+    .contribution-box.active{
+      display:block;
+    }
+
+    .contribution-box strong{
+      color:var(--green-dark);
+    }
+
+    .contribution-phone{
+      display:inline-flex;
+      margin-top:14px;
+      font-size:22px;
+      font-weight:900;
+      color:var(--green-dark);
+    }
+
     .defib-visual{
-      width:min(430px,100%);
+      width:min(330px,100%);
       margin:0 auto;
-      filter:drop-shadow(0 30px 45px rgba(23,49,38,.14));
+      opacity:.82;
+      transform:translateX(20px);
+      filter:drop-shadow(0 30px 45px rgba(23,49,38,.10));
     }
 
     .defib-visual svg{
       width:100%;
       height:auto;
       display:block;
+    }
+
+    /* PROMUOVI */
+
+    .promote-section{
+      padding:70px 22px 120px;
+      background:linear-gradient(180deg,#f3fbf6 0%,#fffaf0 100%);
+    }
+
+    .promote-card{
+      border-top:1px solid rgba(31,122,76,.16);
+      padding-top:34px;
+    }
+
+    .promote-text{
+      width:min(760px,100%);
+      font-size:18px;
+      line-height:1.9;
+      color:var(--muted);
+      margin-bottom:26px;
+    }
+
+    .whatsapp-btn{
+      min-height:58px;
+      padding:0 30px;
+      border-radius:999px;
+      background:#25D366;
+      color:#fff;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      box-shadow:0 16px 34px rgba(37,211,102,.20);
+      transition:.25s ease;
+    }
+
+    .whatsapp-btn:hover{
+      transform:translateY(-2px);
+      filter:brightness(.96);
     }
 
     @keyframes fadeIn{
@@ -356,6 +452,7 @@
 
       .defib-visual{
         order:-1;
+        transform:none;
       }
     }
 
@@ -376,11 +473,13 @@
         line-height:1.65;
       }
 
-      .cta-row{
+      .cta-row,
+      .support-actions{
         flex-direction:column;
       }
 
-      .btn{
+      .btn,
+      .whatsapp-btn{
         width:100%;
       }
 
@@ -401,7 +500,8 @@
         padding:80px 18px 110px;
       }
 
-      .support-description{
+      .support-description,
+      .promote-text{
         font-size:16px;
         line-height:1.8;
       }
@@ -412,6 +512,10 @@
 
       .progress-top strong{
         font-size:24px;
+      }
+
+      .defib-visual{
+        width:min(250px,80%);
       }
     }
   </style>
@@ -424,7 +528,6 @@
   <main id="top">
 
     <section class="hero">
-
       <div class="hero-content">
 
         <h1>
@@ -439,7 +542,6 @@
         </p>
 
         <div class="cta-row">
-
           <button class="btn btn-light" onclick="toggleSection('whySection')">
             Perché partecipare
           </button>
@@ -452,19 +554,18 @@
             Sostieni l’iniziativa
           </button>
 
+          <button class="btn btn-light" onclick="toggleSection('promoteSection')">
+            Promuovi l’iniziativa
+          </button>
         </div>
 
       </div>
-
     </section>
 
     <section class="why-section" id="whySection">
-
       <div class="why-inner">
 
-        <div class="section-label">
-          Perché partecipare
-        </div>
+        <div class="section-label">Perché partecipare</div>
 
         <h2 class="why-title">
           La prevenzione parte dalle persone,
@@ -512,7 +613,6 @@
         </div>
 
       </div>
-
     </section>
 
     <section class="support-section" id="supportSection">
@@ -527,16 +627,16 @@
           </h2>
 
           <p class="support-description">
-            Le eventuali donazioni raccolte durante il progetto verranno custodite
-            dalla tesoreria della Pro Loco di Cuccaro Vetere e destinate esclusivamente
-            al raggiungimento di obiettivi concreti per la comunità, come l’acquisto
-            di un defibrillatore o altre dotazioni utili alla salute pubblica.
+            Le eventuali <strong>donazioni</strong> raccolte durante il progetto
+            verranno custodite dalla <strong>Tesoreria della Pro Loco</strong>
+            di Cuccaro Vetere e destinate esclusivamente al raggiungimento
+            di obiettivi concreti per la comunità, come l’acquisto di un
+            defibrillatore o altre dotazioni utili alla salute pubblica.
           </p>
 
           <div class="progress-card">
 
             <div class="progress-top">
-
               <div>
                 <small>Raccolta attuale</small>
                 <strong>€ 0 raccolti</strong>
@@ -545,7 +645,6 @@
               <div class="goal">
                 Obiettivo € 1.500
               </div>
-
             </div>
 
             <div class="progress-bar">
@@ -557,6 +656,27 @@
               L’avanzamento sarà visibile e aggiornato direttamente su questa pagina.
             </div>
 
+          </div>
+
+          <div class="support-actions">
+            <button class="btn btn-primary" onclick="toggleContributionBox()">
+              Versa un contributo
+            </button>
+          </div>
+
+          <div class="contribution-box" id="contributionBox">
+            Anche un contributo simbolico può fare la differenza.
+            Una persona incaricata potrà raccogliere la donazione, anche di 1 euro,
+            e aggiornare in breve tempo l’avanzamento della raccolta, così da rendere
+            il percorso sempre chiaro e trasparente.
+
+            <br>
+
+            <strong>Per contribuire puoi contattare:</strong>
+            <br>
+            <a class="contribution-phone" href="tel:+393493732259">
+              +39 349 373 2259
+            </a>
           </div>
 
         </div>
@@ -602,6 +722,41 @@
 
     </section>
 
+    <section class="promote-section" id="promoteSection">
+
+      <div class="promote-inner">
+
+        <div class="promote-card">
+
+          <div class="section-label">
+            Promuovi l’iniziativa
+          </div>
+
+          <h2 class="promote-title">
+            Hai un’idea, una proposta
+            o vuoi semplicemente dare una mano?
+          </h2>
+
+          <p class="promote-text">
+            Qui chiunque può sentirsi libero di proporre idee, iniziative,
+            collaborazioni o semplicemente dare una mano nel promuovere il progetto
+            e far crescere nel tempo qualcosa di utile per tutta la comunità.
+          </p>
+
+          <a
+            class="whatsapp-btn"
+            href="https://wa.me/393493732259?text=Ciao%20Giuseppe,%20vorrei%20contribuire%20o%20promuovere%20l%E2%80%99iniziativa%20legata%20alla%20prevenzione%20a%20Cuccaro%20Vetere."
+            target="_blank"
+            rel="noopener">
+            Scrivi su WhatsApp
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
 
   <script>
@@ -613,22 +768,34 @@
     });
 
     function toggleSection(id){
-      const section = document.getElementById(id);
-      const other = id === 'whySection'
-        ? document.getElementById('supportSection')
-        : document.getElementById('whySection');
+      const sections = [
+        document.getElementById('whySection'),
+        document.getElementById('supportSection'),
+        document.getElementById('promoteSection')
+      ];
 
-      other.classList.remove('active');
+      const section = document.getElementById(id);
+
+      sections.forEach(function(item){
+        if(item !== section){
+          item.classList.remove('active');
+        }
+      });
+
       section.classList.toggle('active');
 
       if(section.classList.contains('active')){
-        setTimeout(() => {
+        setTimeout(function(){
           section.scrollIntoView({
             behavior:'smooth',
             block:'start'
           });
         }, 100);
       }
+    }
+
+    function toggleContributionBox(){
+      document.getElementById('contributionBox').classList.toggle('active');
     }
   </script>
 
